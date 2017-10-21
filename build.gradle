@@ -1,12 +1,48 @@
 apply plugin: 'java-library'
+apply plugin: 'maven-publish'
 
 repositories {
     jcenter()
+    mavenCentral()
 }
 
 dependencies {
+    api 'org.aspectj:aspectjweaver:1.8.11'
+    api 'com.fasterxml.jackson.core:jackson-core:2.9.2'
+    api 'com.fasterxml.jackson.core:jackson-databind:2.9.2'
+    api 'org.checkerframework:checker:2.2.1'
+    api 'org.slf4j:slf4j-api:1.7.25'
 
     implementation 'com.google.guava:guava:21.0'
+    implementation 'org.aspectj:aspectjweaver:1.8.11'
+    implementation 'org.apache.commons:commons-lang3:3.6'
+
+//    implementation 'org.springframework.boot:spring-boot-starter:1.5.7.RELEASE'
+//    implementation 'org.springframework.boot:spring-boot-starter-web:1.5.7.RELEASE'
+//    implementation 'org.springframework.boot:spring-boot-starter-security:1.5.7.RELEASE'
+
+    compile group: 'org.springframework', name: 'spring-core', version: '4.3.12.RELEASE'
+    compile group: 'org.springframework', name: 'spring-web', version: '4.3.12.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version: '4.3.12.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-core', version: '4.2.3.RELEASE'
+
+    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
 
     testImplementation 'junit:junit:4.12'
+}
+
+compileJava {
+    options.compilerArgs << '-parameters'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'com.harshil'
+            artifactId 'controller-logger'
+            version '0.0.1-SNAPSHOT'
+
+            from components.java
+        }
+    }
 }
