@@ -6,14 +6,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * This annotation is used to turn off logging for a single method when applied on method level or for all methods of a
- * class when applied on class level.
- *
- * <p>
- * Note that when applied on method level it overrides settings configured on class-level.
- *
- * <p>
- * This can be used together with {@link Logging} to gain fine-grain control on logging.
+ * Class and method level annotation to turn off automatic logging.
+ * Adding it to class or method disables logging for it. Annotation on method takes precedence over that on class.
  */
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
