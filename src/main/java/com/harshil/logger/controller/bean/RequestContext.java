@@ -5,13 +5,14 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class RequestContext {
 
     private final Map<String, String> context = new LinkedHashMap<>(4);
 
-    public RequestContext add(@Nonnull String key, @Nonnull String value) {
-        context.put(key, value);
+    public RequestContext add(@Nonnull String key, @Nullable String value) {
+        context.put(key, value != null ? value : "null");
         return this;
     }
 
@@ -33,7 +34,7 @@ public class RequestContext {
     @Override
     public String toString() {
         return context.entrySet().stream()
-                .map(e -> e.getKey() + "[" + e.getValue() + "]")
-                .collect(Collectors.joining(","));
+                .map(e -> e.getKey() + " [" + e.getValue() + "]")
+                .collect(Collectors.joining(", "));
     }
 }

@@ -16,6 +16,7 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,23 +31,9 @@ import com.harshil.logger.controller.utils.RequestUtil;
  * This class is responsible for performing logging on Controller methods.
  * It used Spring AspectJ (not native Spring CGLib AOP) for weaving logging logic into matching controller methods.
  *
- * <p>Currently weaving is performed at runtime to maintain simplicity
- * as this eliminates need of AspectJ compiler. This can be changed to use compile-time
- * weaving to gain some performance benefit.
+ * <p>This aspect uses two annotations - {@link Logging} and {@link NoLogging} to gain fine-grain control over
+ * method logging behavior.
  *
- * <p><b>NOTE -</b> one need to pass the <code>-parameters</code> flag to Java compiler to preserver
- * formal parameter names in class files. Without this one cannot obtain method argument names via Reflections.
- * The <code>maven-compiler-plugin</code> is configured in <code>pom.xml</code> to pass this flag to compiler.
- *
- * <p>This aspect uses two annotations - {@link Logging}
- * and {@link NoLogging} to gain fine-grain control over
- * method logging behavior. The two annotations can be used on class-level or methods-level.
- *
- * When applied on method-level they override behavior specified on class-level. <br>
- * For example - <code>@Logging</code> on class and <code>@NoLogging</code> on method effectively
- * turns off logging for that particular method.
- *
-
  * @see <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/aop.html">
  *          Spring Documentation on Aspect Oriented Programming with Spring
  *      </a>

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.io.IOException;
 import java.lang.reflect.Type;
 
@@ -13,9 +14,9 @@ public class JsonUtil {
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     @Nonnull
-    public static String toJson(@Nonnull Object object) {
+    public static String toJson(@Nullable Object object) {
         try {
-            return OBJECT_MAPPER.writeValueAsString(object);
+            return object == null ? "null" : OBJECT_MAPPER.writeValueAsString(object);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
