@@ -1,5 +1,10 @@
+group = 'io.github.harshilsharma63'
+archivesBaseName = 'controller-logger'
+version = '0.0.1-SNAPSHOT'
+
 apply plugin: 'java-library'
-apply plugin: 'maven-publish'
+apply plugin: 'maven'
+apply plugin: 'signing'
 
 repositories {
     jcenter()
@@ -35,14 +40,68 @@ compileJava {
     options.compilerArgs << '-parameters'
 }
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId 'com.harshil'
-            artifactId 'controller-logger'
-            version '0.0.1-SNAPSHOT'
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
 
-            from components.java
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+sigining {
+    sign configurations.archives
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment {
+                MavenDeployment deployment -> signing.signPom(deployment)
+            }
+
+            repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2/') {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            snapshotRepository(url: 'https://oss.sonatype.org/content/repositories/snapshots') {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            pom.project {
+                name 'Controller Logger'
+                packaging 'jar'
+                artifactId 'controller-logger'
+
+                description 'AOP based API logging for Spring Boot'
+                url 'https://github.com/harshilsharma63/controller-logger'
+
+                scm {
+                    connection 'scm:git:https://github.com/harshilsharma63/controller-logger'
+                    developerConnection 'scm:git:https://github.com/harshilsharma63/controller-logger'
+                    url 'https://github.com/harshilsharma63/controller-logger'
+                }
+
+                licenses {
+                    license {
+                        name 'The Apache License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'harshilsharma63'
+                        name 'Harshil Sharma'
+                        email 'harshilsharma63@gmail.com'
+                    }
+                }
+            }
         }
     }
 }
