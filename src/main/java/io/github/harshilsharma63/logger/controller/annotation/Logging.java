@@ -1,4 +1,4 @@
-package com.harshil.logger.controller.annotation;
+package io.github.harshilsharma63.logger.controller.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,15 +1,13 @@
-package com.harshil.logger.controller.aspect;
+package io.github.harshilsharma63.logger.controller.aspect;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import io.github.harshilsharma63.logger.controller.utils.JsonUtil;
 import org.apache.commons.lang3.time.StopWatch;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.harshil.logger.controller.utils.JsonUtil;
 
 public interface ControllerAspect {
 
