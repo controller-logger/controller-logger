@@ -23,7 +23,16 @@ public class RequestUtil {
 
     @Nullable
     private static String getRequestUrl(@Nullable HttpServletRequest request) {
-        return request == null ? null : request.getRequestURL().append(request.getQueryString()).toString();
+        if (request == null) return null;
+
+        StringBuffer url = request.getRequestURL();
+        String queryString =request.getQueryString();
+
+        if (queryString != null) {
+            url.append("?").append(queryString);
+        }
+
+        return url.toString();
     }
 
     @Nullable
