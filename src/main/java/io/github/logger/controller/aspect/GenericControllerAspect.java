@@ -1,13 +1,13 @@
-package io.github.harshilsharma63.logger.controller.aspect;
+package io.github.logger.controller.aspect;
 
 import java.lang.annotation.Annotation;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import io.github.harshilsharma63.logger.controller.annotation.NoLogging;
-import io.github.harshilsharma63.logger.controller.utils.JsonUtil;
-import io.github.harshilsharma63.logger.controller.utils.RequestUtil;
+import io.github.logger.controller.annotation.NoLogging;
+import io.github.logger.controller.utils.JsonUtil;
+import io.github.logger.controller.utils.RequestUtil;
 import org.apache.commons.lang3.time.StopWatch;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import io.github.harshilsharma63.logger.controller.annotation.Logging;
+import io.github.logger.controller.annotation.Logging;
 
 //@formatter:off
 /**
@@ -44,12 +44,12 @@ public class GenericControllerAspect implements ControllerAspect {
 
     private static final Logger LOG = org.slf4j.LoggerFactory.getLogger(GenericControllerAspect.class);
 
-    @Pointcut("@annotation(io.github.harshilsharma63.logger.controller.annotation.Logging) " +
-            "|| @target(io.github.harshilsharma63.logger.controller.annotation.Logging)")
+    @Pointcut("@annotation(io.github.logger.controller.annotation.Logging) " +
+            "|| @target(io.github.logger.controller.annotation.Logging)")
     public void methodOrClassLoggingEnabledPointcut() {
     }
 
-    @Pointcut("!@annotation(io.github.harshilsharma63.logger.controller.annotation.NoLogging)")
+    @Pointcut("!@annotation(io.github.logger.controller.annotation.NoLogging)")
     public void methodLoggingNotDisabledPointcut() {
     }
 

@@ -1,4 +1,4 @@
-package io.github.harshilsharma63.logger.controller.utils;
+package io.github.logger.controller.utils;
 
 import javax.annotation.Nullable;
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +10,7 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import io.github.harshilsharma63.logger.controller.bean.RequestContext;
+import io.github.logger.controller.bean.RequestContext;
 
 public class RequestUtil {
 

@@ -1,9 +1,9 @@
-package io.github.harshilsharma63.logger.controller.aspect;
+package io.github.logger.controller.aspect;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import io.github.harshilsharma63.logger.controller.utils.JsonUtil;
+import io.github.logger.controller.utils.JsonUtil;
 import org.apache.commons.lang3.time.StopWatch;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;

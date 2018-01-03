@@ -1,4 +1,4 @@
-package io.github.harshilsharma63.logger.controller.utils;
+package io.github.logger.controller.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;

@@ -1,4 +1,4 @@
-package io.github.harshilsharma63.logger.controller.bean;
+package io.github.logger.controller.bean;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
