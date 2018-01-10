@@ -7,6 +7,22 @@
 A Java library to ease life of web developers by providing automatic logging 
 of input-output for controllers. Logged items include all parameters, returned value
 and some context data such as web request URL and user's username.
+
+### Features
+
+1. Automaticcally logs all APIs including input and output.
+1. Automatically logs errors occuring in API.
+1. No side-effect in actual API implementation due to AOP logic.
+1. Automatically binds to new APIs thanks to AOP weaving.
+1. Displays file size if one of the API input or output is any file object.
+1. Works with integration testing.
+1. Detects mocked objects in intput and output and displays them accordingly, as can happen during integration testing.
+1. Logging behavior is easily customizable.
+
+### Performance
+
+The code has been through multiple profiling cycles. Each part of the code is intended for maximum performance. 
+No object it serialized if it didn't need to.
  
 ### Why does it exist?
 
@@ -74,3 +90,10 @@ or vice-versa.
         
 Further customizations can be done by extending `GenericControllerAspect` class, or create your own aspect by 
 implementing `ControllerAspect` interface. 
+
+### Future Scope
+
+- [ ] Avoid logging sensitive information such as passwords, cookie data, session information.
+- [ ] Test with Spring 5
+- [ ] Test with Java 9
+- [ ] Add unit tests
