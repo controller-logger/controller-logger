@@ -47,6 +47,24 @@ of mine will be helpful in doing so.
 
 #### Setup
 
+1. Add dependency from http://www.mvnrepository.com/artifact/io.github.harshilsharma63/controller-logger
+
+  * Gradle
+        
+        compile group: 'io.github.harshilsharma63', name: 'controller-logger', version: '1.1.0'
+    
+  * Maven
+  
+        <dependency>
+            <groupId>io.github.harshilsharma63</groupId>
+            <artifactId>controller-logger</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+        
+
+
+  
+
 1. Add aspect bean in one of the `@Configuration` classes
 
         @Bean
