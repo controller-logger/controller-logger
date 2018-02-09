@@ -16,9 +16,10 @@ public class RequestUtil {
 
     public static RequestContext getRequestContext() {
         HttpServletRequest request = getCurrentHttpRequest();
-        UserDetails user = getCurrentUser();
 
-        return new RequestContext().add("url", getRequestUrl(request)).add("username", getRequestUserName(user));
+        return new RequestContext()
+                .add("url", getRequestUrl(request))
+                .add("username", getRequestUserName());
     }
 
     @Nullable
@@ -38,6 +39,11 @@ public class RequestUtil {
     @Nullable
     private static String getRequestUserName(@Nullable UserDetails userDetails) {
         return userDetails == null ? null : userDetails.getUsername();
+    }
+
+    @Nullable
+    private static String getRequestUserName() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
     }
 
     @Nullable
