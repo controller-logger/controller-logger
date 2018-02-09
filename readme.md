@@ -2,6 +2,10 @@
 
         createUser() called with arguments: id: [4], name: [Foo] called via url [http://localhost:8080/createUser], username [admin]
 
+### Upcoming release features
+1. Useing Authentication.getName() as more generic way of extracting username.
+1. Hidden sensitive information such as passwords from being logged.
+
 ### What is it?
 
 A Java library to ease life of web developers by providing automatic logging 
