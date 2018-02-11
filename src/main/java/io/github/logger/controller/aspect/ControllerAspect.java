@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface ControllerAspect {
 
     /**
-     * This pointcut is for joinpoint corresponding to all public methonds in controller
+     * This pointcut is for joinpoint corresponding to all public methods in controller
      */
     void allPublicControllerMethodsPointcut();
 

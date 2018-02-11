@@ -40,7 +40,7 @@ import io.github.logger.controller.annotation.Logging;
 //@formatter:on
 
 @Aspect
-public class GenericControllerAspect implements ControllerAspect {
+public class GenericControllerAspect extends BaseLoggerAspect implements ControllerAspect {
 
     private static final Logger LOG = org.slf4j.LoggerFactory.getLogger(GenericControllerAspect.class);
 
@@ -131,6 +131,7 @@ public class GenericControllerAspect implements ControllerAspect {
 
         LOG.info(methodName + " took [" + timer.getTime() + " ms] to complete");
 
+        // TODO HS 20180211 what's going on here?
         if (LOG.isDebugEnabled()) {
             boolean needsSerialization = false;
 
@@ -270,9 +271,29 @@ public class GenericControllerAspect implements ControllerAspect {
                 String argClassName = argValues[i] == null ? "NULL" : argValues[i].getClass().getName();
                 serialize(argValues[i], argClassName, stringBuilder);
             } else {
-                stringBuilder.append(argValues[i]);
+                stringBuilder.append(getScrubbedValue(argNames[i], argValues[i]));
             }
             stringBuilder.append("]").append(i == (length - 1) ? "" : ", ");
         }
+    }
+
+    /**
+     * Returns scrubbed value for a given arg name-value. The original arg value is returned
+     * if data scrubbing is disabled.
+     *
+     * @param argName formal parameter name
+     * @param argValue the parameter value
+     * @return scrubbed value of argValue, or original value if data scrubbing is disabled
+     */
+    private Object getScrubbedValue(@Nonnull String argName, @Nonnull Object argValue) {
+        Object argValueToUse = argValue;
+
+        if (enableDataScrubbing) {
+            if (paramBlacklist.contains(argName) || argName.matches(paramBlacklistRegex)) {
+                argValueToUse = scrubbedValue;
+            }
+        }
+
+        return argValueToUse;
     }
 }
