@@ -289,7 +289,7 @@ public class GenericControllerAspect extends BaseLoggerAspect implements Control
         Object argValueToUse = argValue;
 
         if (enableDataScrubbing) {
-            if (paramBlacklist.contains(argName) || argName.matches(paramBlacklistRegex)) {
+            if (paramBlacklist.contains(argName) || paramBlacklistRegex.matcher(argName).matches()) {
                 argValueToUse = scrubbedValue;
             }
         }

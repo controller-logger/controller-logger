@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 /**
  * Base class for any logger aspect implementation.
@@ -28,7 +29,7 @@ public abstract class BaseLoggerAspect {
     protected static boolean enableDataScrubbing = true;
 
     // TODO HS 20180210 investigate a faster implementation of regex
-    protected static String paramBlacklistRegex;
+    protected static Pattern paramBlacklistRegex;
 
     protected static Set<String> paramBlacklist = new HashSet<>(DEFAULT_BLACKLISTED_PARAMS);
 
@@ -41,7 +42,7 @@ public abstract class BaseLoggerAspect {
     }
 
     public void setParamBlacklistRegex(@Nonnull String paramBlacklistRegex) {
-        BaseLoggerAspect.paramBlacklistRegex = paramBlacklistRegex;
+        BaseLoggerAspect.paramBlacklistRegex = Pattern.compile(paramBlacklistRegex);
     }
 
     protected void setCustomParamBlacklist(@Nonnull Set<String> customParamBlacklist) {
