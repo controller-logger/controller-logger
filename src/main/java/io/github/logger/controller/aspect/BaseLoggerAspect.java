@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 public abstract class BaseLoggerAspect {
 
     // TODO HS 20180211 think about @Sensitive annotation
-    private static final List<String> DEFAULT_BLACKLISTED_PARAMS = Arrays.asList(
+    protected static Set<String> paramBlacklist = new HashSet<>(Arrays.asList(
             "password",
             "passwd",
             "secret",
@@ -22,7 +22,7 @@ public abstract class BaseLoggerAspect {
             "api_key",
             "apikey",
             "access_token"
-    );
+    ));
 
     protected static String scrubbedValue = "xxxxx";
 
@@ -31,13 +31,11 @@ public abstract class BaseLoggerAspect {
     // TODO HS 20180210 investigate a faster implementation of regex
     protected static Pattern paramBlacklistRegex;
 
-    protected static Set<String> paramBlacklist = new HashSet<>(DEFAULT_BLACKLISTED_PARAMS);
-
     public void setDefaultScrubbedValue(@Nonnull String defaultScrubbedValue) {
         BaseLoggerAspect.scrubbedValue = defaultScrubbedValue;
     }
 
-    public void setEnableDataScrubbing(@Nonnull boolean enableDataScrubbing) {
+    public void setEnableDataScrubbing(boolean enableDataScrubbing) {
         BaseLoggerAspect.enableDataScrubbing = enableDataScrubbing;
     }
 
