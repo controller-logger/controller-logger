@@ -24,16 +24,12 @@ public class RequestUtil {
 
     @Nullable
     private static String getRequestUrl(@Nullable HttpServletRequest request) {
-        if (request == null) return null;
+        return request == null ? null : request.getRequestURL().toString();
+    }
 
-        StringBuffer url = request.getRequestURL();
-        String queryString =request.getQueryString();
-
-        if (queryString != null) {
-            url.append("?").append(queryString);
-        }
-
-        return url.toString();
+    @Nullable
+    private static String getRequestUserName() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
     }
 
     @Nullable
