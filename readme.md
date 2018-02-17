@@ -49,6 +49,8 @@ of mine will be helpful in doing so.
 
 ### Usage
 
+Example usage of this library can be found here - https://github.com/harshilsharma63/controller-logger-example
+
 #### Setup
 
 1. Add dependency from http://www.mvnrepository.com/artifact/io.github.harshilsharma63/controller-logger
