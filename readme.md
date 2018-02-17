@@ -14,13 +14,13 @@ and some context data such as web request URL and user's username.
 
 ### Features
 
-1. Automaticcally logs all APIs including input and output.
-1. Automatically logs errors occuring in API.
+1. Automatically logs all APIs including input and output.
+1. Automatically logs errors occurring in API.
 1. No side-effect in actual API implementation due to AOP logic.
 1. Automatically binds to new APIs thanks to AOP weaving.
 1. Displays file size if one of the API input or output is any file object.
 1. Works with integration testing.
-1. Detects mocked objects in intput and output and displays them accordingly, as can happen during integration testing.
+1. Detects mocked objects in input and output and displays them accordingly, as can happen during integration testing.
 1. Logging behavior is easily customizable.
 
 ### Performance
@@ -64,25 +64,61 @@ of mine will be helpful in doing so.
             <artifactId>controller-logger</artifactId>
             <version>1.1.0</version>
         </dependency>
-        
 
-
-  
-
-1. Add aspect bean in one of the `@Configuration` classes
+2. Add aspect bean in one of the `@Configuration` classes
 
         @Bean
         public GenericControllerAspect genericControllerAspect() {
             return new GenericControllerAspect();
         }
         
-2. Enable logging by adding `@Logging` annotation on controller classes(s)
+3. Enable logging by adding `@Logging` annotation on controller classes(s)
 
         @RestController
         @Logging
         public class MyController {
             ...
         }
+        
+### Data Scrubbing
+
+This library supports hiding sensitive information from being logged. As of now this works only with
+method arguments but support for arbitrary fields in objects is on the way. 
+
+Data scrubbing is enabled by default and it's recommended to keep it that way.
+ 
+A method parameter is scrubbed if it's name falls withing following criteria:
+
+* Is one of following values (case insensitive): 
+    * password
+    * passwd
+    * secret
+    * authorization
+    * api_key
+    * apikey
+    * access_token
+    * accesstoken
+
+* Is contained in custom blacklist provided to `setCustomParamBlacklist()`
+
+* Matches custom regex provided to `setParamBlacklistRegex()`
+
+Value of any param matching above mentioned criteria is scrubbed and replaced by "xxxxx". The 
+scrubbed value can be customized as well by passing in the desired value to 
+`setDefaultScrubbedValue()` method.
+
+A full example with all customization options used:
+
+    @Bean
+    public GenericControllerAspect genericControllerAspect() {
+        GenericControllerAspect aspect = new GenericControllerAspect();
+
+        aspect.setEnableDataScrubbing(true);
+        aspect.setDefaultScrubbedValue("*******");
+        aspect.setParamBlacklistRegex("account.*");
+        aspect.setCustomParamBlacklist(new HashSet<>(Arrays.asList("securityProtocol")));
+        return aspect;
+    }
 
 #### Customization
 

@@ -40,7 +40,7 @@ import io.github.logger.controller.annotation.Logging;
 //@formatter:on
 
 @Aspect
-public class GenericControllerAspect extends BaseLoggerAspect implements ControllerAspect {
+public class GenericControllerAspect extends LoggerAspect implements ControllerAspect {
 
     private static final Logger LOG = org.slf4j.LoggerFactory.getLogger(GenericControllerAspect.class);
 
@@ -289,7 +289,7 @@ public class GenericControllerAspect extends BaseLoggerAspect implements Control
         Object argValueToUse = argValue;
 
         if (enableDataScrubbing) {
-            if (paramBlacklist.contains(argName) || paramBlacklistRegex.matcher(argName).matches()) {
+            if (paramBlacklist.contains(argName.toLowerCase()) || paramBlacklistRegex.matcher(argName).matches()) {
                 argValueToUse = scrubbedValue;
             }
         }
