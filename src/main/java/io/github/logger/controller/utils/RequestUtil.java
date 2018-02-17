@@ -28,11 +28,6 @@ public class RequestUtil {
     }
 
     @Nullable
-    private static String getRequestUserName() {
-        return SecurityContextHolder.getContext().getAuthentication().getName();
-    }
-
-    @Nullable
     private static String getRequestUserName(@Nullable UserDetails userDetails) {
         return userDetails == null ? null : userDetails.getUsername();
     }
