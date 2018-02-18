@@ -3,8 +3,9 @@
         createUser() called with arguments: id: [4], name: [Foo] called via url [http://localhost:8080/createUser], username [admin]
 
 ### Upcoming release features
-1. Using Authentication.getName() as a more generic way of extracting username.
-1. Hidden sensitive information such as passwords from being logged.
+1. Test coverage
+1. Performance improvements
+1. Dependency updates
 
 ### What is it?
 
@@ -153,7 +154,7 @@ Further customizations can be done by extending `GenericControllerAspect` class,
 
 ### Future Scope
 
-- [ ] Avoid logging sensitive information such as passwords, cookie data, session information.
+- [x] Avoid logging sensitive information such as passwords, cookie data, session information.
 - [ ] Test with Spring 5
 - [ ] Test with Java 9
 - [ ] Add unit tests
