@@ -1,0 +1,30 @@
+body {
+    background-color: #24292e !important;
+    color: rgba(255,255,255,0.65) !important;
+    font-family: 'Barlow Condensed', sans-serif !important;
+    font-size: 150% !important;
+}
+
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+    text-align: center;
+}
+
+.title {
+    font-size: 4.5rem;
+    color: rgba(232, 232, 232, 0.78);
+}
+
+.jumbotron {
+    background-color: transparent !important;
+    height: 100vh;
+}
