@@ -27,4 +27,20 @@ body {
 .jumbotron {
     background-color: transparent !important;
     height: 100vh;
+    max-height: 800px;
+}
+
+.container > iframe {
+    margin: 0 1%;
+}
+
+.jumbotron > .container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.row-footer {
+    flex: 1;
+    align-items: flex-end;
 }
