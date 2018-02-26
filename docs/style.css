@@ -44,3 +44,36 @@ body {
     flex: 1;
     align-items: flex-end;
 }
+
+.nav.nav-tabs, .tab-content {
+    width: 100%;
+}
+
+.nav-link {
+    line-height: 1.3 !important;
+    padding: 0 1rem !important;
+}
+
+pre {
+    font-size: 55%;
+    color: whitesmoke;
+}
+
+.tab-content > .tab-pane {
+    /*min-height: 9rem;*/
+}
+
+.tab-content > .active {
+    display: block;
+    border: 1px solid #2c353f;
+    border-radius: 0 0 0.5rem 0.5rem;
+    border-top: transparent;
+}
+
+pre {
+    margin: 0;
+}
+
+#build_tool_links {
+    max-width: 800px;
+}

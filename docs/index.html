@@ -1,6 +1,5 @@
 <html>
     <head>
-        <link rel="stylesheet" href="style.css">
         <link 
             rel="stylesheet" 
             href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
@@ -24,8 +23,9 @@
         </script>
         <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:200" rel="stylesheet">
         <script async defer src="https://buttons.github.io/buttons.js"></script>
+        <link rel="stylesheet" href="style.css">
     </head>
-    <body>
+    <body class="pb-4">
         <div class="jumbotron header jumbotron-fluid">
             <div class="container">
                 <div class="row row-centered">
@@ -54,6 +54,37 @@
                             A Java library to ease the life of web developers by providing automatic logging of
                             input-output for controllers. Logged items include all parameters, returned value and
                             some context data such as web request URL and user's username.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mx-5 px-5">
+            <div class="container" id="build_tool_links">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Gradle</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Maven</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Others</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active px-3 py-2" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <pre>compile 'io.github.harshilsharma63:controller-logger:1.2.0'</pre>
+                    </div>
+                    <div class="tab-pane fade px-3 py-2" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <pre>
+&lt;dependency&gt;
+    &lt;groupId&gt;io.github.harshilsharma63&lt;/groupId&gt;
+    &lt;artifactId&gt;controller-logger&lt;/artifactId&gt;
+    &lt;version&gt;1.2.0&lt;/version&gt;
+&lt;/dependency&gt;</pre>
+                    </div>
+                    <div class="tab-pane fade px-3 py-2" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <pre><a href="www.mvnrepository.com/artifact/io.github.harshilsharma63/controller-logger/">Maven repository</a></pre>
                     </div>
                 </div>
             </div>
