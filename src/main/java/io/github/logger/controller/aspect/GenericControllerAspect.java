@@ -131,40 +131,37 @@ public class GenericControllerAspect extends LoggerAspect implements ControllerA
 
         LOG.info(methodName + " took [" + timer.getTime() + " ms] to complete");
 
-        // TODO HS 20180211 what's going on here?
-        if (LOG.isDebugEnabled()) {
-            boolean needsSerialization = false;
+        boolean needsSerialization = false;
 
-            String produces[] = methodRequestMapping != null ? methodRequestMapping.produces() : new String[0];
+        String produces[] = methodRequestMapping != null ? methodRequestMapping.produces() : new String[0];
+        for (String produce : produces) {
+            if (produce.equals(MediaType.APPLICATION_JSON_VALUE)) {
+                needsSerialization = true;
+                break;
+            }
+        }
+
+        if (!needsSerialization) {
+            produces = classRequestMapping != null ? classRequestMapping.produces() : new String[0];
             for (String produce : produces) {
                 if (produce.equals(MediaType.APPLICATION_JSON_VALUE)) {
                     needsSerialization = true;
                     break;
                 }
             }
-
-            if (!needsSerialization) {
-                produces = classRequestMapping != null ? classRequestMapping.produces() : new String[0];
-                for (String produce : produces) {
-                    if (produce.equals(MediaType.APPLICATION_JSON_VALUE)) {
-                        needsSerialization = true;
-                        break;
-                    }
-                }
-            }
-
-            StringBuilder postMessage = new StringBuilder().append(methodName).append(" returned: [");
-
-            if (needsSerialization) {
-                String resultClassName = result == null ? "null" : result.getClass().getName();
-                resultClassName = returnType.equals("void") ? returnType : resultClassName;
-                serialize(result, resultClassName, postMessage);
-            } else {
-                postMessage.append(result);
-            }
-            postMessage.append("]");
-            LOG.debug(postMessage.toString());
         }
+
+        StringBuilder postMessage = new StringBuilder().append(methodName).append(" returned: [");
+
+        if (needsSerialization) {
+            String resultClassName = result == null ? "null" : result.getClass().getName();
+            resultClassName = returnType.equals("void") ? returnType : resultClassName;
+            serialize(result, resultClassName, postMessage);
+        } else {
+            postMessage.append(result);
+        }
+        postMessage.append("]");
+        LOG.info(postMessage.toString());
     }
 
     @AfterThrowing(
