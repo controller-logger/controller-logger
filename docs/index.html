@@ -27,7 +27,7 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body class="pb-4">
-        <div class="jumbotron header jumbotron-fluid">
+        <div class="jumbotron header jumbotron-fluid pt-3">
             <div class="container">
                 <div class="row row-centered">
                     <div class="col-sm col-centered">
@@ -50,16 +50,34 @@
                         <a class="github-button" href="https://github.com/harshilsharma63/controller-logger/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork harshilsharma63/controller-logger on GitHub">Fork</a>
                     </div>
                 </div>
-
-                <div class="row row-source-code">
+                <div class="row row-source-code my-5 py-5">
                     <div class="container">
-                        2018-02-26 16:52:35.419 INFO: getUser() called via url [http://localhost:8080/get-random-user], username [username]<br>
-                        2018-02-26 16:52:35.624 INFO: getUser() took [201 ms] to complete<br>
-                        2018-02-26 16:52:35.624 INFO: getUser() returned: [User(id=SP-937-215, email=jeanlucpicard@example.com, password=tea_earl_grey_hot, userDetails=UserDetail(id=24, userId=SP-937-215, firstName=Jean-Luc lastName=Picard, gender=MALE), residentialDetail=ResidentialDetail(contact=subspace_12345), officialDetail=OfficialDetail(employeeId=SP-937-215, companyName=United Federation of Planets, companyContactEmail=jeanlucpicard@starfleet.com))]<br>
+                        <p class="line">
+                        2018-02-26 16:52:35.419 INFO:
+                        <span data-toggle="tooltip" data-placement="top" title="Controller function name">getUser()</span>
+                        called via url
+                        <span data-toggle="tooltip" data-placement="top" title="URL through which API was called">[http://localhost:8080/get-random-user]</span>,
+                        <span data-toggle="tooltip" data-placement="top" title="Auth user who called the API">username [username]</span>
+                        </p>
+                        <p class="line">
+                        2018-02-26 16:52:35.624 INFO:
+                        <span data-toggle="tooltip" data-placement="top" title="Controller function name">getUser()</span>
+                        took
+                        <span data-toggle="tooltip" data-placement="top" title="Total execution time API">[201 ms]</span>
+                        to complete
+                        </p>
+                        <p class="line">
+                        2018-02-26 16:52:35.624 INFO:
+                        <span data-toggle="tooltip" data-placement="top" title="Controller function name">getUser()</span>
+                        returned:
+                        <span data-toggle="tooltip" data-placement="bottom" title="Response returned by API">
+                            [User(id=SP-937-215, email=jeanlucpicard@example.com, password=tea_earl_grey_hot, userDetails=UserDetail(id=24, userId=SP-937-215, firstName=Jean-Luc lastName=Picard, gender=MALE), residentialDetail=ResidentialDetail(contact=subspace_12345), officialDetail=OfficialDetail(employeeId=SP-937-215, companyName=United Federation of Planets, companyContactEmail=jeanlucpicard@starfleet.com))]
+                        </span>
+                        </p>
                     </div>
                 </div>
 
-                <div class="row row-centered row-footer mt-5">
+                <div class="row row-centered row-footer">
                     <div class="col-sm col-centered mt-5">
                             A Java library to ease the life of web developers by providing automatic logging of
                             input-output for controllers. Logged items include all parameters, returned value and
@@ -99,5 +117,10 @@
                 </div>
             </div>
         </div>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
     </body>
 </html>

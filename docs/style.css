@@ -80,8 +80,17 @@ pre {
 
 .row-source-code {
     font-family: 'Anonymous Pro', monospace;
-    font-size: 1rem;
+    font-size: 0.9rem;
     padding: 8rem 0;
-    padding-left: 0px;
-    padding-left: 1.5rem;
+    padding-left: 2.5rem;
+    line-height: 1.6rem;
+}
+
+[data-toggle="tooltip"] {
+    border-bottom: 2px solid #141b2280;
+    padding-bottom: 4px;
+}
+
+p {
+    margin-bottom: 0.6rem;
 }
