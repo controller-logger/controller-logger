@@ -93,8 +93,21 @@ pre {
 [data-toggle="tooltip"] {
     border-bottom: 2px solid #2e3f5099;
     padding-bottom: 5px;
+    cursor: pointer;
 }
 
 p {
     margin-bottom: 0.6rem;
+}
+
+.timestamp {
+    color: #f53eec;
+}
+
+.log-level {
+    color: yellowgreen;
+}
+
+.line {
+    color: #5888cf;
 }
