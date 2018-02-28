@@ -19,6 +19,7 @@ and some context data such as web request URL and user's username.
 1. Automatically logs errors occurring in API.
 1. No side-effect in actual API implementation due to AOP logic.
 1. Automatically binds to new APIs thanks to AOP weaving.
+1. Scrubs sensitive information in logs to maintain security and privacy.
 1. Displays file size if one of the API input or output is any file object.
 1. Works with integration testing.
 1. Detects mocked objects in input and output and displays them accordingly, as can happen during integration testing.
