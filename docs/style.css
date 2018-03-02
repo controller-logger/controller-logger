@@ -47,7 +47,7 @@ body {
 }
 
 .nav.nav-tabs, .tab-content {
-    width: 100%;
+    /*width: 100%;*/
 }
 
 .nav-link {
