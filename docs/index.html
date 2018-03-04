@@ -24,6 +24,8 @@
         <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:200" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro" rel="stylesheet">
         <script async defer src="https://buttons.github.io/buttons.js"></script>
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
     </head>
     <body class="pb-4">
@@ -117,112 +119,115 @@
                 </div>
             </div>
         </div>
-        <div class="container my-3">
+        <div class="container-fluid my-3">
             <div class="row">
-                <div class="nav flex-column nav-tabs" id="features-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="feature-0-tab" data-toggle="tab" 		href="#feature-0-home" role="tab" aria-controls="feature-0" aria-selected="true">Automatically logs all APIs including input and output.
+                <div class="nav flex-column nav-tabs py-4" id="features-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="feature-0-tab" data-toggle="tab" href="#feature-0-home" role="tab"
+                       aria-controls="feature-0" aria-selected="true">
+                        Automatically logs all APIs including input and output
                     </a>
-                    <a class="nav-link " id="feature-1-tab" data-toggle="tab" 		href="#feature-1-home" role="tab" aria-controls="feature-1" aria-selected="false">Automatically logs errors occurring in API.
+                    <a class="nav-link " id="feature-1-tab" data-toggle="tab" href="#feature-1-home" role="tab"
+                       aria-controls="feature-1" aria-selected="false">
+                        Automatically logs errors occurring in API
                     </a>
-                    <a class="nav-link " id="feature-2-tab" data-toggle="tab" 		href="#feature-2-home" role="tab" aria-controls="feature-2" aria-selected="false">No side-effect in actual API implementation due to AOP logic.
+                    <a class="nav-link " id="feature-2-tab" data-toggle="tab" href="#feature-2-home" role="tab"
+                       aria-controls="feature-2" aria-selected="false">
+                        No side-effect in actual API implementation due to AOP logic
                     </a>
-                    <a class="nav-link " id="feature-3-tab" data-toggle="tab" 		href="#feature-3-home" role="tab" aria-controls="feature-3" aria-selected="false">Automatically binds to new APIs thanks to AOP weaving.
+                    <a class="nav-link " id="feature-3-tab" data-toggle="tab" href="#feature-3-home" role="tab"
+                       aria-controls="feature-3" aria-selected="false">
+                        Automatically binds to new APIs thanks to AOP weaving
                     </a>
-                    <a class="nav-link " id="feature-4-tab" data-toggle="tab" 		href="#feature-4-home" role="tab" aria-controls="feature-4" aria-selected="false">Scrubs sensitive information in logs to maintain security and privacy.
+                    <a class="nav-link " id="feature-4-tab" data-toggle="tab" href="#feature-4-home" role="tab"
+                       aria-controls="feature-4" aria-selected="false">
+                        Scrubs sensitive information in logs to maintain security and privacy
                     </a>
-                    <a class="nav-link " id="feature-5-tab" data-toggle="tab" 		href="#feature-5-home" role="tab" aria-controls="feature-5" aria-selected="false">Displays file size if one of the API input or output is any file object.
+                    <a class="nav-link " id="feature-5-tab" data-toggle="tab" href="#feature-5-home" role="tab"
+                       aria-controls="feature-5" aria-selected="false">
+                        Displays file size if one of the API input or output is any file object
                     </a>
-                    <a class="nav-link " id="feature-6-tab" data-toggle="tab" 		href="#feature-6-home" role="tab" aria-controls="feature-6" aria-selected="false">Works with integration testing.
+                    <a class="nav-link " id="feature-6-tab" data-toggle="tab" href="#feature-6-home" role="tab"
+                       aria-controls="feature-6" aria-selected="false">
+                        Works with integration testing
                     </a>
-                    <a class="nav-link " id="feature-7-tab" data-toggle="tab" 		href="#feature-7-home" role="tab" aria-controls="feature-7" aria-selected="false">Detects mocked objects in input and output and displays them accordingly, as can happen during integration testing.
+                    <a class="nav-link " id="feature-7-tab" data-toggle="tab" href="#feature-7-home" role="tab"
+                       aria-controls="feature-7" aria-selected="false">
+                        Detects mocked objects in input and output and displays them accordingly, as can happen during integration testing
                     </a>
-                    <a class="nav-link " id="feature-8-tab" data-toggle="tab" 		href="#feature-8-home" role="tab" aria-controls="feature-8" aria-selected="false">Logging behaviour is easily customizable.</a>
+                    <a class="nav-link " id="feature-8-tab" data-toggle="tab" href="#feature-8-home" role="tab"
+                       aria-controls="feature-8" aria-selected="false">
+                        Logging behaviour is easily customizable</a>
                 </div>
-                <div class="tab-content" id="features-tabContent">
-                    <div class="tab-pane fade show active" id="feature-0-home" role="tabpanel" 		aria-labelledby="feature-0-tab"><span class="timestamp">2018-02-26 16:52:35.419</span> <span class="log-level">INFO:</span> deleteUser() called via url [http://localhost:8080/user/1], username [alice]
-
-                        <span class="timestamp">2018-02-26 16:52:35.624</span> <span class="log-level">INFO:</span> deleteUser() took [12 ms] to complete
-
-                        <span class="timestamp">2018-02-26 16:52:35.624</span> <span class="log-level">INFO:</span> deleteUser() returned: [true]
+                <div class="tab-content p-1 px-3" id="features-tabContent">
+                    <div class="tab-pane fade show active" id="feature-0-home" role="tabpanel" aria-labelledby="feature-0-tab">
+                        <span class="timestamp">2018-02-26 16:52:35.419</span> <span class="log-level">INFO:</span>
+                        deleteUser() <span class="highlight">called with arguments userId: [1],</span>
+                        called via url [http://localhost:8080/user/1]
+                        username [alice]<br>
+                        <span class="timestamp">2018-02-26 16:52:35.624</span> <span class="log-level">INFO:</span> deleteUser()
+                            took [12 ms]
+                        to complete<br>
+                        <span class="timestamp">2018-02-26 16:52:35.624</span> <span class="log-level">INFO:</span> deleteUser()
+                        <span class="highlight">returned: [true]</span>
+                    </div>
+                    <div class="tab-pane fade show " id="feature-1-home" role="tabpanel" aria-labelledby="feature-1-tab">
+                        <span class="timestamp">2018-03-02 11:21:33.171 </span> <span class="log-level">INFO:</span> generateSaleReport() called via url [http://localhost:8080/sales/report], username [alice]<br>
+                        <span class="timestamp">2018-03-02 11:21:33.178 </span> <span class="log-level">INFO:</span> generateSaleReport() took [4 ms] to complete<br>
+                        <span class="timestamp">2018-03-02 11:21:33.180 </span> <span class="log-level">INFO:</span> generateSaleReport()
+                        <span class="highlight">threw exception: [java.lang.RuntimeException: Error occurred while fetching reports. Error code: xf224]</span><br>
+                    </div>
+                    <div class="tab-pane fade show " id="feature-2-home" role="tabpanel" aria-labelledby="feature-2-tab">
+                        <pre class="prettyprint lang-java">
+  @RestController
++ @Logging
+  public class UserController {
+    @GetMapping("/get-random-user")
+    @ResponseBody
+    public User getUser() {
+      return random(User.class);
+    }
+  }
+                        </pre>
+                    </div>
+                    <div class="tab-pane fade show " id="feature-3-home" role="tabpanel" aria-labelledby="feature-3-tab">
+                        <pre class="prettyprint lang-java">
+@RestController
+@Logging    // enable logging for all methods in this controller
+public class UserController {
+    @GetMapping("/user/${userId}")
+    @ResponseBody
+    public User getUser(@PathParam int userId) {
+        return userService.getUser(userId);
+    }
+    ... more endpoints
+}
+                        </pre>
 
                     </div>
-                    <div class="tab-pane fade show " id="feature-1-home" role="tabpanel" 		aria-labelledby="feature-1-tab"><span class="timestamp">2018-03-02 11:21:33.171 </span> <span class="log-level">INFO:</span> generateSaleReport() called via url [http://localhost:8080/sales/report], username [alice]
-
-                        <span class="timestamp">2018-03-02 11:21:33.178 </span> <span class="log-level">INFO:</span> generateSaleReport() took [4 ms] to complete
-
-                        <span class="timestamp">2018-03-02 11:21:33.180 </span> <span class="log-level">INFO:</span> generateSaleReport() threw exception: [java.lang.RuntimeException: Error occurred while fetching reports. Error code: xf224]
-
+                    <div class="tab-pane fade show " id="feature-4-home" role="tabpanel" aria-labelledby="feature-4-tab">
+                        <span class="timestamp">2018-02-26 16:52:35.419</span> <span class="log-level">INFO:</span> makeTransaction() called via url [http://localhost:8080/transact], called with arguments:
+                        <span class="highlight">accountNumber [xxxxx], apiKey [xxxxx]</span>, username [alice]<br>
+                        <span class="timestamp">2018-02-26 16:52:35.624</span> <span class="log-level">INFO:</span> makeTransaction() took [18 ms] to complete<br>
+                        <span class="timestamp">2018-02-26 16:52:35.624</span> <span class="log-level">INFO:</span> makeTransaction() returned: [true]<br>
                     </div>
-                    <div class="tab-pane fade show " id="feature-2-home" role="tabpanel" 		aria-labelledby="feature-2-tab">@RestController
-
-                        + @Logging
-
-                        public class UserController {
-
-                        @GetMapping("/get-random-user")
-
-                        @ResponseBody
-
-                        public User getUser() {
-
-                        return random(User.class);
-
-                        }
-
-                        }
-
+                    <div class="tab-pane fade show " id="feature-5-home" role="tabpanel" aria-labelledby="feature-5-tab">
+                        <span class="timestamp">2018-03-02 11:21:33.171 </span> <span class="log-level">INFO:</span> generateSaleReport() called via url [http://localhost:8080/sales/report], username [alice]<br>
+                        <span class="timestamp">2018-03-02 11:21:33.178 </span> <span class="log-level">INFO:</span> generateSaleReport() took [4 ms] to complete<br>
+                        <span class="timestamp">2018-03-02 11:21:33.180 </span> <span class="log-level">INFO:</span> generateSaleReport()
+                        <span class="highlight">returned file of size:[12265 B]</span><br>
                     </div>
-                    <div class="tab-pane fade show " id="feature-3-home" role="tabpanel" 		aria-labelledby="feature-3-tab">@RestController
-
-                        @Logging    // enable logging for all methods in this controller
-
-                        public class UserController {
-
-                        @GetMapping("/user/${userId}")
-
-                        @ResponseBody
-
-                        public User getUser(@PathParam int userId) {
-
-                        return userService.getUser(userId);
-
-                        }
-
-                        ...
-
-                        ...
-
-                        ...
-
-                        }
-
+                    <div class="tab-pane fade show " id="feature-6-home" role="tabpanel" aria-labelledby="feature-6-tab">
+                        No changes required in tests whatsoever to use this library.
                     </div>
-                    <div class="tab-pane fade show " id="feature-4-home" role="tabpanel" 		aria-labelledby="feature-4-tab"><span class="timestamp">2018-02-26 16:52:35.419</span> <span class="log-level">INFO:</span> makeTransaction() called via url [http://localhost:8080/transact], called with arguments: accountNumber [xxxxx], apiKey [xxxxx], username [alice]
-
-                        <span class="timestamp">2018-02-26 16:52:35.624</span> <span class="log-level">INFO:</span> makeTransaction() took [18 ms] to complete
-
-                        <span class="timestamp">2018-02-26 16:52:35.624</span> <span class="log-level">INFO:</span> makeTransaction() returned: [true]
-
+                    <div class="tab-pane fade show " id="feature-7-home" role="tabpanel" aria-labelledby="feature-7-tab">
+                        <span class="timestamp">2018-02-26 16:52:35.419</span> <span class="log-level">INFO:</span> getUser() called via url [http://localhost:8080/user/], called with arguments:
+                        <span class="highlight">user [Mock Object]</span>, username [alice]<br>
+                        <span class="timestamp">2018-02-26 16:52:35.624</span> <span class="log-level">INFO:</span> getUser() took [2 ms] to complete<br>
+                        <span class="timestamp">2018-02-26 16:52:35.624</span> <span class="log-level">INFO:</span> getUser()
+                        <span class="highlight">returned: [Mock Object]</span><br>
                     </div>
-                    <div class="tab-pane fade show " id="feature-5-home" role="tabpanel" 		aria-labelledby="feature-5-tab"><span class="timestamp">2018-03-02 11:21:33.171 </span> <span class="log-level">INFO:</span> generateSaleReport() called via url [http://localhost:8080/sales/report], username [alice]
-
-                        <span class="timestamp">2018-03-02 11:21:33.178 </span> <span class="log-level">INFO:</span> generateSaleReport() took [4 ms] to complete
-
-                        <span class="timestamp">2018-03-02 11:21:33.180 </span> <span class="log-level">INFO:</span> generateSaleReport() returned file of size:[12265 B]
-
-                    </div>
-                    <div class="tab-pane fade show " id="feature-6-home" role="tabpanel" 		aria-labelledby="feature-6-tab">No changes required in tests whatsoever to use this library.
-
-                    </div>
-                    <div class="tab-pane fade show " id="feature-7-home" role="tabpanel" 		aria-labelledby="feature-7-tab"><span class="timestamp">2018-02-26 16:52:35.419</span> <span class="log-level">INFO:</span> getUser() called via url [http://localhost:8080/user/], called with arguments: user [Mock Object], username [alice]
-
-                        <span class="timestamp">2018-02-26 16:52:35.624</span> <span class="log-level">INFO:</span> getUser() took [2 ms] to complete
-
-                        <span class="timestamp">2018-02-26 16:52:35.624</span> <span class="log-level">INFO:</span> getUser() returned: [Mock Object]
-
-                    </div>
-                    <div class="tab-pane fade show " id="feature-8-home" role="tabpanel" 		aria-labelledby="feature-8-tab">Easy customization
-
+                    <div class="tab-pane fade show " id="feature-8-home" role="tabpanel" aria-labelledby="feature-8-tab">
+                        Easy customization
                     </div>
                 </div>
 
@@ -230,7 +235,8 @@
         </div>
     <script>
         $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
+            $('.annotation.always-show[data-toggle="tooltip"]').tooltip({trigger: ''}).tooltip('show');
+            $('[data-toggle="tooltip"]').tooltip();
         })
     </script>
     </body>
