@@ -52,30 +52,32 @@
                         <a class="github-button" href="https://github.com/harshilsharma63/controller-logger/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork harshilsharma63/controller-logger on GitHub">Fork</a>
                     </div>
                 </div>
-                <div class="row row-source-code my-5 py-5">
+                <div class="row source-code-row my-5 py-5">
                     <div class="container">
-                        <p class="line">
-                            <span class="timestamp">2018-02-26 16:52:35.419</span> <span class="log-level">INFO:</span>
-                        <span data-toggle="tooltip" data-placement="top" title="Controller function name">getUser()</span>
-                        called via url
-                        <span data-toggle="tooltip" data-placement="top" title="URL through which API was called">[http://localhost:8080/get-random-user]</span>,
-                        <span data-toggle="tooltip" data-placement="top" title="Auth user who called the API">username [username]</span>
-                        </p>
-                        <p class="line">
-                            <span class="timestamp">2018-02-26 16:52:35.624</span> <span class="log-level">INFO:</span>
-                        <span data-toggle="tooltip" data-placement="top" title="Controller function name">getUser()</span>
-                        took
-                        <span data-toggle="tooltip" data-placement="top" title="Total execution time">[201 ms]</span>
-                        to complete
-                        </p>
-                        <p class="line">
-                            <span class="timestamp">2018-02-26 16:52:35.624</span> <span class="log-level">INFO:</span>
-                        <span data-toggle="tooltip" data-placement="top" title="Controller function name">getUser()</span>
-                        returned:
-                        <span data-toggle="tooltip" data-placement="bottom" title="Response returned by API">
-                            [User(id=SP-937-215, email=jeanlucpicard@example.com, password=tea_earl_grey_hot, userDetails=UserDetail(id=24, userId=SP-937-215, firstName=Jean-Luc lastName=Picard, gender=MALE), residentialDetail=ResidentialDetail(contact=subspace_12345), officialDetail=OfficialDetail(employeeId=SP-937-215, companyName=United Federation of Planets, companyContactEmail=jeanlucpicard@starfleet.com))]
-                        </span>
-                        </p>
+                        <code>
+                            <p class="line">
+                                <span class="timestamp">2018-02-26 16:52:35.419</span> <span class="log-level">INFO:</span>
+                            <span data-toggle="tooltip" data-placement="top" title="Controller function name">getUser()</span>
+                            called via url
+                            <span data-toggle="tooltip" data-placement="top" title="URL through which API was called">[http://localhost:8080/get-random-user]</span>,
+                            <span data-toggle="tooltip" data-placement="top" title="Auth user who called the API">username [username]</span>
+                            </p>
+                            <p class="line">
+                                <span class="timestamp">2018-02-26 16:52:35.624</span> <span class="log-level">INFO:</span>
+                            <span data-toggle="tooltip" data-placement="top" title="Controller function name">getUser()</span>
+                            took
+                            <span data-toggle="tooltip" data-placement="top" title="Total execution time">[201 ms]</span>
+                            to complete
+                            </p>
+                            <p class="line">
+                                <span class="timestamp">2018-02-26 16:52:35.624</span> <span class="log-level">INFO:</span>
+                            <span data-toggle="tooltip" data-placement="top" title="Controller function name">getUser()</span>
+                            returned:
+                            <span data-toggle="tooltip" data-placement="bottom" title="Response returned by API">
+                                [User(id=SP-937-215, email=jeanlucpicard@example.com, password=tea_earl_grey_hot, userDetails=UserDetail(id=24, userId=SP-937-215, firstName=Jean-Luc lastName=Picard, gender=MALE), residentialDetail=ResidentialDetail(contact=subspace_12345), officialDetail=OfficialDetail(employeeId=SP-937-215, companyName=United Federation of Planets, companyContactEmail=jeanlucpicard@starfleet.com))]
+                            </span>
+                            </p>
+                        </code>
                     </div>
                 </div>
 
@@ -89,7 +91,7 @@
             </div>
         </div>
         <div class="row mx-5 px-5">
-            <div class="container" id="build_tool_links">
+            <div class="container" id="build-tools-links">
                 <ul class="nav nav-tabs" id="buildTools" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="gradle-tab" data-toggle="tab" href="#gradle" role="tab" aria-controls="gradle" aria-selected="true">Gradle</a>

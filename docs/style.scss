@@ -1,0 +1,201 @@
+$text-color: rgba(255, 255, 255, 0.9);
+$primary-color: rgba(17, 20, 23, 1);
+$primary-font: 'Roboto Condensed', sans-serif;
+
+$title-font: 'Barlow Condensed', sans-serif;
+
+$jumbotron-min-height: 700px;
+$jumbotron-max-height: 800px;
+
+body {
+    background-color: $primary-color !important;
+    color: $text-color !important;
+    font-family: $primary-font !important;
+}
+
+.row-centered {
+    text-align:center;
+}
+
+.col-centered {
+    display:inline-block;
+    float:none;
+    margin-right:-4px;
+    text-align: center;
+}
+
+.title {
+    font-family: $title-font !important;
+    font-size: 4.5rem;
+    color: white;
+}
+
+.jumbotron {
+    background-color: transparent !important;
+    height: 100vh;
+    max-height: $jumbotron-max-height;
+    min-height: $jumbotron-min-height;
+}
+
+// for adjusting github buttons spacing
+.container > iframe {
+    margin: 0 1%;
+}
+
+.jumbotron > .container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.row-footer {
+    flex: 1;
+    align-items: flex-end;
+}
+
+#buildToolsContent pre {
+    color: whitesmoke;
+}
+
+.tab-content > .active {
+    border: 1px solid lighten($primary-color, 20%);
+    border-radius: 0 0 0.5rem 0.5rem;
+    border-top: transparent;
+}
+
+pre {
+    margin: 0;
+}
+
+#build-tools-links {
+    max-width: 800px;
+    min-height: 10rem;
+}
+
+.row-source-code {
+    padding: 8rem 0 8rem 2.5rem;
+    line-height: 1.6rem;
+    border: 1px solid #2c353f;
+    border-radius: 1rem;
+    background-color: #171a1e;
+}
+
+[data-toggle="tooltip"] {
+    border-bottom: 2px solid #2e3f5099;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+p {
+    margin-bottom: 0.6rem;
+}
+
+.timestamp {
+    color: #f53eec;
+}
+
+.log-level {
+    color: yellowgreen;
+}
+
+.line {
+    color: #5888cf;
+}
+
+#features-tab, #features-tabContent {
+    width: 49.7%;
+}
+
+#features-tab .nav-link, #features-tab .nav-link.active {
+    background: transparent;
+    border: none;
+    /*! margin-bottom: 3%; */
+    color: inherit;
+    text-align: right;
+    padding: 0 10px;
+}
+
+#features-tab .nav-link.active {
+    color: #007bff;
+    background-color: #0e1920;
+}
+
+#features-tab .nav-link {
+    outline: none;
+}
+
+#features-tab .nav-link {
+    border-radius: 0;
+}
+
+#features-tab {
+    border-bottom: none;
+    background-color: #056b9c33;
+}
+
+#features-tabContent.tab-content > .tab-pane {
+    border: none;
+}
+
+#features-tabContent {
+    font-family: 'Anonymous Pro', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6rem;
+    background-color: #0e1920;
+}
+
+#features-tabContent pre {
+    background: none;
+}
+
+#features-tab .nav-link:hover {
+    background-color: #0e1920;
+}
+
+#features-tab .nav-link {
+    padding-top: 0.4rem !important;
+    padding-bottom: 0.7rem !important;
+}
+
+#features-tab {
+    font-size: 0.8em;
+}
+
+#feature-1-home.active {
+    margin-top: 1rem;
+}
+
+#feature-2-home.active {
+    margin-top: 1.5rem;
+}
+
+#feature-3-home.active {
+    margin-top: 3rem;   
+}
+
+#feature-4-home.active {
+    margin-top: 9rem;
+}
+
+#feature-5-home.active {
+    margin-top: 12rem;
+}
+
+#feature-6-home.active {
+    margin-top: 17.8rem;
+}
+
+#feature-7-home.active {
+    margin-top: 18.5rem;
+}
+
+#feature-8-home.active {
+    margin-top: 24.6rem;
+}
+
+.highlight {
+    border: 1px solid #3d4956;
+    padding: 0.4em;
+    border-radius: 0.4em;
+    background-color: #112029;
+}
