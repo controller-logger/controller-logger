@@ -1,3 +1,12 @@
+.timestamp {
+  color: #f53eec; }
+
+.log-level {
+  color: yellowgreen; }
+
+.line {
+  color: #5888cf; }
+
 body {
   background-color: #111417 !important;
   color: rgba(255, 255, 255, 0.9) !important;
@@ -50,29 +59,17 @@ pre {
   max-width: 800px;
   min-height: 10rem; }
 
-.row-source-code {
+.source-code-row {
   padding: 8rem 0 8rem 2.5rem;
   line-height: 1.6rem;
-  border: 1px solid #2c353f;
+  border: 1px solid #3c4752;
   border-radius: 1rem;
-  background-color: #171a1e; }
+  background-color: #181c20; }
 
-[data-toggle="tooltip"] {
+.annotation[data-toggle="tooltip"] {
   border-bottom: 2px solid #2e3f5099;
   padding-bottom: 5px;
   cursor: pointer; }
-
-p {
-  margin-bottom: 0.6rem; }
-
-.timestamp {
-  color: #f53eec; }
-
-.log-level {
-  color: yellowgreen; }
-
-.line {
-  color: #5888cf; }
 
 #features-tab, #features-tabContent {
   width: 49.7%; }
@@ -80,7 +77,6 @@ p {
 #features-tab .nav-link, #features-tab .nav-link.active {
   background: transparent;
   border: none;
-  /*! margin-bottom: 3%; */
   color: inherit;
   text-align: right;
   padding: 0 10px; }
