@@ -1,5 +1,6 @@
 <html>
     <head>
+        <meta content='user-scalable=no, initial-scale=1, width=device-width' id='viewport' name='viewport'>
         <link 
             rel="stylesheet" 
             href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
@@ -30,7 +31,7 @@
     </head>
     <body class="pb-4">
         <div class="jumbotron header jumbotron-fluid pt-3">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row row-centered">
                     <div class="col-sm col-centered">
                         <h1 class="title">Controller Logger</h1>
@@ -52,7 +53,7 @@
                         <a class="github-button" href="https://github.com/harshilsharma63/controller-logger/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork harshilsharma63/controller-logger on GitHub">Fork</a>
                     </div>
                 </div>
-                <div class="row source-code-row my-5 py-5">
+                <div class="row source-code-row my-5 py-5 mx-auto">
                     <div class="container">
                         <code>
                             <p class="line">
@@ -253,6 +254,8 @@ public class UserController {
         $(function () {
             $('.annotation.always-show[data-toggle="tooltip"]').tooltip({trigger: ''}).tooltip('show');
             $('[data-toggle="tooltip"]').tooltip();
+            $('#viewport').attr('content', 'user-scalable=no, initial-scale='+ (1/window.devicePixelRatio) +', width=device-width');
+            $('body').css('font-size', parseInt($('body').css('font-size'))*window.devicePixelRatio);
         })
     </script>
     </body>
