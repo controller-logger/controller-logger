@@ -23,7 +23,7 @@ body {
 
 .title {
   font-family: "Barlow Condensed", sans-serif !important;
-  font-size: 4.5rem;
+  font-size: 4.5em;
   color: white; }
 
 .jumbotron {
@@ -49,7 +49,7 @@ body {
 
 .tab-content > .active {
   border: 1px solid #3c4752;
-  border-radius: 0 0 0.5rem 0.5rem;
+  border-radius: 0 0 0.5em 0.5em;
   border-top: transparent; }
 
 pre {
@@ -57,13 +57,13 @@ pre {
 
 #build-tools-links {
   max-width: 800px;
-  min-height: 10rem; }
+  min-height: 10em; }
 
 .source-code-row {
-  padding: 8rem 0 8rem 2.5rem;
-  line-height: 1.6rem;
+  padding: 8em 0 8em 2.5em;
+  line-height: 1.7em;
   border: 1px solid #3c4752;
-  border-radius: 1rem;
+  border-radius: 1em;
   background-color: #181c20; }
 
 .annotation[data-toggle="tooltip"] {
@@ -95,8 +95,8 @@ pre {
 
 #features-tabContent {
   font-family: 'Anonymous Pro', monospace;
-  font-size: 0.9rem;
-  line-height: 1.6rem;
+  font-size: 0.9em;
+  line-height: 1.6em;
   background-color: #0e1920; }
   #features-tabContent .tab-pane {
     border: none; }
@@ -104,44 +104,40 @@ pre {
 #features-tabContent pre {
   background: none; }
 
+#features-tab .nav-link {
+  padding-top: 0.4em !important;
+  padding-bottom: 0.7em !important; }
 #features-tab .nav-link:hover {
   background-color: #0e1920; }
 
-#features-tab .nav-link {
-  padding-top: 0.4rem !important;
-  padding-bottom: 0.7rem !important; }
-
-#features-tab {
-  font-size: 0.8em; }
-
 #feature-1-home.active {
-  margin-top: 1rem; }
+  margin-top: 1em; }
 
 #feature-2-home.active {
-  margin-top: 0rem; }
+  margin-top: 0; }
 
 #feature-3-home.active {
-  margin-top: 0rem; }
+  margin-top: 2em; }
 
 #feature-4-home.active {
-  margin-top: 7.5rem; }
+  margin-top: 10em; }
 
 #feature-5-home.active {
-  margin-top: 10rem; }
+  margin-top: 14em; }
 
 #feature-6-home.active {
-  margin-top: 15.4rem; }
+  margin-top: 19.4em; }
 
 #feature-7-home.active {
-  margin-top: 15rem; }
+  margin-top: 20em; }
 
 #feature-8-home.active {
-  margin-top: 19.9rem; }
+  margin-top: 26.8em; }
 
 .highlight {
-  border: 1px solid #3d4956;
-  padding: 0.4em;
+  border: 1px solid #337da6;
+  padding: 0.2em;
   border-radius: 0.4em;
-  background-color: #112029; }
+  background-color: #0f2531; }
 
 /*# sourceMappingURL=style.css.map */

@@ -11,86 +11,86 @@ $jumbotron-min-height: 700px;
 $jumbotron-max-height: 800px;
 
 body {
-    background-color: $primary-color !important;
-    color: $text-color !important;
-    font-family: $primary-font !important;
+  background-color: $primary-color !important;
+  color: $text-color !important;
+  font-family: $primary-font !important;
 }
 
 .row-centered {
-    text-align:center;
+  text-align: center;
 }
 
 .col-centered {
-    display:inline-block;
-    float:none;
-    margin-right:-4px;
-    text-align: center;
+  display: inline-block;
+  float: none;
+  margin-right: -4px;
+  text-align: center;
 }
 
 .title {
-    font-family: $title-font !important;
-    font-size: 4.5rem;
-    color: white;
+  font-family: $title-font !important;
+  font-size: 4.5em;
+  color: white;
 }
 
 .jumbotron {
-    background-color: transparent !important;
-    height: 100vh;
-    max-height: $jumbotron-max-height;
-    min-height: $jumbotron-min-height;
+  background-color: transparent !important;
+  height: 100vh;
+  max-height: $jumbotron-max-height;
+  min-height: $jumbotron-min-height;
 }
 
 // for adjusting github buttons spacing
 .container > iframe {
-    margin: 0 1%;
+  margin: 0 1%;
 }
 
 .jumbotron > .container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .row-footer {
-    flex: 1;
-    align-items: flex-end;
+  flex: 1;
+  align-items: flex-end;
 }
 
 #buildToolsContent pre {
-    color: whitesmoke;
+  color: whitesmoke;
 }
 
 .tab-content > .active {
-    border: 1px solid lighten($primary-color, 20%);
-    border-radius: 0 0 0.5rem 0.5rem;
-    border-top: transparent;
+  border: 1px solid lighten($primary-color, 20%);
+  border-radius: 0 0 0.5em 0.5em;
+  border-top: transparent;
 }
 
 pre {
-    margin: 0;
+  margin: 0;
 }
 
 #build-tools-links {
-    max-width: 800px;
-    min-height: 10rem;
+  max-width: 800px;
+  min-height: 10em;
 }
 
 .source-code-row {
-    padding: 8rem 0 8rem 2.5rem;
-    line-height: 1.6rem;
-    border: 1px solid lighten($primary-color, 20%);
-    border-radius: 1rem;
-    background-color: lighten($primary-color, 3%);
+  padding: 8em 0 8em 2.5em;
+  line-height: 1.7em;
+  border: 1px solid lighten($primary-color, 20%);
+  border-radius: 1em;
+  background-color: lighten($primary-color, 3%);
 }
 
 .annotation[data-toggle="tooltip"] {
-    border-bottom: 2px solid #2e3f5099;
-    padding-bottom: 5px;
-    cursor: pointer;
+  border-bottom: 2px solid #2e3f5099;
+  padding-bottom: 5px;
+  cursor: pointer;
 }
 
 #features-tab, #features-tabContent {
-    width: 49.7%;
+  width: 49.7%;
 }
 
 .nav-link {
@@ -102,12 +102,12 @@ pre {
   background-color: $secondary-color;
 
   .nav-link {
-      background: transparent;
-      border: none;
-      color: inherit;
-      text-align: right;
-      padding-right: 10px;
-      padding-left: 10px;
+    background: transparent;
+    border: none;
+    color: inherit;
+    text-align: right;
+    padding-right: 10px;
+    padding-left: 10px;
   }
 
   .nav-link.active {
@@ -122,8 +122,8 @@ pre {
 
 #features-tabContent {
   font-family: 'Anonymous Pro', monospace;
-  font-size: 0.9rem;
-  line-height: 1.6rem;
+  font-size: 0.9em;
+  line-height: 1.6em;
   background-color: #0e1920;
 
   .tab-pane {
@@ -132,57 +132,55 @@ pre {
 }
 
 #features-tabContent pre {
-    background: none;
-}
-
-#features-tab .nav-link:hover {
-    background-color: #0e1920;
-}
-
-#features-tab .nav-link {
-    padding-top: 0.4rem !important;
-    padding-bottom: 0.7rem !important;
+  background: none;
 }
 
 #features-tab {
-    font-size: 0.8em;
+  .nav-link {
+    padding-top: 0.4em !important;
+    padding-bottom: 0.7em !important;
+  }
+
+  .nav-link:hover {
+    background-color: #0e1920;
+  }
 }
 
 #feature-1-home.active {
-    margin-top: 1rem;
+  margin-top: 1em;
 }
 
 #feature-2-home.active {
-    margin-top: 0rem;
+  margin-top: 0;
 }
 
 #feature-3-home.active {
-    margin-top: 0rem;
+  margin-top: 2em;
 }
 
 #feature-4-home.active {
-    margin-top: 7.5rem;
+  margin-top: 10em;
 }
 
 #feature-5-home.active {
-    margin-top: 10rem;
+  margin-top: 14em;
 }
 
 #feature-6-home.active {
-    margin-top: 15.4rem;
+  margin-top: 19.4em;
 }
 
 #feature-7-home.active {
-    margin-top: 15rem;
+  margin-top: 20em;
 }
 
 #feature-8-home.active {
-    margin-top: 19.9rem;
+  margin-top: 26.8em;
 }
 
 .highlight {
-    border: 1px solid #3d4956;
-    padding: 0.4em;
-    border-radius: 0.4em;
-    background-color: #112029;
+  border: 1px solid lighten($secondary-color, 30%);
+  padding: 0.2em;
+  border-radius: 0.4em;
+  background-color: $secondary-color;
 }
