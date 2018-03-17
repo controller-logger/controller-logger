@@ -36,8 +36,6 @@ body {
 
 .jumbotron {
   background-color: transparent !important;
-  height: 100vh;
-  max-height: $jumbotron-max-height;
   min-height: $jumbotron-min-height;
 }
 
@@ -77,7 +75,6 @@ pre {
 }
 
 .source-code-row {
-  padding-left: 2.5em;
   line-height: 1.7em;
   border: 1px solid lighten($primary-color, 20%);
   border-radius: 1em;
@@ -186,8 +183,41 @@ pre {
   background-color: $secondary-color;
 }
 
-@include media-breakpoint-down(md) {
+.nav-cursor {
+  display: none;
+}
+
+.nav-cursor {
+  cursor: pointer;
+}
+
+@include media-breakpoint-up(md) {
   .source-code-row {
     max-width: 80%;
+    padding-left: 2.5em;
+  }
+
+  .jumbotron {
+    max-height: $jumbotron-max-height;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  h5 {
+    font-size: 1.8rem;
+  }
+
+  .nav-cursor {
+    display: block;
+  }
+
+  #buildTools {
+    .nav-link:not(.active) {
+      display: none;
+    }
+  }
+
+  #buildTools .nav-item:not(.active) {
+    display: none;
   }
 }

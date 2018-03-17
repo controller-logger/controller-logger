@@ -1,69 +1,166 @@
-/*
-Error: Undefined variable: "$grid-breakpoints".
-        on line 71 of styles/style.scss, in `media-breakpoint-down'
-        from line 189 of styles/style.scss
+.timestamp {
+  color: #f53eec; }
 
-66:   border-radius: 0 0 0.5em 0.5em;
-67:   border-top: transparent;
-68: }
-69: 
-70: pre {
-71:   margin: 0;
-72: }
-73: 
-74: #build-tools-links {
-75:   max-width: 800px;
-76:   min-height: 10em;
+.log-level {
+  color: yellowgreen; }
 
-Backtrace:
-styles/style.scss:71:in `media-breakpoint-down'
-styles/style.scss:189
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/script/tree/variable.rb:49:in `_perform'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/script/tree/node.rb:50:in `perform'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:74:in `block in perform_arguments'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:67:in `zip'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:67:in `perform_arguments'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:362:in `block in visit_mixin'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/stack.rb:98:in `block in with_mixin'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/stack.rb:135:in `with_frame'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/stack.rb:98:in `with_mixin'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:350:in `visit_mixin'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/base.rb:36:in `visit'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/stack.rb:79:in `block in with_base'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/stack.rb:135:in `with_frame'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/stack.rb:79:in `with_base'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:162:in `visit'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/base.rb:52:in `map'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:171:in `block in visit_children'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:170:in `visit_children'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:190:in `visit_root'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/base.rb:36:in `visit'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:161:in `visit'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:10:in `visit'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/root_node.rb:36:in `css_tree'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/engine.rb:389:in `_render_with_sourcemap'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/engine.rb:307:in `render_with_sourcemap'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/plugin/compiler.rb:209:in `each'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/plugin/compiler.rb:294:in `watch'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/plugin.rb:109:in `method_missing'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/exec/sass_scss.rb:360:in `watch_or_update'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/exec/sass_scss.rb:51:in `process_result'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/exec/base.rb:52:in `parse'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/lib/sass/exec/base.rb:19:in `parse!'
-/var/lib/gems/2.3.0/gems/sass-3.5.5/bin/sass:13:in `<top (required)>'
-/usr/local/bin/sass:23:in `load'
-/usr/local/bin/sass:23:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Undefined variable: \"$grid-breakpoints\".\A         on line 71 of styles/style.scss, in `media-breakpoint-down'\A         from line 189 of styles/style.scss\A \A 66:   border-radius: 0 0 0.5em 0.5em;\A 67:   border-top: transparent;\A 68: }\A 69: \A 70: pre {\A 71:   margin: 0;\A 72: }\A 73: \A 74: #build-tools-links {\A 75:   max-width: 800px;\A 76:   min-height: 10em;"; }
+code {
+  color: #5888cf; }
+
+body {
+  background-color: #111417 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-family: "Roboto Condensed", sans-serif !important; }
+
+.row-centered {
+  text-align: center; }
+
+.col-centered {
+  display: inline-block;
+  float: none;
+  margin-right: -4px;
+  text-align: center; }
+
+.title {
+  font-family: "Barlow Condensed", sans-serif !important;
+  font-size: 4.5em;
+  color: white; }
+
+.jumbotron {
+  background-color: transparent !important;
+  min-height: 700px; }
+
+.container > iframe {
+  margin: 0 1%; }
+
+.jumbotron > .container {
+  display: flex;
+  flex-direction: column;
+  height: 100%; }
+
+.row-footer {
+  flex: 1;
+  align-items: flex-end; }
+
+#buildToolsContent pre {
+  color: whitesmoke; }
+
+.tab-content > .active {
+  border: 1px solid #3c4752;
+  border-radius: 0 0 0.5em 0.5em;
+  border-top: transparent; }
+
+pre {
+  margin: 0; }
+
+#build-tools-links {
+  max-width: 800px;
+  min-height: 10em; }
+
+.source-code-row {
+  line-height: 1.7em;
+  border: 1px solid #3c4752;
+  border-radius: 1em;
+  background-color: #181c20; }
+
+.annotation[data-toggle="tooltip"] {
+  border-bottom: 2px solid #2e3f5099;
+  padding-bottom: 5px;
+  cursor: pointer; }
+
+#features-tab, #features-tabContent {
+  width: 49.7%; }
+
+.nav-link {
+  outline: none; }
+
+#features-tab {
+  border-bottom: none;
+  background-color: #0f2531; }
+  #features-tab .nav-link {
+    background: transparent;
+    border: none;
+    color: inherit;
+    text-align: right;
+    padding-right: 10px;
+    padding-left: 10px; }
+  #features-tab .nav-link.active {
+    color: #007bff;
+    background-color: #0a1921; }
+  #features-tab .nav-link {
+    border-radius: 0; }
+
+#features-tabContent {
+  font-family: 'Anonymous Pro', monospace;
+  font-size: 0.9em;
+  line-height: 1.6em;
+  background-color: #0e1920; }
+  #features-tabContent .tab-pane {
+    border: none; }
+
+#features-tabContent pre {
+  background: none; }
+
+#features-tab .nav-link {
+  padding-top: 0.4em !important;
+  padding-bottom: 0.7em !important; }
+#features-tab .nav-link:hover {
+  background-color: #0e1920; }
+
+#feature-1-home.active {
+  margin-top: 1em; }
+
+#feature-2-home.active {
+  margin-top: 0; }
+
+#feature-3-home.active {
+  margin-top: 2em; }
+
+#feature-4-home.active {
+  margin-top: 10em; }
+
+#feature-5-home.active {
+  margin-top: 14em; }
+
+#feature-6-home.active {
+  margin-top: 19.4em; }
+
+#feature-7-home.active {
+  margin-top: 20em; }
+
+#feature-8-home.active {
+  margin-top: 26.8em; }
+
+.highlight {
+  border: 1px solid #337da6;
+  padding: 0.2em;
+  border-radius: 0.4em;
+  background-color: #0f2531; }
+
+.nav-cursor {
+  display: none; }
+
+.nav-cursor {
+  cursor: pointer; }
+
+@media (min-width: 768px) {
+  .source-code-row {
+    max-width: 80%;
+    padding-left: 2.5em; }
+
+  .jumbotron {
+    max-height: 800px; } }
+@media (max-width: 767.98px) {
+  h5 {
+    font-size: 1.8rem; }
+
+  .nav-cursor {
+    display: block; }
+
+  #buildTools .nav-link:not(.active) {
+    display: none; }
+
+  #buildTools .nav-item:not(.active) {
+    display: none; } }
+
+/*# sourceMappingURL=style.css.map */
