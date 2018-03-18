@@ -41,7 +41,7 @@ jobs:
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
       # run tests!
-      - run: ./gradlew test
+      - run: ./gradlew -PossrhUsername=im_not_revealing_my_cred -PossrhPassword=im_not_revealing_my_cred test
 
 
 
