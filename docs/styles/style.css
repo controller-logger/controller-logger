@@ -75,8 +75,7 @@ pre {
   outline: none; }
 
 #features-tab {
-  border-bottom: none;
-  background-color: #0f2531; }
+  border-bottom: none; }
   #features-tab .nav-link {
     background: transparent;
     border: none;
@@ -93,8 +92,7 @@ pre {
 #features-tabContent {
   font-family: 'Anonymous Pro', monospace;
   font-size: 0.9em;
-  line-height: 1.6em;
-  background-color: #0e1920; }
+  line-height: 1.6em; }
   #features-tabContent .tab-pane {
     border: none; }
 
