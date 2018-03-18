@@ -2,6 +2,8 @@
 
         createUser() called with arguments: id: [4], name: [Foo] called via url [http://localhost:8080/createUser], username [admin]
 
+[![CircleCI](https://circleci.com/gh/harshilsharma63/controller-logger.svg?style=svg)](https://circleci.com/gh/harshilsharma63/controller-logger)
+
 ### Upcoming release features
 1. Test coverage
 1. Performance improvements
