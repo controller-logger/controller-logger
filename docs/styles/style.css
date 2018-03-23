@@ -54,8 +54,7 @@ pre {
   margin: 0; }
 
 #build-tools-links {
-  max-width: 800px;
-  min-height: 10em; }
+  max-width: 800px; }
 
 .source-code-row {
   line-height: 1.7em;
@@ -68,66 +67,8 @@ pre {
   padding-bottom: 5px;
   cursor: pointer; }
 
-#features-tab, #features-tabContent {
-  width: 49.7%; }
-
 .nav-link {
   outline: none; }
-
-#features-tab {
-  border-bottom: none; }
-  #features-tab .nav-link {
-    background: transparent;
-    border: none;
-    color: inherit;
-    text-align: right;
-    padding-right: 10px;
-    padding-left: 10px; }
-  #features-tab .nav-link.active {
-    color: #007bff;
-    background-color: #0a1921; }
-  #features-tab .nav-link {
-    border-radius: 0; }
-
-#features-tabContent {
-  font-family: 'Anonymous Pro', monospace;
-  font-size: 0.9em;
-  line-height: 1.6em; }
-  #features-tabContent .tab-pane {
-    border: none; }
-
-#features-tabContent pre {
-  background: none; }
-
-#features-tab .nav-link {
-  padding-top: 0.4em !important;
-  padding-bottom: 0.7em !important; }
-#features-tab .nav-link:hover {
-  background-color: #0e1920; }
-
-#feature-1-home.active {
-  margin-top: 1em; }
-
-#feature-2-home.active {
-  margin-top: 0; }
-
-#feature-3-home.active {
-  margin-top: 2em; }
-
-#feature-4-home.active {
-  margin-top: 10em; }
-
-#feature-5-home.active {
-  margin-top: 14em; }
-
-#feature-6-home.active {
-  margin-top: 19.4em; }
-
-#feature-7-home.active {
-  margin-top: 20em; }
-
-#feature-8-home.active {
-  margin-top: 26.8em; }
 
 .highlight {
   border: 1px solid #337da6;
@@ -140,6 +81,9 @@ pre {
 
 .nav-cursor {
   cursor: pointer; }
+
+#featuresCarousal code {
+  line-height: 30px; }
 
 @media (min-width: 768px) {
   .source-code-row {
@@ -159,6 +103,30 @@ pre {
     display: none; }
 
   #buildTools .nav-item:not(.active) {
-    display: none; } }
+    display: none; }
+
+  #featuresCarousal code {
+    line-height: 50px; } }
+#featuresCarousal, #featuresCarousal .carousel-inner, #featuresCarousal .carousel-item {
+  min-height: 22em;
+  max-height: 22em; }
+
+.carousal-content {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 75%;
+  text-align: center; }
+
+#featuresCarousal pre code {
+  line-height: unset; }
+
+pre.prettyprint {
+  background-color: unset;
+  text-align: initial;
+  display: inline-block; }
 
 /*# sourceMappingURL=style.css.map */
