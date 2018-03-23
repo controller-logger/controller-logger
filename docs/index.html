@@ -152,7 +152,7 @@
         </div>
     </div>
 </div>
-<div class="container-fluid features my-3 mt-4 pt-4">
+<div class="container-fluid features my-3 my-4 py-4">
     <div id="featuresCarousal" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#featuresCarousal" data-slide-to="0" class="active"></li>
@@ -305,6 +305,54 @@ public class UserController {
         </a>
     </div>
 </div>
+<div class="container-fluid example px-5 py-5">
+    <div class="row mx-5">
+        <div class="col">
+            <pre class="prettyprint lang-java" data-toggle="tooltip" data-placement="top" title="Original controller">
+                <code>
+@RestController
+public class UserController {
+
+    @GetMapping("/get-random-user")
+    @ResponseBody
+    public User getUser() {
+        return random(User.class);
+    }
+}
+                </code>
+            </pre>
+        </div>
+        <div class="col">
+            <pre class="prettyprint lang-java" data-toggle="tooltip" data-placement="top" title="Controller logger bean definition">
+                <code>
+@Configuration
+public class BeanConfig {
+    @Bean
+    public GenericControllerAspect genericControllerAspect() {
+        return new GenericControllerAspect();
+    }
+}
+                </code>
+            </pre>
+        </div>
+        <div class="col">
+            <pre class="prettyprint lang-java"  data-toggle="tooltip" data-placement="top" title="Controller with logging enabled">
+                <code>
+@RestController
+@Logging
+public class UserController {
+
+    @GetMapping("/get-random-user")
+    @ResponseBody
+    public User getUser() {
+        return random(User.class);
+    }
+}
+                </code>
+            </pre>
+        </div>
+    </div>
+</div>
 <script>
     $(function () {
         $('.annotation.always-show[data-toggle="tooltip"]').tooltip({trigger: ''}).tooltip('show');
@@ -312,7 +360,7 @@ public class UserController {
         $('#viewport').attr('content', 'user-scalable=no, initial-scale=' + (1 / window.devicePixelRatio) + ', width=device-width');
         $('body').css('font-size', parseInt($('body').css('font-size')) * window.devicePixelRatio);
         $('.carousel').carousel({interval: false});
-
+        $(".example pre").tooltip("show");
     })
 </script>
 </body>
