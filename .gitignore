@@ -39,3 +39,5 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 docs/.sass-cache
+
+docs/node_modules
