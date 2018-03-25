@@ -56,6 +56,10 @@ body {
   align-items: flex-end;
 }
 
+pre {
+  margin: 0;
+}
+
 #buildToolsContent pre {
   color: whitesmoke;
 }
@@ -64,10 +68,6 @@ body {
   border: 1px solid lighten($primary-color, 20%);
   border-radius: 0 0 0.5em 0.5em;
   border-top: transparent;
-}
-
-pre {
-  margin: 0;
 }
 
 #build-tools-links {
@@ -99,11 +99,8 @@ pre {
 }
 
 .nav-cursor {
-  display: none;
-}
-
-.nav-cursor {
   cursor: pointer;
+  display: none;
 }
 
 #featuresCarousal code {

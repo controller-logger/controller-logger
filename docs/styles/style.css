@@ -21,11 +21,11 @@ code {
   40%, 80% {
     transform: rotate(10deg); } }
 @media (max-width: 500px) {
-  .github-corner:hover .octo-arm {
-    animation: none; }
-
   .github-corner .octo-arm {
-    animation: octocat-wave 560ms ease-in-out; } }
+    animation: octocat-wave 560ms ease-in-out; }
+
+  .github-corner:hover .octo-arm {
+    animation: none; } }
 body {
   background-color: #111417 !important;
   color: rgba(255, 255, 255, 0.9) !important;
@@ -61,6 +61,9 @@ body {
   flex: 1;
   align-items: flex-end; }
 
+pre {
+  margin: 0; }
+
 #buildToolsContent pre {
   color: whitesmoke; }
 
@@ -68,9 +71,6 @@ body {
   border: 1px solid #3c4752;
   border-radius: 0 0 0.5em 0.5em;
   border-top: transparent; }
-
-pre {
-  margin: 0; }
 
 #build-tools-links {
   max-width: 800px; }
@@ -96,10 +96,8 @@ pre {
   background-color: #0f2531; }
 
 .nav-cursor {
+  cursor: pointer;
   display: none; }
-
-.nav-cursor {
-  cursor: pointer; }
 
 #featuresCarousal code {
   line-height: 30px; }
