@@ -1,5 +1,6 @@
 @import "logs-syntax-highlight";
 @import "breakpoints";
+@import "github-corner";
 
 $text-color: rgba(255, 255, 255, 0.9);
 $primary-color: rgba(17, 20, 23, 1);
@@ -86,92 +87,9 @@ pre {
   cursor: pointer;
 }
 
-//#features-tab, #features-tabContent {
-//  width: 49.7%;
-//}
-
 .nav-link {
   outline: none;
 }
-
-//#features-tab {
-//  border-bottom: none;
-//
-//  .nav-link {
-//    background: transparent;
-//    border: none;
-//    color: inherit;
-//    text-align: right;
-//    padding-right: 10px;
-//    padding-left: 10px;
-//  }
-//
-//  .nav-link.active {
-//    color: #007bff;
-//    background-color: darken($secondary-color, 4%);
-//  }
-//
-//  .nav-link {
-//    border-radius: 0;
-//  }
-//}
-
-//#features-tabContent {
-//  font-family: 'Anonymous Pro', monospace;
-//  font-size: 0.9em;
-//  line-height: 1.6em;
-//
-//  .tab-pane {
-//    border: none;
-//  }
-//}
-//
-//#features-tabContent pre {
-//  background: none;
-//}
-//
-//#features-tab {
-//  .nav-link {
-//    padding-top: 0.4em !important;
-//    padding-bottom: 0.7em !important;
-//  }
-//
-//  .nav-link:hover {
-//    background-color: #0e1920;
-//  }
-//}
-//
-//#feature-1-home.active {
-//  margin-top: 1em;
-//}
-//
-//#feature-2-home.active {
-//  margin-top: 0;
-//}
-//
-//#feature-3-home.active {
-//  margin-top: 2em;
-//}
-//
-//#feature-4-home.active {
-//  margin-top: 10em;
-//}
-//
-//#feature-5-home.active {
-//  margin-top: 14em;
-//}
-//
-//#feature-6-home.active {
-//  margin-top: 19.4em;
-//}
-//
-//#feature-7-home.active {
-//  margin-top: 20em;
-//}
-//
-//#feature-8-home.active {
-//  margin-top: 26.8em;
-//}
 
 .highlight {
   border: 1px solid lighten($secondary-color, 30%);
