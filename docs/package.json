@@ -1,0 +1,27 @@
+{
+  "name": "controller_logger_site",
+  "version": "1.0.0",
+  "description": "Website for the awesome Controller Logger plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --ext .html,.js; stylelint styles/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harshilsharma63/controller-logger.git"
+  },
+  "author": "Harshil Sharma",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/harshilsharma63/controller-logger/issues"
+  },
+  "homepage": "https://github.com/harshilsharma63/controller-logger#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-html": "^4.0.2",
+    "stylelint": "^9.1.3",
+    "stylelint-config-recommended-scss": "^3.1.0",
+    "stylelint-scss": "^2.5.0"
+  }
+}
