@@ -1,10 +1,14 @@
 @import "logs-syntax-highlight";
 @import "breakpoints";
 @import "github-corner";
+@import "font-awesome/fontawesome";
+@import "font-awesome/fa-solid";
+@import "font-awesome/fa-brands";
 
 $text-color: rgba(255, 255, 255, 0.9);
 $primary-color: rgba(17, 20, 23, 1);
 $secondary-color: rgba(15, 37, 49, 1);
+$accent-color: rgba(0, 234, 161, 0.1);
 $primary-font: 'Roboto Condensed', sans-serif;
 
 $title-font: 'Barlow Condensed', sans-serif;
@@ -166,4 +170,50 @@ pre.prettyprint {
   background-color: unset;
   text-align: initial;
   display: inline-block;
+}
+
+footer {
+  border-top: 1px solid $accent-color;
+
+  .fa-github {
+    font-size: 2em;
+  }
+
+  a {
+    color: white;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .fa-github:hover {
+    animation: animateColors 1s linear infinite;
+  }
+}
+
+@keyframes animateColors {
+  0% {
+    color: hsl(0, 100%, 63%);  }
+  25% {
+    color: hsl(90, 100%, 63%);  }
+  50% {
+    color: hsl(180, 100%, 63%);  }
+  75% {
+    color: hsl(270, 100%, 63%);  }
+  100% {
+    color: hsl(360, 100%, 63%);  }
+}
+
+@-webkit-keyframes animateColors {
+  0% {
+    color: hsl(0, 100%, 63%);  }
+  25% {
+    color: hsl(90, 100%, 63%);  }
+  50% {
+    color: hsl(180, 100%, 63%);  }
+  75% {
+    color: hsl(270, 100%, 63%);  }
+  100% {
+    color: hsl(360, 100%, 63%);  }
 }
