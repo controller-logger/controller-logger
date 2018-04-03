@@ -1,10 +1,13 @@
 # Controller Logger
 
         createUser() called with arguments: id: [4], name: [Foo] called via url [http://localhost:8080/createUser], username [admin]
+[![CircleCI](https://circleci.com/gh/harshilsharma63/controller-logger.svg?style=svg)](https://circleci.com/gh/harshilsharma63/controller-logger)
+![](https://sonarcloud.io/api/project_badges/measure?project=io.github.harshilsharma63%3Acontroller-logger&metric=alert_status)
 
 ### Upcoming release features
-1. Using Authentication.getName() as a more generic way of extracting username.
-1. Hidden sensitive information such as passwords from being logged.
+1. Test coverage
+1. Performance improvements
+1. Dependency updates
 
 ### What is it?
 
@@ -18,6 +21,7 @@ and some context data such as web request URL and user's username.
 1. Automatically logs errors occurring in API.
 1. No side-effect in actual API implementation due to AOP logic.
 1. Automatically binds to new APIs thanks to AOP weaving.
+1. Scrubs sensitive information in logs to maintain security and privacy.
 1. Displays file size if one of the API input or output is any file object.
 1. Works with integration testing.
 1. Detects mocked objects in input and output and displays them accordingly, as can happen during integration testing.
@@ -153,7 +157,7 @@ Further customizations can be done by extending `GenericControllerAspect` class,
 
 ### Future Scope
 
-- [ ] Avoid logging sensitive information such as passwords, cookie data, session information.
+- [x] Avoid logging sensitive information such as passwords, cookie data, session information.
 - [ ] Test with Spring 5
 - [ ] Test with Java 9
 - [ ] Add unit tests
