@@ -1,0 +1,444 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content='user-scalable=no, initial-scale=1, width=device-width' id='viewport'
+          name='viewport'>
+    <title>AOP based API logging for Spring Boot</title>
+    <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+    >
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous">
+    </script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous">
+    </script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous">
+    </script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"
+            integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
+            crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"
+            integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
+            crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:200" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro" rel="stylesheet">
+    <script src="https://buttons.github.io/buttons.js"></script>
+    <script src="js/tabs.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="js/index.js"></script>
+</head>
+<body>
+<a href="https://github.com/harshilsharma63/controller-logger" class="github-corner"
+   aria-label="View source on Github">
+    <svg width="80" height="80" viewBox="0 0 250 250"
+         style="fill:#FD6C6C; color:#fff; position: fixed; top: 0; border: 0; right: 0;"
+         aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+<div class="jumbotron jumbotron-fluid header pt-3">
+    <div class="container-fluid">
+        <div class="row row-centered">
+            <div class="col-sm col-centered">
+                <h1 class="title">Controller Logger</h1>
+            </div>
+        </div>
+        <div class="row row-centered">
+            <div class="container">
+                <a
+                        class="github-button ml-5"
+                        href="https://github.com/harshilsharma63/controller-logger/subscription"
+                        data-icon="octicon-eye"
+                        data-show-count="true"
+                        aria-label="Watch harshilsharma63/controller-logger on GitHub">
+                    Watch
+                </a>
+                <!-- Place this tag where you want the button to render. -->
+                <a class="github-button" href="https://github.com/harshilsharma63/controller-logger"
+                   data-icon="octicon-star" data-show-count="true"
+                   aria-label="Star harshilsharma63/controller-logger on GitHub">Star</a>
+                <!-- Place this tag where you want the button to render. -->
+                <a class="github-button"
+                   href="https://github.com/harshilsharma63/controller-logger/fork"
+                   data-icon="octicon-repo-forked" data-show-count="true"
+                   aria-label="Fork harshilsharma63/controller-logger on GitHub">Fork</a>
+            </div>
+        </div>
+        <div class="row source-code-row my-md-5 py-md-5 my-4 py-3 mx-auto">
+            <div class="container-fluid">
+                <code>
+                    <p class="line">
+                        <span class="timestamp">2018-02-26 16:52:35.419</span> <span
+                            class="log-level">INFO:</span>
+                        <span data-toggle="tooltip" class="annotation" data-placement="top"
+                              title="Controller function name">getUser()</span>
+                        called via url
+                        <span data-toggle="tooltip" class="annotation" data-placement="top"
+                              title="URL through which API was called">[http://localhost:8080/get-random-user]</span>,
+                        <span data-toggle="tooltip" class="annotation" data-placement="top"
+                              title="Auth user who called the API">username [username]</span>
+                    </p>
+                    <p class="line">
+                        <span class="timestamp">2018-02-26 16:52:35.624</span> <span
+                            class="log-level">INFO:</span>
+                        <span data-toggle="tooltip" class="annotation" data-placement="top"
+                              title="Controller function name">getUser()</span>
+                        took
+                        <span data-toggle="tooltip" class="annotation" data-placement="top"
+                              title="Total execution time">[201 ms]</span>
+                        to complete
+                    </p>
+                    <p class="line">
+                        <span class="timestamp">2018-02-26 16:52:35.624</span> <span
+                            class="log-level">INFO:</span>
+                        <span data-toggle="tooltip" class="annotation" data-placement="top"
+                              title="Controller function name">getUser()</span>
+                        returned:
+                        <span data-toggle="tooltip" class="annotation" data-placement="bottom"
+                              title="Response returned by API">
+                                 [User(id=SP-937-215,
+                                 email=jeanlucpicard@example.com,
+                                 password=xxxxx,
+                                 userDetails=UserDetail(id=24,
+                                 userId=SP-937-215,
+                                 firstName=Jean-Luc lastName=Picard,
+                                 gender=MALE),
+                                 residentialDetail=ResidentialDetail(contact=subspace_12345),
+                                 officialDetail=OfficialDetail(employeeId=SP-937-215,
+                                 companyName=United Federation of Planets,
+                                 companyContactEmail=jeanlucpicard@starfleet.com))]
+                        </span>
+                    </p>
+                </code>
+            </div>
+        </div>
+
+        <div class="row row-centered row-footer">
+            <div class="col-sm col-centered mt-5">
+                <h5>
+                    A Java library to ease the life of web developers by providing automatic logging
+                    of input-output for controllers.<br>
+                    Logged items include all parameters, returned value and
+                    some context data such as web request URL and user's username.
+                </h5>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mx-md-5 px-md-5 mx-sm-3 mt-5">
+    <div class="container" id="build-tools-links">
+        <ul class="nav nav-tabs nav-fill responsive-tabs" id="buildTools" role="tablist">
+            <li class="nav-cursor nav-prev py-2 px-5">
+                <span class="carousel-control-prev-icon"></span>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link active" id="gradle-tab" data-toggle="tab" href="#gradle"
+                   role="tab" aria-controls="gradle" aria-selected="true">
+                    Gradle
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="maven-tab" data-toggle="tab" href="#maven" role="tab"
+                   aria-controls="maven"
+                   aria-selected="false">Maven</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="others-tab" data-toggle="tab" href="#others" role="tab"
+                   aria-controls="others"
+                   aria-selected="false">Others</a>
+            </li>
+            <li class="nav-cursor nav-next py-2 px-5">
+                <span class="carousel-control-next-icon"></span>
+            </li>
+        </ul>
+        <div class="tab-content" id="buildToolsContent">
+            <div class="tab-pane fade show active px-3 py-2" id="gradle" role="tabpanel"
+                 aria-labelledby="gradle-tab">
+                <pre>compile 'io.github.harshilsharma63:controller-logger:1.2.0'</pre>
+            </div>
+            <div class="tab-pane fade px-3 py-2" id="maven" role="tabpanel"
+                 aria-labelledby="maven-tab">
+                            <pre>
+&lt;dependency&gt;
+    &lt;groupId&gt;io.github.harshilsharma63&lt;/groupId&gt;
+    &lt;artifactId&gt;controller-logger&lt;/artifactId&gt;
+    &lt;version&gt;1.2.0&lt;/version&gt;
+&lt;/dependency&gt;</pre>
+            </div>
+            <div class="tab-pane fade px-3 py-2" id="others" role="tabpanel"
+                 aria-labelledby="others-tab">
+                <pre><a href="www.mvnrepository.com/artifact/io.github.harshilsharma63/controller-logger/">Maven repository</a></pre>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid features my-3 my-4 py-4">
+    <div id="featuresCarousal" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#featuresCarousal" data-slide-to="0" class="active"></li>
+            <li data-target="#featuresCarousal" data-slide-to="1"></li>
+            <li data-target="#featuresCarousal" data-slide-to="2"></li>
+            <li data-target="#featuresCarousal" data-slide-to="3"></li>
+            <li data-target="#featuresCarousal" data-slide-to="4"></li>
+            <li data-target="#featuresCarousal" data-slide-to="5"></li>
+            <li data-target="#featuresCarousal" data-slide-to="6"></li>
+            <li data-target="#featuresCarousal" data-slide-to="7"></li>
+            <li data-target="#featuresCarousal" data-slide-to="8"></li>
+        </ol>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="carousal-content">
+                    <code>
+                        <span class="timestamp">2018-02-26 16:52:35.419</span> <span
+                            class="log-level">INFO:</span>
+                        deleteUser() <span
+                            class="highlight">called with arguments userId: [1],</span>
+                        called via url [http://localhost:8080/user/1]
+                        username [alice]<br>
+                        <span class="timestamp">2018-02-26 16:52:35.624</span> <span
+                            class="log-level">INFO:</span>
+                        deleteUser()
+                        took [12 ms]
+                        to complete<br>
+                        <span class="timestamp">2018-02-26 16:52:35.624</span> <span
+                            class="log-level">INFO:</span>
+                        deleteUser()
+                        <span class="highlight">returned: [true]</span>
+                    </code>
+                </div>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Automatically logs all APIs including input and output</h5>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousal-content">
+                    <code>
+                        <span class="timestamp">2018-03-02 11:21:33.180 </span> <span
+                            class="log-level">INFO:</span>
+                        getSaleReport()
+                        <span class="highlight">threw exception: [java.lang.RuntimeException: Error occurred while fetching reports. Error code: xf224]</span><br>
+                    </code>
+                </div>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Automatically logs errors occurring in API</h5>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousal-content">
+                    <pre class="prettyprint lang-java">
+                        <code>
+  @RestController
++ @Logging
+  public class UserController {
+    @GetMapping("/get-random-user")
+    @ResponseBody
+    public User getUser() {
+      return random(User.class);
+    }
+  }
+                        </code>
+                    </pre>
+                </div>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>No side-effect in actual API implementation due to AOP logic</h5>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousal-content">
+            <pre class="prettyprint lang-java">
+                    <code>
+@RestController
+@Logging    // enable logging for all methods in this controller
+public class UserController {
+    @GetMapping("/user/${userId}")
+    @ResponseBody
+    public User getUser(@PathParam int userId) {
+        return userService.getUser(userId);
+    }
+    ... more endpoints
+}
+                    </code>
+                </pre>
+                </div>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Automatically binds to new APIs thanks to AOP weaving</h5>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousal-content">
+                    <code>
+                        <span class="timestamp">2018-02-26 16:52:35.419</span> <span
+                            class="log-level">INFO:</span>
+                        makeTransaction() called via url [http://localhost:8080/transact], called
+                        with arguments:
+                        <span class="highlight">accountNumber [xxxxx], apiKey [xxxxx]</span>,
+                        username [alice]<br>
+                    </code>
+                </div>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Scrubs sensitive information in logs to maintain security and privacy</h5>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousal-content">
+                    <code>
+                        <span class="timestamp">2018-03-02 11:21:33.180 </span> <span
+                            class="log-level">INFO:</span>
+                        getSaleReport()
+                        <span class="highlight">returned file of size:[12265 B]</span><br>
+                    </code>
+                </div>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Displays file size if one of the API input or output is any file object</h5>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousal-content">
+                    No changes required in tests whatsoever to use this library.
+                </div>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Works with integration testing</h5>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousal-content">
+                    <code>
+                        <span class="timestamp">2018-02-26 16:52:35.419</span> <span
+                            class="log-level">INFO:</span>
+                        getUser() called via url [http://localhost:8080/user/], called with
+                        arguments:
+                        <span class="highlight">user [Mock Object]</span>, username [alice]<br>
+                    </code>
+                </div>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Detects mocked objects in input and output and displays them accordingly, as
+                        can happen during
+                        integration testing</h5>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousal-content">
+                    Easy customization
+                </div>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Logging behaviour is easily customizable</h5>
+                </div>
+            </div>
+        </div>
+
+        <a class="carousel-control-prev" href="#featuresCarousal" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#featuresCarousal" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+<div class="container-fluid example px-5 py-5">
+    <div class="row mx-5">
+        <div class="col">
+            <pre class="prettyprint lang-java" data-toggle="tooltip" data-placement="top"
+                 title="Original controller">
+                <code>
+@RestController
+public class UserController {
+
+    @GetMapping("/get-random-user")
+    @ResponseBody
+    public User getUser() {
+        return random(User.class);
+    }
+}
+                </code>
+            </pre>
+        </div>
+        <div class="col">
+            <pre class="prettyprint lang-java" data-toggle="tooltip" data-placement="top"
+                 title="Controller logger bean definition">
+                <code>
+@Configuration
+public class BeanConfig {
+    @Bean
+    public GenericControllerAspect genericControllerAspect() {
+        return new GenericControllerAspect();
+    }
+}
+                </code>
+            </pre>
+        </div>
+        <div class="col">
+            <pre class="prettyprint lang-java" data-toggle="tooltip" data-placement="top"
+                 title="Controller with logging enabled">
+                <code>
+@RestController
+@Logging
+public class UserController {
+
+    @GetMapping("/get-random-user")
+    @ResponseBody
+    public User getUser() {
+        return random(User.class);
+    }
+}
+                </code>
+            </pre>
+        </div>
+    </div>
+</div>
+<footer class="footer  p-4 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col text-left">
+                <div class="row">
+                    <div class="col-5">
+                        © 2018, Harshil Sharma
+                    </div>
+                    <div class="col">
+                        <a href="https://github.com/harshilsharma63/controller-logger/blob/master/LICENSE">
+                            License
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1 text-center">
+                <a href="https://github.com/harshilsharma63/controller-logger">
+                    <span class="fab fa-github"></span>
+                </a>
+            </div>
+            <div class="col text-right">
+                <div class="row justify-content-end">
+                    <div class="col">
+                        <a href="https://github.com/harshilsharma63/controller-logger-example">
+                            Examples
+                        </a>
+                    </div>
+                    <div class="col-3">
+                        <a href="mailto:harshilsharma63@gmail.com">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

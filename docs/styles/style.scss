@@ -1,0 +1,221 @@
+@import "logs-syntax-highlight";
+@import "breakpoints";
+@import "github-corner";
+@import "font-awesome/fontawesome";
+@import "font-awesome/fa-solid";
+@import "font-awesome/fa-brands";
+
+$text-color: rgba(255, 255, 255, 0.9);
+$primary-color: rgba(17, 20, 23, 1);
+$secondary-color: rgba(15, 37, 49, 1);
+$accent-color: rgba(0, 234, 161, 0.1);
+$primary-font: 'Roboto Condensed', sans-serif;
+
+$title-font: 'Barlow Condensed', sans-serif;
+
+$jumbotron-min-height: 700px;
+$jumbotron-max-height: 800px;
+
+body {
+  background-color: $primary-color !important;
+  color: $text-color !important;
+  font-family: $primary-font !important;
+  max-width: 1366px;
+  margin: 0 auto;
+}
+
+.row-centered {
+  text-align: center;
+}
+
+.col-centered {
+  display: inline-block;
+  float: none;
+  margin-right: -4px;
+  text-align: center;
+}
+
+.title {
+  font-family: $title-font !important;
+  font-size: 4.5em;
+  color: white;
+}
+
+.jumbotron {
+  background-color: transparent !important;
+  min-height: $jumbotron-min-height;
+}
+
+// for adjusting github buttons spacing
+.container > iframe {
+  margin: 0 1%;
+}
+
+.jumbotron > .container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.row-footer {
+  flex: 1;
+  align-items: flex-end;
+}
+
+pre {
+  margin: 0;
+}
+
+#buildToolsContent pre {
+  color: whitesmoke;
+}
+
+.tab-content > .active {
+  border: 1px solid lighten($primary-color, 20%);
+  border-radius: 0 0 0.5em 0.5em;
+  border-top: transparent;
+}
+
+#build-tools-links {
+  max-width: 800px;
+}
+
+.source-code-row {
+  line-height: 1.7em;
+  border: 1px solid lighten($primary-color, 20%);
+  border-radius: 1em;
+  background-color: lighten($primary-color, 3%);
+}
+
+.annotation[data-toggle="tooltip"] {
+  border-bottom: 2px solid #2e3f5099;
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+
+.nav-link {
+  outline: none;
+}
+
+.highlight {
+  border: 1px solid lighten($secondary-color, 30%);
+  padding: 0.2em;
+  border-radius: 0.4em;
+  background-color: $secondary-color;
+}
+
+.nav-cursor {
+  cursor: pointer;
+  display: none;
+}
+
+#featuresCarousal code {
+  line-height: 30px;
+}
+
+@include media-breakpoint-up(md) {
+  .source-code-row {
+    max-width: 80%;
+    padding-left: 2.5em;
+  }
+
+  .jumbotron {
+    max-height: $jumbotron-max-height;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  h5 {
+    font-size: 1.8rem;
+  }
+
+  .nav-cursor {
+    display: block;
+  }
+
+  #buildTools {
+    .nav-link:not(.active) {
+      display: none;
+    }
+  }
+
+  #buildTools .nav-item:not(.active) {
+    display: none;
+  }
+
+  #featuresCarousal code {
+    line-height: 50px;
+  }
+}
+
+#featuresCarousal, #featuresCarousal .carousel-inner, #featuresCarousal .carousel-item {
+  min-height: 22em;
+  max-height: 22em;
+}
+
+.carousal-content {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 75%;
+  text-align: center;
+}
+
+#featuresCarousal pre code {
+  line-height: unset;
+}
+
+pre.prettyprint {
+  background-color: unset;
+  text-align: initial;
+  display: inline-block;
+}
+
+footer {
+  border-top: 1px solid $accent-color;
+
+  .fa-github {
+    font-size: 2em;
+  }
+
+  a {
+    color: white;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .fa-github:hover {
+    animation: animateColors 1s linear infinite;
+  }
+}
+
+@keyframes animateColors {
+  0% {
+    color: hsl(0, 100%, 63%);  }
+  25% {
+    color: hsl(90, 100%, 63%);  }
+  50% {
+    color: hsl(180, 100%, 63%);  }
+  75% {
+    color: hsl(270, 100%, 63%);  }
+  100% {
+    color: hsl(360, 100%, 63%);  }
+}
+
+@-webkit-keyframes animateColors {
+  0% {
+    color: hsl(0, 100%, 63%);  }
+  25% {
+    color: hsl(90, 100%, 63%);  }
+  50% {
+    color: hsl(180, 100%, 63%);  }
+  75% {
+    color: hsl(270, 100%, 63%);  }
+  100% {
+    color: hsl(360, 100%, 63%);  }
+}

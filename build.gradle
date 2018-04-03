@@ -1,4 +1,8 @@
 
+plugins {
+    id "org.sonarqube" version "2.6"
+}
+
 apply plugin: 'java-library'
 apply plugin: 'maven'
 apply plugin: 'signing'
@@ -10,6 +14,7 @@ repositories {
     jcenter()
     mavenCentral()
 }
+
 
 dependencies {
     api 'org.aspectj:aspectjweaver:1.8.11'
