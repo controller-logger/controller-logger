@@ -20,6 +20,8 @@ body {
   background-color: $primary-color !important;
   color: $text-color !important;
   font-family: $primary-font !important;
+  max-width: 1366px;
+  margin: 0 auto;
 }
 
 .row-centered {

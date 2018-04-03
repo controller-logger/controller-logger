@@ -2733,7 +2733,9 @@ readers do not read off random characters that represent icons */
 body {
   background-color: #111417 !important;
   color: rgba(255, 255, 255, 0.9) !important;
-  font-family: "Roboto Condensed", sans-serif !important; }
+  font-family: "Roboto Condensed", sans-serif !important;
+  max-width: 1366px;
+  margin: 0 auto; }
 
 .row-centered {
   text-align: center; }
