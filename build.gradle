@@ -15,7 +15,6 @@ repositories {
     mavenCentral()
 }
 
-
 dependencies {
     api 'org.aspectj:aspectjweaver:1.8.11'
     api 'com.fasterxml.jackson.core:jackson-core:2.9.2'
@@ -31,10 +30,10 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-web', version: '4.3.12.RELEASE'
     compile group: 'org.springframework', name: 'spring-context', version: '4.3.12.RELEASE'
     compile group: 'org.springframework.security', name: 'spring-security-core', version: '4.2.3.RELEASE'
-
     compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
 
-    testImplementation 'junit:junit:4.12'
+    testCompile("org.junit.jupiter:junit-jupiter-api:5.1.0")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.1.0")
 }
 
 compileJava {
@@ -57,6 +56,10 @@ artifacts {
 
 signing {
     sign configurations.archives
+}
+
+test {
+    useJUnitPlatform()
 }
 
 uploadArchives {
