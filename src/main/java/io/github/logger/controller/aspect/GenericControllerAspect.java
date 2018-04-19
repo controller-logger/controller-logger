@@ -1,10 +1,6 @@
 package io.github.logger.controller.aspect;
 
-import java.lang.annotation.Annotation;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
+import io.github.logger.controller.annotation.Logging;
 import io.github.logger.controller.annotation.NoLogging;
 import io.github.logger.controller.utils.JsonUtil;
 import io.github.logger.controller.utils.RequestUtil;
@@ -17,13 +13,16 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import io.github.logger.controller.annotation.Logging;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.lang.annotation.Annotation;
 
 //@formatter:off
 /**
@@ -42,7 +41,7 @@ import io.github.logger.controller.annotation.Logging;
 @Aspect
 public class GenericControllerAspect extends LoggerAspect implements ControllerAspect {
 
-    private static final Logger LOG = org.slf4j.LoggerFactory.getLogger(GenericControllerAspect.class);
+    private static Logger LOG = org.slf4j.LoggerFactory.getLogger(GenericControllerAspect.class);
 
     @Pointcut("@annotation(io.github.logger.controller.annotation.Logging) " +
             "|| @target(io.github.logger.controller.annotation.Logging)")
@@ -286,11 +285,16 @@ public class GenericControllerAspect extends LoggerAspect implements ControllerA
         Object argValueToUse = argValue;
 
         if (enableDataScrubbing) {
-            if (paramBlacklist.contains(argName.toLowerCase()) || paramBlacklistRegex.matcher(argName).matches()) {
+            if (paramBlacklist.contains(argName.toLowerCase())
+                    || (paramBlacklistRegex != null && paramBlacklistRegex.matcher(argName).matches())) {
                 argValueToUse = scrubbedValue;
             }
         }
 
         return argValueToUse;
+    }
+
+    public static void setLogger(@Nonnull Logger LOG) {
+        GenericControllerAspect.LOG = LOG;
     }
 }

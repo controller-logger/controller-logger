@@ -6,6 +6,20 @@ plugins {
 apply plugin: 'java-library'
 apply plugin: 'maven'
 apply plugin: 'signing'
+apply plugin: "jacoco"
+
+jacoco {
+    toolVersion = "0.8.0"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
 
 group = 'io.github.harshilsharma63'
 archivesBaseName = 'controller-logger'
@@ -32,8 +46,13 @@ dependencies {
     compile group: 'org.springframework.security', name: 'spring-security-core', version: '4.2.3.RELEASE'
     compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
 
-    testCompile("org.junit.jupiter:junit-jupiter-api:5.1.0")
-    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.1.0")
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.18.0'
+    testCompile group: 'io.github.benas', name: 'random-beans', version: '3.7.0'
+    testCompile group: 'org.projectlombok', name: 'lombok', version: '1.16.20'
+    testCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+    testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '2.0.0-beta.5'
+    testCompile group: 'org.powermock', name: 'powermock-api-mockito2', version: '2.0.0-beta.5'
 }
 
 compileJava {
@@ -59,7 +78,12 @@ signing {
 }
 
 test {
-    useJUnitPlatform()
+//    useJUnitPlatform()
+    jacoco {
+        append = false
+        destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
+        classDumpDir = file("$buildDir/jacoco/classpathdumps")
+    }
 }
 
 uploadArchives {
