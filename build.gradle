@@ -53,6 +53,7 @@ dependencies {
     testCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
     testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '2.0.0-beta.5'
     testCompile group: 'org.powermock', name: 'powermock-api-mockito2', version: '2.0.0-beta.5'
+    testCompile group: 'com.github.valfirst', name: 'slf4j-test', version: '2.0.0'
 }
 
 compileJava {
@@ -78,7 +79,8 @@ signing {
 }
 
 test {
-//    useJUnitPlatform()
+    testLogging.showStandardStreams = true
+
     jacoco {
         append = false
         destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
