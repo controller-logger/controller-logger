@@ -4,6 +4,8 @@
 [![CircleCI](https://circleci.com/gh/harshilsharma63/controller-logger.svg?style=svg)](https://circleci.com/gh/harshilsharma63/controller-logger)
 ![](https://sonarcloud.io/api/project_badges/measure?project=io.github.harshilsharma63%3Acontroller-logger&metric=alert_status)
 
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fharshilsharma63%2Fcontroller-logger.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fharshilsharma63%2Fcontroller-logger?ref=badge_large)
+
 ### Upcoming release features
 1. Test coverage
 1. Performance improvements
