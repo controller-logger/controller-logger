@@ -18,13 +18,4 @@ public class User {
 
     @Nonnull
     private String password;
-
-    @Nonnull
-    private UserDetail userDetails;
-
-    @Nullable
-    private ResidentialDetail residentialDetail;
-
-    @Nullable
-    private OfficialDetail officialDetail;
 }

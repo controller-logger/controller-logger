@@ -8,16 +8,11 @@ apply plugin: 'maven'
 apply plugin: 'signing'
 apply plugin: "jacoco"
 
-jacoco {
-    toolVersion = "0.8.0"
-    reportsDir = file("$buildDir/customJacocoReportDir")
-}
-
 jacocoTestReport {
     reports {
-        xml.enabled false
-        csv.enabled false
-        html.destination file("${buildDir}/jacocoHtml")
+        xml.enabled true
+        html.enabled true
+        csv.enabled true
     }
 }
 
@@ -80,12 +75,6 @@ signing {
 
 test {
     testLogging.showStandardStreams = true
-
-    jacoco {
-        append = false
-        destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
-        classDumpDir = file("$buildDir/jacoco/classpathdumps")
-    }
 }
 
 uploadArchives {
