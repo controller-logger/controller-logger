@@ -13,7 +13,6 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,7 +40,31 @@ import java.lang.annotation.Annotation;
 @Aspect
 public class GenericControllerAspect extends LoggerAspect implements ControllerAspect {
 
-    private static Logger LOG = org.slf4j.LoggerFactory.getLogger(GenericControllerAspect.class);
+    @Nonnull
+    private Logger LOG;
+
+    @Nonnull
+    private JsonUtil jsonUtil;
+
+    @Nonnull
+    private RequestUtil requestUtil;
+
+    public GenericControllerAspect() {
+        this(
+                org.slf4j.LoggerFactory.getLogger(GenericControllerAspect.class),
+                new JsonUtil(),
+                new RequestUtil()
+        );
+    }
+
+    public GenericControllerAspect(
+            @Nonnull Logger LOG,
+            @Nonnull JsonUtil jsonUtil,
+            @Nonnull RequestUtil requestUtil) {
+        this.LOG = LOG;
+        this.jsonUtil = jsonUtil;
+        this.requestUtil = requestUtil;
+    }
 
     @Pointcut("@annotation(io.github.logger.controller.annotation.Logging) " +
             "|| @target(io.github.logger.controller.annotation.Logging)")
@@ -105,7 +128,7 @@ public class GenericControllerAspect extends LoggerAspect implements ControllerA
         String methodName = methodSignature.getName() + "()";
         Object argValues[] = proceedingJoinPoint.getArgs();
         String argNames[] = methodSignature.getParameterNames();
-        String requestContext = RequestUtil.getRequestContext().toString();
+        String requestContext = requestUtil.getRequestContext().toString();
         Annotation annotations[][] = methodSignature.getMethod().getParameterAnnotations();
 
         StringBuilder preMessage = new StringBuilder().append(methodName);
@@ -187,7 +210,7 @@ public class GenericControllerAspect extends LoggerAspect implements ControllerA
         // try serializing assuming a perfectly serializable object.
         if (!serializedSuccessfully) {
             try {
-                logMessage.append(JsonUtil.toJson(object));
+                logMessage.append(jsonUtil.toJson(object));
                 serializedSuccessfully = true;
             } catch (Exception e) {
                 exception = e;
@@ -294,7 +317,15 @@ public class GenericControllerAspect extends LoggerAspect implements ControllerA
         return argValueToUse;
     }
 
-    public static void setLogger(@Nonnull Logger LOG) {
-        GenericControllerAspect.LOG = LOG;
+    public void setLOG(@Nonnull Logger LOG) {
+        this.LOG = LOG;
+    }
+
+    public void setJsonUtil(@Nonnull JsonUtil jsonUtil) {
+        this.jsonUtil = jsonUtil;
+    }
+
+    public void setRequestUtil(@Nonnull RequestUtil requestUtil) {
+        this.requestUtil = requestUtil;
     }
 }

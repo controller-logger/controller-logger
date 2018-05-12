@@ -11,6 +11,14 @@ public class RequestContext {
 
     private final Map<String, String> context = new LinkedHashMap<>(4);
 
+    public RequestContext() {
+        // no-op constructor
+    }
+
+    public RequestContext(@Nonnull Map<String, String> context) {
+        context.forEach((key, value) -> this.context.put(key, value != null ? value : "null"));
+    }
+
     public RequestContext add(@Nonnull String key, @Nullable String value) {
         context.put(key, value != null ? value : "null");
         return this;
