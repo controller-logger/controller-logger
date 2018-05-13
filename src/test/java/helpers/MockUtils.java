@@ -1,17 +1,15 @@
 package helpers;
 
 import bean.User;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import io.github.logger.controller.bean.RequestContext;
 import io.github.logger.controller.utils.RequestUtil;
-import org.apache.commons.lang3.time.StopWatch;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.powermock.api.mockito.PowerMockito;
 
 import javax.annotation.Nonnull;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -19,31 +17,65 @@ import static org.mockito.Mockito.*;
 
 public class MockUtils {
 
-    public static List<Object> mockWorkflow(
-            ProceedingJoinPoint proceedingJoinPoint,
-            String[] methodParamNames,
-            Class[] methodParamTypes,
-            Object[] methodParamValues
-    ) throws Throwable {
-        MethodSignature methodSignature = mock(MethodSignature.class, RETURNS_DEEP_STUBS);
-        when(methodSignature.getReturnType()).thenReturn(User.class);
-        when(methodSignature.getName()).thenReturn("getUser");
-        when(methodSignature.getParameterNames()).thenReturn(methodParamNames);
+    public static List<Object> mockWorkflow(@Nonnull  ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        MethodSignature methodSignature = mockMethodSignature();
+        mockProceedingJoinPoint(proceedingJoinPoint, methodSignature);
 
-        Method method = DummyController.class.getMethod("getUser", methodParamTypes);
+        List<Object> mockedObjects = new ArrayList<>();
+        mockedObjects.add(methodSignature);
+        mockedObjects.add(proceedingJoinPoint);
+        return mockedObjects;
+    }
+
+    public static void mockProceedingJoinPoint(
+            @Nonnull ProceedingJoinPoint joinPoint,
+            @Nonnull MethodSignature signature
+    ) throws Throwable {
+        mockProceedingJoinPoint(
+                joinPoint,
+                new User(1, "foobar@example.com", "password"),
+                signature,
+                new DummyController(),
+                new Object[]{1});
+    }
+
+    public static void mockProceedingJoinPoint(
+            @Nonnull ProceedingJoinPoint joinPoint,
+            @Nonnull Object returnValue,
+            @Nonnull MethodSignature signature,
+            @Nonnull Object target,
+            @Nonnull Object[] methodParamValues
+    ) throws Throwable {
+        when(joinPoint.proceed()).thenReturn(returnValue);
+        when(joinPoint.getSignature()).thenReturn(signature);
+        when(joinPoint.getTarget()).thenReturn(target);
+        when(joinPoint.getArgs()).thenReturn(methodParamValues);
+    }
+
+    public static MethodSignature mockMethodSignature() throws NoSuchMethodException {
+        return mockMethodSignature(
+                "getUser",
+                User.class,
+                new String[]{"userId"},
+                new Class[]{int.class}
+        );
+    }
+
+    public static MethodSignature mockMethodSignature(
+            @Nonnull String methodName,
+            @Nonnull Class returnType,
+            @Nonnull String[] parameterNames,
+            @Nonnull Class[] parameterTypes
+    ) throws NoSuchMethodException {
+        MethodSignature methodSignature = mock(MethodSignature.class, RETURNS_DEEP_STUBS);
+        when(methodSignature.getName()).thenReturn(methodName);
+        when(methodSignature.getReturnType()).thenReturn(returnType);
+        when(methodSignature.getParameterNames()).thenReturn(parameterNames);
+
+        Method method = DummyController.class.getMethod(methodName, parameterTypes);
         when(methodSignature.getMethod()).thenReturn(method);
 
-        User user = new User(1, "foobar@example.com", "password");
-        when(proceedingJoinPoint.proceed()).thenReturn(user);
-        when(proceedingJoinPoint.getSignature()).thenReturn(methodSignature);
-        when(proceedingJoinPoint.getTarget()).thenReturn(new DummyController());
-        when(proceedingJoinPoint.getArgs()).thenReturn(methodParamValues);
-
-        StopWatch mockedStopwatch = mock(StopWatch.class);
-        when(mockedStopwatch.getTime()).thenReturn(5L);
-        PowerMockito.whenNew(StopWatch.class).withAnyArguments().thenReturn(mockedStopwatch);
-
-        return ImmutableList.of(methodSignature, proceedingJoinPoint, mockedStopwatch);
+        return methodSignature;
     }
 
     @Nonnull
