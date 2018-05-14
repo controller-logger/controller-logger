@@ -14,7 +14,7 @@ import io.github.logger.controller.bean.RequestContext;
 
 public class RequestUtil {
 
-    public static RequestContext getRequestContext() {
+    public RequestContext getRequestContext() {
         HttpServletRequest request = getCurrentHttpRequest();
 
         return new RequestContext()
@@ -23,22 +23,22 @@ public class RequestUtil {
     }
 
     @Nullable
-    private static String getRequestUrl(@Nullable HttpServletRequest request) {
+    private String getRequestUrl(@Nullable HttpServletRequest request) {
         return request == null ? null : request.getRequestURL().toString();
     }
 
     @Nullable
-    private static String getRequestUserName(@Nullable UserDetails userDetails) {
+    private String getRequestUserName(@Nullable UserDetails userDetails) {
         return userDetails == null ? null : userDetails.getUsername();
     }
 
     @Nullable
-    private static String getRequestUserName() {
+    private String getRequestUserName() {
         return SecurityContextHolder.getContext().getAuthentication().getName();
     }
 
     @Nullable
-    private static HttpServletRequest getCurrentHttpRequest() {
+    private HttpServletRequest getCurrentHttpRequest() {
         HttpServletRequest request = null;
         RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
         if (requestAttributes != null && requestAttributes instanceof ServletRequestAttributes) {
@@ -48,7 +48,7 @@ public class RequestUtil {
     }
 
     @Nullable
-    private static UserDetails getCurrentUser() {
+    private UserDetails getCurrentUser() {
         UserDetails user = null;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Object principal = null;

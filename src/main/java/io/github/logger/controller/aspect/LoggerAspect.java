@@ -1,6 +1,7 @@
 package io.github.logger.controller.aspect;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -24,11 +25,13 @@ public abstract class LoggerAspect {
             "accesstoken"
     ));
 
+    @Nonnull
     protected static String scrubbedValue = "xxxxx";
 
     protected static boolean enableDataScrubbing = true;
 
     // TODO HS 20180210 investigate a faster implementation of regex
+    @Nullable
     protected static Pattern paramBlacklistRegex;
 
     public void setDefaultScrubbedValue(@Nonnull String defaultScrubbedValue) {

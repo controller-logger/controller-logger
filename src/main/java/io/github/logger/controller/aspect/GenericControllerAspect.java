@@ -1,10 +1,6 @@
 package io.github.logger.controller.aspect;
 
-import java.lang.annotation.Annotation;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
+import io.github.logger.controller.annotation.Logging;
 import io.github.logger.controller.annotation.NoLogging;
 import io.github.logger.controller.utils.JsonUtil;
 import io.github.logger.controller.utils.RequestUtil;
@@ -23,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import io.github.logger.controller.annotation.Logging;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.lang.annotation.Annotation;
 
 //@formatter:off
 /**
@@ -42,7 +40,31 @@ import io.github.logger.controller.annotation.Logging;
 @Aspect
 public class GenericControllerAspect extends LoggerAspect implements ControllerAspect {
 
-    private static final Logger LOG = org.slf4j.LoggerFactory.getLogger(GenericControllerAspect.class);
+    @Nonnull
+    private Logger LOG;
+
+    @Nonnull
+    private JsonUtil jsonUtil;
+
+    @Nonnull
+    private RequestUtil requestUtil;
+
+    public GenericControllerAspect() {
+        this(
+                org.slf4j.LoggerFactory.getLogger(GenericControllerAspect.class),
+                new JsonUtil(),
+                new RequestUtil()
+        );
+    }
+
+    public GenericControllerAspect(
+            @Nonnull Logger LOG,
+            @Nonnull JsonUtil jsonUtil,
+            @Nonnull RequestUtil requestUtil) {
+        this.LOG = LOG;
+        this.jsonUtil = jsonUtil;
+        this.requestUtil = requestUtil;
+    }
 
     @Pointcut("@annotation(io.github.logger.controller.annotation.Logging) " +
             "|| @target(io.github.logger.controller.annotation.Logging)")
@@ -106,7 +128,7 @@ public class GenericControllerAspect extends LoggerAspect implements ControllerA
         String methodName = methodSignature.getName() + "()";
         Object argValues[] = proceedingJoinPoint.getArgs();
         String argNames[] = methodSignature.getParameterNames();
-        String requestContext = RequestUtil.getRequestContext().toString();
+        String requestContext = requestUtil.getRequestContext().toString();
         Annotation annotations[][] = methodSignature.getMethod().getParameterAnnotations();
 
         StringBuilder preMessage = new StringBuilder().append(methodName);
@@ -188,7 +210,7 @@ public class GenericControllerAspect extends LoggerAspect implements ControllerA
         // try serializing assuming a perfectly serializable object.
         if (!serializedSuccessfully) {
             try {
-                logMessage.append(JsonUtil.toJson(object));
+                logMessage.append(jsonUtil.toJson(object));
                 serializedSuccessfully = true;
             } catch (Exception e) {
                 exception = e;
@@ -286,11 +308,24 @@ public class GenericControllerAspect extends LoggerAspect implements ControllerA
         Object argValueToUse = argValue;
 
         if (enableDataScrubbing) {
-            if (paramBlacklist.contains(argName.toLowerCase()) || paramBlacklistRegex.matcher(argName).matches()) {
+            if (paramBlacklist.contains(argName.toLowerCase())
+                    || (paramBlacklistRegex != null && paramBlacklistRegex.matcher(argName).matches())) {
                 argValueToUse = scrubbedValue;
             }
         }
 
         return argValueToUse;
+    }
+
+    public void setLOG(@Nonnull Logger LOG) {
+        this.LOG = LOG;
+    }
+
+    public void setJsonUtil(@Nonnull JsonUtil jsonUtil) {
+        this.jsonUtil = jsonUtil;
+    }
+
+    public void setRequestUtil(@Nonnull RequestUtil requestUtil) {
+        this.requestUtil = requestUtil;
     }
 }
