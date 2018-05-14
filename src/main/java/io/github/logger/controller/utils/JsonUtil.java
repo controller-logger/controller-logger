@@ -14,7 +14,7 @@ public class JsonUtil {
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     @Nonnull
-    public static String toJson(@Nullable Object object) {
+    public String toJson(@Nullable Object object) {
         try {
             return object == null ? "null" : OBJECT_MAPPER.writeValueAsString(object);
         } catch (JsonProcessingException e) {
@@ -22,7 +22,7 @@ public class JsonUtil {
         }
     }
 
-    public static <T> T fromJson(@Nonnull String json, @Nonnull Type type) {
+    public <T> T fromJson(@Nonnull String json, @Nonnull Type type) {
         JavaType javaType = OBJECT_MAPPER.constructType(type);
         try {
             return OBJECT_MAPPER.readValue(json, javaType);
