@@ -2,8 +2,7 @@ package helpers;
 
 import bean.User;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Nonnull;
 
@@ -13,7 +12,26 @@ public class DummyController {
     @RequestMapping(value = "/getUser")
     @ResponseBody
     public User getUser(@Nonnull int userId) {
-        return null;
+        return new User(1, "foo@example.com", "password");
     }
 
+    public String nonRestApiMethodWithArgs(@Nonnull String arg) {
+        return arg;
+    }
+
+    @RequestMapping(
+            method = RequestMethod.POST,
+            value = "/getUser",
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
+    @ResponseBody
+    public User createUser(@Nonnull @RequestBody User user, @Nonnull @RequestParam String source) {
+        return user;
+    }
+
+    @RequestMapping(value = "/saveNote", consumes = MediaType.TEXT_PLAIN_VALUE)
+    @ResponseBody
+    public boolean saveNote(@RequestBody String text) {
+        return true;
+    }
 }
