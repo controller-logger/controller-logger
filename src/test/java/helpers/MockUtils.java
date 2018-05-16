@@ -8,6 +8,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +42,7 @@ public class MockUtils {
 
     public static void mockProceedingJoinPoint(
             @Nonnull ProceedingJoinPoint joinPoint,
-            @Nonnull Object returnValue,
+            @Nullable Object returnValue,
             @Nonnull MethodSignature signature,
             @Nonnull Object target,
             @Nonnull Object[] methodParamValues

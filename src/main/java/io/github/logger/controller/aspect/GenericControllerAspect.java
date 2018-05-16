@@ -304,7 +304,7 @@ public class GenericControllerAspect extends LoggerAspect implements ControllerA
      * @param argValue the parameter value
      * @return scrubbed value of argValue, or original value if data scrubbing is disabled
      */
-    private Object getScrubbedValue(@Nonnull String argName, @Nonnull Object argValue) {
+    private Object getScrubbedValue(@Nonnull String argName, @Nullable Object argValue) {
         Object argValueToUse = argValue;
 
         if (enableDataScrubbing) {

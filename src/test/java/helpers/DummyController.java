@@ -5,6 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 @RequestMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
 public class DummyController {
@@ -25,7 +26,7 @@ public class DummyController {
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
     @ResponseBody
-    public User createUser(@Nonnull @RequestBody User user, @Nonnull @RequestParam String source) {
+    public User createUser(@Nullable @RequestBody User user, @Nullable @RequestParam String source) {
         return user;
     }
 
