@@ -35,4 +35,10 @@ public class DummyController {
     public boolean saveNote(@RequestBody String text) {
         return true;
     }
+
+    @RequestMapping(value = "/saveMemo", consumes = MediaType.TEXT_PLAIN_VALUE)
+    @ResponseBody
+    public void saveMemo(@RequestBody String text) {
+        // no-op
+    }
 }

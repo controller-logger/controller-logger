@@ -177,7 +177,7 @@ public class GenericControllerAspect extends LoggerAspect implements ControllerA
 
         if (needsSerialization) {
             String resultClassName = result == null ? "null" : result.getClass().getName();
-            resultClassName = returnType.equals("void") ? returnType : resultClassName;
+            resultClassName = returnType.equals("java.lang.Void") ? returnType : resultClassName;
             serialize(result, resultClassName, postMessage);
         } else {
             postMessage.append(result);
@@ -202,8 +202,8 @@ public class GenericControllerAspect extends LoggerAspect implements ControllerA
 
         // this is to distinguish between methods returning null value and methods returning void.
         // Object arg is null in both cases but objClassName is not.
-        if (objClassName.toLowerCase().equals("void")) {
-            logMessage.append(objClassName);
+        if (objClassName.equals("java.lang.Void")) {
+            logMessage.append("void");
             serializedSuccessfully = true;
         }
 

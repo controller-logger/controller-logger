@@ -182,7 +182,7 @@ public class TestGenericControllerAspect {
                         "level",
                         "INFO",
                         "message",
-                        "getUser() returned: [null]")
+                        "getUser() returned: [void]")
         );
 
         assertEquals(expectedLogMessages, actualLogMessages);
@@ -637,6 +637,93 @@ public class TestGenericControllerAspect {
 
         // once for input user arg and once for output
         verify(mockedJsonUtil, times(2)).toJson(null);
+        verifyNoMoreInteractions(mockedJsonUtil);
+
+        resetMock(mockedObjects);
+    }
+
+    @Test
+    public void when_FunctionReturnsVoid_then_returnValueIsSerializedAsVoidString() {
+        // mock behavior setup
+        ProceedingJoinPoint proceedingJoinPoint = mock(ProceedingJoinPoint.class, RETURNS_DEEP_STUBS);
+
+        MethodSignature methodSignature = null;
+        try {
+            methodSignature = mockMethodSignature(
+                    "saveMemo",
+                    Void.class,
+                    new String[]{"text"},
+                    new Class[]{String.class}
+            );
+        } catch (NoSuchMethodException e) {
+            fail(e.getMessage());
+        }
+
+        try {
+            mockProceedingJoinPoint(
+                    proceedingJoinPoint,
+                    null,
+                    methodSignature,
+                    new DummyController(),
+                    new Object[]{"Lorem ipsum"}
+            );
+        } catch (Throwable throwable) {
+            fail(throwable.getMessage());
+        }
+
+        List<Object> mockedObjects = new ArrayList<>();
+        mockedObjects.add(methodSignature);
+        mockedObjects.add(proceedingJoinPoint);
+
+        RequestUtil mockedRequestUtil = MockUtils.mockRequestUtil();
+        mockedObjects.add(mockedRequestUtil);
+
+        JsonUtil mockedJsonUtil = spy(JsonUtil.class);
+        mockedObjects.add(mockedJsonUtil);
+
+        GenericControllerAspect aspect = new GenericControllerAspect(logger, mockedJsonUtil, mockedRequestUtil);
+
+        // calling logic to be tested
+        Object actualReturnedValue = null;
+        try {
+            actualReturnedValue = aspect.log(proceedingJoinPoint);
+        } catch (Throwable throwable) {
+            fail(throwable.getMessage());
+        }
+
+        // preparing actual output
+        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+
+        // preparing expected output
+        List<Map<String, String>> expectedLogMessages = new ArrayList<>();
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "saveMemo() called with arguments: text: [Lorem ipsum] " +
+                                "called via url: [https://www.example.com], username: [Jean-Luc Picard]")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "saveMemo() took [0 ms] to complete")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "saveMemo() returned: [void]")
+        );
+
+        assertEquals(expectedLogMessages, actualLogMessages);
+        assertNull(actualReturnedValue);
+
         verifyNoMoreInteractions(mockedJsonUtil);
 
         resetMock(mockedObjects);
