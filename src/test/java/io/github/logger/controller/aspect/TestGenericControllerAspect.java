@@ -729,6 +729,73 @@ public class TestGenericControllerAspect {
         resetMock(mockedObjects);
     }
 
+    @Test
+    public void when_ErrorOccursDuringSerialization_then_ThisErrorIsLogged() throws Throwable {
+        // mock behavior setup
+        ProceedingJoinPoint proceedingJoinPoint = mock(ProceedingJoinPoint.class, RETURNS_DEEP_STUBS);
+        List<Object> mockedObjects = MockUtils.mockWorkflow(proceedingJoinPoint);
+
+        RequestUtil mockedRequestUtil = MockUtils.mockRequestUtil();
+        mockedObjects.add(mockedRequestUtil);
+
+        JsonUtil mockedJsonUtil = mock(JsonUtil.class);
+        mockedObjects.add(mockedJsonUtil);
+        when(mockedJsonUtil.toJson(any(User.class))).thenThrow(new RuntimeException("Intentionally thrown error"));
+
+        GenericControllerAspect aspect = new GenericControllerAspect(logger, mockedJsonUtil, mockedRequestUtil);
+
+        // calling logic to be tested
+        Object actualReturnedValue = aspect.log(proceedingJoinPoint);
+
+        // preparing actual output
+        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+
+        // preparing expected output
+        List<Map<String, String>> expectedLogMessages = new ArrayList<>();
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "getUser() called with arguments: userId: [1] called via " +
+                                "url: [https://www.example.com], username: [Jean-Luc Picard]")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "getUser() took [0 ms] to complete")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "WARN",
+                        "message",
+                        "Unable to serialize object of type [bean.User] for logging java.lang.RuntimeException: Intentionally thrown error")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "getUser() returned: []")
+        );
+
+        assertEquals(expectedLogMessages, actualLogMessages);
+
+        User expectedReturnedValue = new User(1, "foobar@example.com", "password");
+        assertEquals(expectedReturnedValue, actualReturnedValue);
+
+        verify(mockedJsonUtil, times(1)).toJson(new User(1, "foobar@example.com", "password"));
+        verifyNoMoreInteractions(mockedJsonUtil);
+
+        resetMock(mockedObjects);
+    }
+
     private void resetMock(List<Object> mockedObjects) {
         mockedObjects.forEach(Mockito::reset);
     }

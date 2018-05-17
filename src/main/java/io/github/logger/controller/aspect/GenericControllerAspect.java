@@ -178,6 +178,8 @@ public class GenericControllerAspect extends LoggerAspect implements ControllerA
         if (needsSerialization) {
             String resultClassName = result == null ? "null" : result.getClass().getName();
             resultClassName = returnType.equals("java.lang.Void") ? returnType : resultClassName;
+
+            // TODO maybe we can try using toString() when serialization fails?
             serialize(result, resultClassName, postMessage);
         } else {
             postMessage.append(result);
@@ -240,7 +242,7 @@ public class GenericControllerAspect extends LoggerAspect implements ControllerA
         }
 
         if (!serializedSuccessfully) {
-            LOG.warn("Unable to serialize object of type [{}] for logging", objClassName, exception);
+            LOG.warn("Unable to serialize object of type [" + objClassName + "] for logging", exception);
         }
     }
 
