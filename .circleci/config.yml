@@ -3,6 +3,7 @@
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 #
 version: 2
+
 jobs:
   build:
     docker:
@@ -35,13 +36,14 @@ jobs:
 
       - run: ./gradlew -PossrhUsername=u -PossrhPassword=p dependencies
 
+      - run: ./gradlew -PossrhUsername=u -PossrhPassword=p test
+
+      - run:
+          name: Upload code coverage report
+          command: |
+            bash <(curl -s https://codecov.io/bash)
+
       - save_cache:
           paths:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
-
-      # run tests!
-      - run: ./gradlew -PossrhUsername=u -PossrhPassword=p test
-
-
-
