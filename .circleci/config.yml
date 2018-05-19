@@ -34,14 +34,13 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: ./gradlew -PossrhUsername=u -PossrhPassword=p dependencies
-
-      - run: ./gradlew -PossrhUsername=u -PossrhPassword=p test
+      - run:
+          name: Run test with coverage report
+          command: ./gradlew -PossrhUsername=u -PossrhPassword=p test jacocoTestReport
 
       - run:
-          name: Upload code coverage report
-          command: |
-            bash <(curl -s https://codecov.io/bash)
+          name: Upload coverage report to Codecov
+          command: bash <(curl -s https://codecov.io/bash)
 
       - save_cache:
           paths:
