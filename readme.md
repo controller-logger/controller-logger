@@ -1,10 +1,11 @@
 # Controller Logger
 
         createUser() called with arguments: id: [4], name: [Foo] called via url [http://localhost:8080/createUser], username [admin]
+
 [![CircleCI](https://circleci.com/gh/harshilsharma63/controller-logger.svg?style=svg)](https://circleci.com/gh/harshilsharma63/controller-logger)
 ![](https://sonarcloud.io/api/project_badges/measure?project=io.github.harshilsharma63%3Acontroller-logger&metric=alert_status)
-
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fharshilsharma63%2Fcontroller-logger.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fharshilsharma63%2Fcontroller-logger?ref=badge_large)
+[![codecov](https://codecov.io/gh/harshilsharma63/controller-logger/branch/master/graph/badge.svg)](https://codecov.io/gh/harshilsharma63/controller-logger)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fharshilsharma63%2Fcontroller-logger.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fharshilsharma63%2Fcontroller-logger?ref=badge_shield)
 
 ### Upcoming release features
 1. Test coverage
