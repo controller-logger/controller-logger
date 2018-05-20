@@ -219,12 +219,6 @@ public class GenericControllerAspect extends LoggerAspect implements ControllerA
             }
         }
 
-        // detect if its a mock object.
-        if (!serializedSuccessfully && objClassName.toLowerCase().contains("mock")) {
-            logMessage.append("Mock Object");
-            serializedSuccessfully = true;
-        }
-
         // try getting file size assuming object is a file type object
         if (!serializedSuccessfully) {
             long fileSize = -1;
@@ -239,6 +233,12 @@ public class GenericControllerAspect extends LoggerAspect implements ControllerA
                 logMessage.append("file of size:[").append(fileSize).append(" B]");
                 serializedSuccessfully = true;
             }
+        }
+
+        // detect if its a mock object.
+        if (!serializedSuccessfully && objClassName.toLowerCase().contains("mock")) {
+            logMessage.append("Mock Object");
+            serializedSuccessfully = true;
         }
 
         if (!serializedSuccessfully) {
@@ -277,12 +277,16 @@ public class GenericControllerAspect extends LoggerAspect implements ControllerA
         for (int i = 0, length = argNames.length; i < length; ++i) {
             boolean needsSerialization = false;
 
-            if (someArgNeedsSerialization) {
-                // We only need to serialize a param if @RequestBody annotation is found.
-                for (Annotation annotation : annotations[i]) {
-                    if (annotation instanceof RequestBody) {
-                        needsSerialization = true;
-                        break;
+            if (argValues[i] instanceof ByteArrayResource || argValues[i] instanceof MultipartFile) {
+                needsSerialization = true;
+            } else {
+                if (someArgNeedsSerialization) {
+                    // We only need to serialize a param if @RequestBody annotation is found.
+                    for (Annotation annotation : annotations[i]) {
+                        if (annotation instanceof RequestBody) {
+                            needsSerialization = true;
+                            break;
+                        }
                     }
                 }
             }

@@ -1,6 +1,7 @@
 package helpers;
 
 import bean.User;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,5 +41,10 @@ public class DummyController {
     @ResponseBody
     public void saveMemo(@RequestBody String text) {
         // no-op
+    }
+
+    @RequestMapping(value = "/uploadFile", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public void uploadFile(@RequestBody ByteArrayResource file) {
+        //no-op
     }
 }

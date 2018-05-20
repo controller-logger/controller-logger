@@ -16,6 +16,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.powermock.modules.junit4.PowerMockRunner;
+import org.springframework.core.io.ByteArrayResource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ import static helpers.MockUtils.mockProceedingJoinPoint;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 import static org.powermock.api.mockito.PowerMockito.doThrow;
+import static org.powermock.api.support.membermodification.MemberMatcher.method;
 
 @RunWith(PowerMockRunner.class)
 public class TestGenericControllerAspect {
@@ -1045,6 +1047,77 @@ public class TestGenericControllerAspect {
         assertNotNull(actualReturnedValue);
         assertTrue(actualReturnedValue.getClass().getName().toLowerCase().contains("mock"));
 
+        resetMock(mockedObjects);
+    }
+
+    @Test
+    public void when_FunctionGetsByteArrayResorceAsInput_then_ItsFileSizeIsLogged() throws Throwable {
+        // mock behavior setup
+        ProceedingJoinPoint proceedingJoinPoint = mock(ProceedingJoinPoint.class, RETURNS_DEEP_STUBS);
+
+        MethodSignature methodSignature = mockMethodSignature(
+                "uploadFile",
+                Void.class,
+                new String[]{"file"},
+                new Class[]{ByteArrayResource.class}
+        );
+
+        ByteArrayResource mockedFile = mock(ByteArrayResource.class);
+//        when(getClass().getClass()).thenReturn(ByteArrayResource.class);
+        when(mockedFile.contentLength()).thenReturn(1024L);
+
+        mockProceedingJoinPoint(
+                proceedingJoinPoint,
+                 null,
+                methodSignature,
+                new DummyController(),
+                new Object[]{mockedFile}
+        );
+
+        List<Object> mockedObjects = new ArrayList<>();
+        mockedObjects.add(methodSignature);
+        mockedObjects.add(proceedingJoinPoint);
+
+        RequestUtil mockedRequestUtil = MockUtils.mockRequestUtil();
+        mockedObjects.add(mockedRequestUtil);
+
+        GenericControllerAspect aspect = new GenericControllerAspect(logger, new JsonUtil(), mockedRequestUtil);
+
+        // calling logic to be tested
+        Object actualReturnedValue = aspect.log(proceedingJoinPoint);
+
+        // preparing actual output
+        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+
+        // preparing expected output
+        List<Map<String, String>> expectedLogMessages = new ArrayList<>();
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "uploadFile() called with arguments: file: [file of size:[1024 B]] called via " +
+                                "url: [https://www.example.com], username: [Jean-Luc Picard]")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "uploadFile() took [0 ms] to complete")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "uploadFile() returned: [void]")
+        );
+
+        assertEquals(expectedLogMessages, actualLogMessages);
+        assertNull(actualReturnedValue);
         resetMock(mockedObjects);
     }
 
