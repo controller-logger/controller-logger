@@ -39,7 +39,7 @@ public abstract class LoggerAspect {
     }
 
     public void setEnableDataScrubbing(boolean enableDataScrubbing) {
-        enableDataScrubbing = enableDataScrubbing;
+        this.enableDataScrubbing = enableDataScrubbing;
     }
 
     public void setParamBlacklistRegex(@Nonnull String paramBlacklistRegex) {

@@ -1536,6 +1536,73 @@ public class TestGenericControllerAspect {
     }
 
     @Test
+    public void when_DataScrubbingIsOff_then_NoArgumentsAreScrubbed() throws Throwable {
+        // mock behavior setup
+        ProceedingJoinPoint proceedingJoinPoint = mock(ProceedingJoinPoint.class, RETURNS_DEEP_STUBS);
+        MethodSignature methodSignature = mockMethodSignature(
+                "savePassword",
+                Void.class,
+                new String[]{"password"},
+                new Class[]{String.class}
+        );
+
+
+        mockProceedingJoinPoint(
+                proceedingJoinPoint,
+                null,
+                methodSignature,
+                new DummyController(),
+                new String[]{"my_secret_password"}
+        );
+
+        List<Object> mockedObjects = new ArrayList<>();
+        mockedObjects.add(methodSignature);
+        mockedObjects.add(proceedingJoinPoint);
+
+        RequestUtil mockedRequestUtil = MockUtils.mockRequestUtil();
+        GenericControllerAspect aspect = new GenericControllerAspect(logger, new JsonUtil(), mockedRequestUtil);
+        aspect.setEnableDataScrubbing(false);
+        mockedObjects.add(mockedRequestUtil);
+
+        // calling logic to be tested
+        Object actualReturnedValue = aspect.log(proceedingJoinPoint);
+
+        // preparing actual output
+        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+
+        // preparing expected output
+        List<Map<String, String>> expectedLogMessages = new ArrayList<>();
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "savePassword() called with arguments: password: [my_secret_password] called via " +
+                                "url: [https://www.example.com], username: [Jean-Luc Picard]")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "savePassword() took [0 ms] to complete")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "savePassword() returned: [void]")
+        );
+
+        assertEquals(expectedLogMessages, actualLogMessages);
+        assertNull(actualReturnedValue);
+        resetMock(mockedObjects);
+    }
+
+    @Test
     // purely in the interest of code coverage
     public void when_LoggerIsSet_then_ItIsSet() {
         GenericControllerAspect aspect = new GenericControllerAspect(logger, new JsonUtil(), new RequestUtil());
@@ -1560,6 +1627,12 @@ public class TestGenericControllerAspect {
 
         RequestUtil requestUtil = mock(RequestUtil.class);
         aspect.setRequestUtil(requestUtil);
+    }
+
+    @Test
+    // purely in the interest of code coverage
+    public void testDefaultConstructor() {
+        new GenericControllerAspect();
     }
 
     private void resetMock(List<Object> mockedObjects) {
