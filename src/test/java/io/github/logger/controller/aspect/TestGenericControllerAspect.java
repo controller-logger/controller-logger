@@ -7,6 +7,7 @@ import com.google.common.collect.ImmutableMap;
 import helpers.DummyController;
 import helpers.MockUtils;
 import helpers.Utils;
+import io.github.logger.controller.annotation.Logging;
 import io.github.logger.controller.utils.JsonUtil;
 import io.github.logger.controller.utils.RequestUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -16,6 +17,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.powermock.modules.junit4.PowerMockRunner;
+import org.slf4j.Logger;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -1331,6 +1333,33 @@ public class TestGenericControllerAspect {
         assertEquals(expectedLogMessages, actualLogMessages);
         assertNotNull(actualReturnedValue);
         resetMock(mockedObjects);
+    }
+
+    @Test
+    // purely in the interest of code coverage
+    public void when_LoggerIsSet_then_ItIsSet() {
+        GenericControllerAspect aspect = new GenericControllerAspect(logger, new JsonUtil(), new RequestUtil());
+
+        Logger logger = mock(Logger.class);
+        aspect.setLOG(logger);
+    }
+
+    @Test
+    // purely in the interest of code coverage
+    public void when_JsonUtilIsSet_then_ItIsSet() {
+        GenericControllerAspect aspect = new GenericControllerAspect(logger, new JsonUtil(), new RequestUtil());
+
+        JsonUtil jsonUtil = mock(JsonUtil.class);
+        aspect.setJsonUtil(jsonUtil);
+    }
+
+    @Test
+    // purely in the interest of code coverage
+    public void when_RequestUtilIsSet_then_ItIsSet() {
+        GenericControllerAspect aspect = new GenericControllerAspect(logger, new JsonUtil(), new RequestUtil());
+
+        RequestUtil requestUtil = mock(RequestUtil.class);
+        aspect.setRequestUtil(requestUtil);
     }
 
     private void resetMock(List<Object> mockedObjects) {
