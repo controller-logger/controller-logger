@@ -41,7 +41,7 @@ public class TestGenericControllerAspect {
     }
 
     @Test
-    public void basicTest() throws Throwable {
+    public void baseTest() throws Throwable {
         // mock behavior setup
         ProceedingJoinPoint proceedingJoinPoint = mock(ProceedingJoinPoint.class, RETURNS_DEEP_STUBS);
         List<Object> mockedObjects = MockUtils.mockWorkflow(proceedingJoinPoint);
@@ -1260,6 +1260,76 @@ public class TestGenericControllerAspect {
 
         assertEquals(expectedLogMessages, actualLogMessages);
         assertNull(actualReturnedValue);
+        resetMock(mockedObjects);
+    }
+
+    @Test
+    public void when_FunctionReturnsMultipartFile_then_ItsFileSizeIsLogged() throws Throwable {
+        // mock behavior setup
+        ProceedingJoinPoint proceedingJoinPoint = mock(ProceedingJoinPoint.class, RETURNS_DEEP_STUBS);
+
+        MethodSignature methodSignature = mockMethodSignature(
+                "getFileMultipartFile",
+                MultipartFile.class,
+                new String[]{},
+                new Class[]{}
+        );
+
+        MultipartFile mockedFile = mock(MultipartFile.class);
+        when(mockedFile.getSize()).thenReturn(1024L);
+
+        mockProceedingJoinPoint(
+                proceedingJoinPoint,
+                mockedFile,
+                methodSignature,
+                new DummyController(),
+                new Object[]{}
+        );
+
+        List<Object> mockedObjects = new ArrayList<>();
+        mockedObjects.add(methodSignature);
+        mockedObjects.add(proceedingJoinPoint);
+        mockedObjects.add(mockedFile);
+
+        RequestUtil mockedRequestUtil = MockUtils.mockRequestUtil();
+        mockedObjects.add(mockedRequestUtil);
+
+        GenericControllerAspect aspect = new GenericControllerAspect(logger, new JsonUtil(), mockedRequestUtil);
+
+        // calling logic to be tested
+        Object actualReturnedValue = aspect.log(proceedingJoinPoint);
+
+        // preparing actual output
+        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+
+        // preparing expected output
+        List<Map<String, String>> expectedLogMessages = new ArrayList<>();
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "getFileMultipartFile() called via url: [https://www.example.com], username: [Jean-Luc Picard]")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "getFileMultipartFile() took [0 ms] to complete")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "getFileMultipartFile() returned: [file of size:[1024 B]]")
+        );
+
+        assertEquals(expectedLogMessages, actualLogMessages);
+        assertNotNull(actualReturnedValue);
         resetMock(mockedObjects);
     }
 
