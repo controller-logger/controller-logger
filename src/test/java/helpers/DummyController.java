@@ -70,4 +70,9 @@ public class DummyController {
     public void savePassword(@RequestParam String password) {
         // no-op
     }
+
+    @RequestMapping(value = "/saveBunchOfSecretStuff")
+    public void saveSecretStuff(@RequestParam String secret1, @RequestParam String secret2, @RequestParam String noSecret) {
+        // no-op
+    }
 }
