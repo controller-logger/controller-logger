@@ -65,4 +65,9 @@ public class DummyController {
     public MultipartFile getFileMultipartFile() {
         return null; // no-op
     }
+
+    @RequestMapping(value = "/savePassword")
+    public void savePassword(@RequestParam String password) {
+        // no-op
+    }
 }
