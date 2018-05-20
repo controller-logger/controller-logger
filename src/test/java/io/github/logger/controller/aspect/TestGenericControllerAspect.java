@@ -796,6 +796,258 @@ public class TestGenericControllerAspect {
         resetMock(mockedObjects);
     }
 
+    @Test
+    public void when_FunctionArgumentsAreMockedObjects_then_TheyAreSerializedToMockedObjectStrings() {
+        // mock behavior setup
+        ProceedingJoinPoint proceedingJoinPoint = mock(ProceedingJoinPoint.class, RETURNS_DEEP_STUBS);
+
+        MethodSignature methodSignature = null;
+        try {
+            methodSignature = mockMethodSignature(
+                    "createUser",
+                    String.class,
+                    new String[]{"user", "source"},
+                    new Class[]{User.class, String.class}
+            );
+        } catch (NoSuchMethodException e) {
+            fail(e.getMessage());
+        }
+
+        try {
+            mockProceedingJoinPoint(
+                    proceedingJoinPoint,
+                    new User(1, "foobar@example.com", "password"),
+                    methodSignature,
+                    new DummyController(),
+                    new Object[]{mock(User.class), "homePage"}
+            );
+        } catch (Throwable throwable) {
+            fail(throwable.getMessage());
+        }
+
+        List<Object> mockedObjects = new ArrayList<>();
+        mockedObjects.add(methodSignature);
+        mockedObjects.add(proceedingJoinPoint);
+
+        RequestUtil mockedRequestUtil = MockUtils.mockRequestUtil();
+        mockedObjects.add(mockedRequestUtil);
+
+        GenericControllerAspect aspect = new GenericControllerAspect(logger, new JsonUtil(), mockedRequestUtil);
+
+        // calling logic to be tested
+        Object actualReturnedValue = null;
+        try {
+            actualReturnedValue = aspect.log(proceedingJoinPoint);
+        } catch (Throwable throwable) {
+            fail(throwable.getMessage());
+        }
+
+        // preparing actual output
+        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+
+        // preparing expected output
+        List<Map<String, String>> expectedLogMessages = new ArrayList<>();
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "createUser() called with arguments: user: [Mock Object], source: [homePage] called via " +
+                                "url: [https://www.example.com], username: [Jean-Luc Picard]")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "createUser() took [0 ms] to complete")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "createUser() returned: [{\"id\":1,\"email\":\"foobar@example.com\",\"password\":\"password\"}]")
+        );
+
+        assertEquals(expectedLogMessages, actualLogMessages);
+
+        User expectedReturnedValue = new User(1, "foobar@example.com", "password");
+        assertEquals(expectedReturnedValue, actualReturnedValue);
+
+        resetMock(mockedObjects);
+    }
+
+    @Test
+    public void when_FunctionReturnsMockedObjects_then_TheyAreSerializedToMockedObjectStrings() {
+        // mock behavior setup
+        ProceedingJoinPoint proceedingJoinPoint = mock(ProceedingJoinPoint.class, RETURNS_DEEP_STUBS);
+
+        MethodSignature methodSignature = null;
+        try {
+            methodSignature = mockMethodSignature(
+                    "createUser",
+                    String.class,
+                    new String[]{"user", "source"},
+                    new Class[]{User.class, String.class}
+            );
+        } catch (NoSuchMethodException e) {
+            fail(e.getMessage());
+        }
+
+        try {
+            mockProceedingJoinPoint(
+                    proceedingJoinPoint,
+                    mock(User.class),
+                    methodSignature,
+                    new DummyController(),
+                    new Object[]{new User(1, "foobar@example.com", "password"), "homePage"}
+            );
+        } catch (Throwable throwable) {
+            fail(throwable.getMessage());
+        }
+
+        List<Object> mockedObjects = new ArrayList<>();
+        mockedObjects.add(methodSignature);
+        mockedObjects.add(proceedingJoinPoint);
+
+        RequestUtil mockedRequestUtil = MockUtils.mockRequestUtil();
+        mockedObjects.add(mockedRequestUtil);
+
+        GenericControllerAspect aspect = new GenericControllerAspect(logger, new JsonUtil(), mockedRequestUtil);
+
+        // calling logic to be tested
+        Object actualReturnedValue = null;
+        try {
+            actualReturnedValue = aspect.log(proceedingJoinPoint);
+        } catch (Throwable throwable) {
+            fail(throwable.getMessage());
+        }
+
+        // preparing actual output
+        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+
+        // preparing expected output
+        List<Map<String, String>> expectedLogMessages = new ArrayList<>();
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "createUser() called with arguments: user: [{\"id\":1,\"email\":\"foobar@example.com\",\"password\":\"password\"}], " +
+                                "source: [homePage] called via " +
+                                "url: [https://www.example.com], username: [Jean-Luc Picard]")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "createUser() took [0 ms] to complete")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "createUser() returned: [Mock Object]")
+        );
+
+        assertEquals(expectedLogMessages, actualLogMessages);
+        assertNotNull(actualReturnedValue);
+        assertTrue(actualReturnedValue.getClass().getName().toLowerCase().contains("mock"));
+
+        resetMock(mockedObjects);
+    }
+
+    @Test
+    public void when_FunctionArgumentsAreMockAbjectsAndItReturnsMockedObjects_then_TheyAreAllSerializedToMockedObjectStrings() {
+        // mock behavior setup
+        ProceedingJoinPoint proceedingJoinPoint = mock(ProceedingJoinPoint.class, RETURNS_DEEP_STUBS);
+
+        MethodSignature methodSignature = null;
+        try {
+            methodSignature = mockMethodSignature(
+                    "createUser",
+                    String.class,
+                    new String[]{"user", "source"},
+                    new Class[]{User.class, String.class}
+            );
+        } catch (NoSuchMethodException e) {
+            fail(e.getMessage());
+        }
+
+        try {
+            mockProceedingJoinPoint(
+                    proceedingJoinPoint,
+                    mock(User.class),
+                    methodSignature,
+                    new DummyController(),
+                    new Object[]{mock(User.class), "homePage"}
+            );
+        } catch (Throwable throwable) {
+            fail(throwable.getMessage());
+        }
+
+        List<Object> mockedObjects = new ArrayList<>();
+        mockedObjects.add(methodSignature);
+        mockedObjects.add(proceedingJoinPoint);
+
+        RequestUtil mockedRequestUtil = MockUtils.mockRequestUtil();
+        mockedObjects.add(mockedRequestUtil);
+
+        GenericControllerAspect aspect = new GenericControllerAspect(logger, new JsonUtil(), mockedRequestUtil);
+
+        // calling logic to be tested
+        Object actualReturnedValue = null;
+        try {
+            actualReturnedValue = aspect.log(proceedingJoinPoint);
+        } catch (Throwable throwable) {
+            fail(throwable.getMessage());
+        }
+
+        // preparing actual output
+        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+
+        // preparing expected output
+        List<Map<String, String>> expectedLogMessages = new ArrayList<>();
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "createUser() called with arguments: user: [Mock Object], " +
+                                "source: [homePage] called via " +
+                                "url: [https://www.example.com], username: [Jean-Luc Picard]")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "createUser() took [0 ms] to complete")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "createUser() returned: [Mock Object]")
+        );
+
+        assertEquals(expectedLogMessages, actualLogMessages);
+        assertNotNull(actualReturnedValue);
+        assertTrue(actualReturnedValue.getClass().getName().toLowerCase().contains("mock"));
+
+        resetMock(mockedObjects);
+    }
+
     private void resetMock(List<Object> mockedObjects) {
         mockedObjects.forEach(Mockito::reset);
     }
