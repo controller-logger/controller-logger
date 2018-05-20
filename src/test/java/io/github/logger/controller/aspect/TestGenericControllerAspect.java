@@ -1051,7 +1051,7 @@ public class TestGenericControllerAspect {
     }
 
     @Test
-    public void when_FunctionGetsByteArrayResorceAsInput_then_ItsFileSizeIsLogged() throws Throwable {
+    public void when_FunctionGetsByteArrayResourceAsInput_then_ItsFileSizeIsLogged() throws Throwable {
         // mock behavior setup
         ProceedingJoinPoint proceedingJoinPoint = mock(ProceedingJoinPoint.class, RETURNS_DEEP_STUBS);
 
@@ -1063,7 +1063,6 @@ public class TestGenericControllerAspect {
         );
 
         ByteArrayResource mockedFile = mock(ByteArrayResource.class);
-//        when(getClass().getClass()).thenReturn(ByteArrayResource.class);
         when(mockedFile.contentLength()).thenReturn(1024L);
 
         mockProceedingJoinPoint(
@@ -1077,6 +1076,7 @@ public class TestGenericControllerAspect {
         List<Object> mockedObjects = new ArrayList<>();
         mockedObjects.add(methodSignature);
         mockedObjects.add(proceedingJoinPoint);
+        mockedObjects.add(mockedFile);
 
         RequestUtil mockedRequestUtil = MockUtils.mockRequestUtil();
         mockedObjects.add(mockedRequestUtil);
@@ -1118,6 +1118,76 @@ public class TestGenericControllerAspect {
 
         assertEquals(expectedLogMessages, actualLogMessages);
         assertNull(actualReturnedValue);
+        resetMock(mockedObjects);
+    }
+
+    @Test
+    public void when_FunctionReturnsByteArrayResource_then_ItsFileSizeIsLogged() throws Throwable {
+        // mock behavior setup
+        ProceedingJoinPoint proceedingJoinPoint = mock(ProceedingJoinPoint.class, RETURNS_DEEP_STUBS);
+
+        MethodSignature methodSignature = mockMethodSignature(
+                "getFileByteArrayResource",
+                ByteArrayResource.class,
+                new String[]{},
+                new Class[]{}
+        );
+
+        ByteArrayResource mockedFile = mock(ByteArrayResource.class);
+        when(mockedFile.contentLength()).thenReturn(1024L);
+
+        mockProceedingJoinPoint(
+                proceedingJoinPoint,
+                mockedFile,
+                methodSignature,
+                new DummyController(),
+                new Object[]{}
+        );
+
+        List<Object> mockedObjects = new ArrayList<>();
+        mockedObjects.add(methodSignature);
+        mockedObjects.add(proceedingJoinPoint);
+        mockedObjects.add(mockedFile);
+
+        RequestUtil mockedRequestUtil = MockUtils.mockRequestUtil();
+        mockedObjects.add(mockedRequestUtil);
+
+        GenericControllerAspect aspect = new GenericControllerAspect(logger, new JsonUtil(), mockedRequestUtil);
+
+        // calling logic to be tested
+        Object actualReturnedValue = aspect.log(proceedingJoinPoint);
+
+        // preparing actual output
+        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+
+        // preparing expected output
+        List<Map<String, String>> expectedLogMessages = new ArrayList<>();
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "getFileByteArrayResource() called via url: [https://www.example.com], username: [Jean-Luc Picard]")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "getFileByteArrayResource() took [0 ms] to complete")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "getFileByteArrayResource() returned: [file of size:[1024 B]]")
+        );
+
+        assertEquals(expectedLogMessages, actualLogMessages);
+        assertNotNull(actualReturnedValue);
         resetMock(mockedObjects);
     }
 

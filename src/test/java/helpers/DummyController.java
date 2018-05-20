@@ -4,6 +4,7 @@ import bean.User;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -46,5 +47,22 @@ public class DummyController {
     @RequestMapping(value = "/uploadFile", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public void uploadFile(@RequestBody ByteArrayResource file) {
         //no-op
+    }
+
+    @RequestMapping(value = "/uploadFile", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public void uploadFile(@RequestBody MultipartFile file) {
+        //no-op
+    }
+
+    @RequestMapping(value = "/getFile", produces = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @ResponseBody
+    public ByteArrayResource getFileByteArrayResource() {
+        return null; // no-op
+    }
+
+    @RequestMapping(value = "/getFile", produces = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @ResponseBody
+    public MultipartFile getFileMultipartFile() {
+        return null; // no-op
     }
 }
