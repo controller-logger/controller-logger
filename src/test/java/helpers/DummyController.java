@@ -75,4 +75,9 @@ public class DummyController {
     public void saveSecretStuff(@RequestParam String secret1, @RequestParam String secret2, @RequestParam String noSecret) {
         // no-op
     }
+
+    @RequestMapping(value = "/getNote", produces = MediaType.TEXT_PLAIN_VALUE)
+    public String getNote(@RequestParam int noteId) {
+        return "Hello, World!";
+    }
 }
