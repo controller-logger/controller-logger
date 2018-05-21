@@ -4,10 +4,7 @@ import bean.User;
 import com.github.valfirst.slf4jtest.TestLogger;
 import com.github.valfirst.slf4jtest.TestLoggerFactory;
 import com.google.common.collect.ImmutableMap;
-import helpers.DummyController;
-import helpers.DummyControllerWithoutClassMapping;
-import helpers.MockUtils;
-import helpers.Utils;
+import helpers.*;
 import io.github.logger.controller.annotation.Logging;
 import io.github.logger.controller.utils.JsonUtil;
 import io.github.logger.controller.utils.RequestUtil;
@@ -1796,10 +1793,10 @@ public class TestGenericControllerAspect {
         MethodSignature methodSignature = null;
         try {
             methodSignature = mockMethodSignature(
-                    "getUser",
-                    User.class,
-                    new String[]{"userId"},
-                    new Class[]{int.class},
+                    "nonRestApiMethodWithArgs",
+                    String.class,
+                    new String[]{"arg"},
+                    new Class[]{String.class},
                     DummyControllerWithoutClassMapping.class
             );
         } catch (NoSuchMethodException e) {
@@ -1808,10 +1805,10 @@ public class TestGenericControllerAspect {
         try {
             mockProceedingJoinPoint(
                     proceedingJoinPoint,
-                    new User(1, "foobar@example.com", "password"),
+                    "foobar",
                     methodSignature,
                     new DummyControllerWithoutClassMapping(),
-                    new Object[]{1}
+                    new Object[]{"foobar"}
             );
         } catch (Throwable throwable) {
             fail(throwable.getMessage());
@@ -1843,7 +1840,7 @@ public class TestGenericControllerAspect {
                         "level",
                         "INFO",
                         "message",
-                        "getUser() called with arguments: userId: [1] called via " +
+                        "nonRestApiMethodWithArgs() called with arguments: arg: [foobar] called via " +
                                 "url: [https://www.example.com], username: [Jean-Luc Picard]")
         );
 
@@ -1852,7 +1849,7 @@ public class TestGenericControllerAspect {
                         "level",
                         "INFO",
                         "message",
-                        "getUser() took [0 ms] to complete")
+                        "nonRestApiMethodWithArgs() took [0 ms] to complete")
         );
 
         expectedLogMessages.add(
@@ -1860,12 +1857,79 @@ public class TestGenericControllerAspect {
                         "level",
                         "INFO",
                         "message",
-                        "getUser() returned: [{\"id\":1,\"email\":\"foobar@example.com\",\"password\":\"password\"}]")
+                        "nonRestApiMethodWithArgs() returned: [foobar]")
         );
 
         assertEquals(expectedLogMessages, actualLogMessages);
 
-        User expectedReturnedValue = new User(1, "foobar@example.com", "password");
+        String expectedReturnedValue = "foobar";
+        assertEquals(expectedReturnedValue, actualReturnedValue);
+        resetMock(mockedObjects);
+    }
+
+    @Test
+    public void when_MethodDoesntSpecifyProducesAndClassProducesNonJson_then_ResponseIsNotSerialized() throws Throwable {
+        // mock behavior setup
+        ProceedingJoinPoint proceedingJoinPoint = mock(ProceedingJoinPoint.class, RETURNS_DEEP_STUBS);
+        MethodSignature methodSignature = mockMethodSignature(
+                "getNote",
+                String.class,
+                new String[]{"noteId"},
+                new Class[]{int.class},
+                DummyControllerProducingText.class
+        );
+        mockProceedingJoinPoint(
+                proceedingJoinPoint,
+                "Hello, World!",
+                methodSignature,
+                new DummyControllerProducingText(),
+                new Object[]{1}
+        );
+
+        List<Object> mockedObjects = new ArrayList<>();
+        mockedObjects.add(methodSignature);
+        mockedObjects.add(proceedingJoinPoint);
+
+        RequestUtil mockedRequestUtil = MockUtils.mockRequestUtil();
+        GenericControllerAspect aspect = new GenericControllerAspect(logger, new JsonUtil(), mockedRequestUtil);
+        mockedObjects.add(mockedRequestUtil);
+
+        // calling logic to be tested
+        Object actualReturnedValue = aspect.log(proceedingJoinPoint);
+
+        // preparing actual output
+        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+
+        // preparing expected output
+        List<Map<String, String>> expectedLogMessages = new ArrayList<>();
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "getNote() called with arguments: noteId: [1] called via " +
+                                "url: [https://www.example.com], username: [Jean-Luc Picard]")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "getNote() took [0 ms] to complete")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "getNote() returned: [Hello, World!]")
+        );
+
+        assertEquals(expectedLogMessages, actualLogMessages);
+
+        String expectedReturnedValue = "Hello, World!";
         assertEquals(expectedReturnedValue, actualReturnedValue);
         resetMock(mockedObjects);
     }
