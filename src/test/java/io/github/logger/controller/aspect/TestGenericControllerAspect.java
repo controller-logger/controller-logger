@@ -1700,6 +1700,72 @@ public class TestGenericControllerAspect {
         resetMock(mockedObjects);
     }
 
+    @Test
+    public void when_MethodProducesJsonResponse_then_ResponseIsSerializedWithoutCheckingClasssProduces() throws Throwable {
+        // mock behavior setup
+        ProceedingJoinPoint proceedingJoinPoint = mock(ProceedingJoinPoint.class, RETURNS_DEEP_STUBS);
+        MethodSignature methodSignature = mockMethodSignature(
+                "getNote",
+                String.class,
+                new String[]{"substring"},
+                new Class[]{String.class}
+        );
+        mockProceedingJoinPoint(
+                proceedingJoinPoint,
+                "Hello, World!",
+                methodSignature,
+                new DummyController(),
+                new Object[]{"hello"}
+        );
+
+        List<Object> mockedObjects = new ArrayList<>();
+        mockedObjects.add(methodSignature);
+        mockedObjects.add(proceedingJoinPoint);
+
+        RequestUtil mockedRequestUtil = MockUtils.mockRequestUtil();
+        GenericControllerAspect aspect = new GenericControllerAspect(logger, new JsonUtil(), mockedRequestUtil);
+        mockedObjects.add(mockedRequestUtil);
+
+        // calling logic to be tested
+        Object actualReturnedValue = aspect.log(proceedingJoinPoint);
+
+        // preparing actual output
+        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+
+        // preparing expected output
+        List<Map<String, String>> expectedLogMessages = new ArrayList<>();
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "getNote() called with arguments: substring: [hello] called via " +
+                                "url: [https://www.example.com], username: [Jean-Luc Picard]")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "getNote() took [0 ms] to complete")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "getNote() returned: [\"Hello, World!\"]")
+        );
+
+        assertEquals(expectedLogMessages, actualLogMessages);
+
+        String expectedReturnedValue = "Hello, World!";
+        assertEquals(expectedReturnedValue, actualReturnedValue);
+        resetMock(mockedObjects);
+    }
+
     private void resetMock(List<Object> mockedObjects) {
         mockedObjects.forEach(Mockito::reset);
     }

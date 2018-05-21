@@ -80,4 +80,9 @@ public class DummyController {
     public String getNote(@RequestParam int noteId) {
         return "Hello, World!";
     }
+
+    @RequestMapping(value = "/searchNote", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getNote(@RequestParam String substring) {
+        return "Hello, World!";
+    }
 }
