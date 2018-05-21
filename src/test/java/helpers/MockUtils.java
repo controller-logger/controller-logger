@@ -10,9 +10,12 @@ import org.aspectj.lang.reflect.MethodSignature;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.mockito.Mockito.*;
 
@@ -58,7 +61,8 @@ public class MockUtils {
                 "getUser",
                 User.class,
                 new String[]{"userId"},
-                new Class[]{int.class}
+                new Class[]{int.class},
+                DummyController.class
         );
     }
 
@@ -66,14 +70,15 @@ public class MockUtils {
             @Nonnull String methodName,
             @Nonnull Class returnType,
             @Nonnull String[] parameterNames,
-            @Nonnull Class[] parameterTypes
+            @Nonnull Class[] parameterTypes,
+            @Nonnull Class target
     ) throws NoSuchMethodException {
         MethodSignature methodSignature = mock(MethodSignature.class, RETURNS_DEEP_STUBS);
         when(methodSignature.getName()).thenReturn(methodName);
         when(methodSignature.getReturnType()).thenReturn(returnType);
         when(methodSignature.getParameterNames()).thenReturn(parameterNames);
 
-        Method method = DummyController.class.getMethod(methodName, parameterTypes);
+        Method method = target.getMethod(methodName, parameterTypes);
         when(methodSignature.getMethod()).thenReturn(method);
 
         return methodSignature;

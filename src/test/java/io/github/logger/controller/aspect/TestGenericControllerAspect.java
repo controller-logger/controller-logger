@@ -5,6 +5,7 @@ import com.github.valfirst.slf4jtest.TestLogger;
 import com.github.valfirst.slf4jtest.TestLoggerFactory;
 import com.google.common.collect.ImmutableMap;
 import helpers.DummyController;
+import helpers.DummyControllerWithoutClassMapping;
 import helpers.MockUtils;
 import helpers.Utils;
 import io.github.logger.controller.annotation.Logging;
@@ -19,8 +20,11 @@ import org.mockito.Mockito;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.slf4j.Logger;
 import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -206,7 +210,8 @@ public class TestGenericControllerAspect {
                     "nonRestApiMethodWithArgs",
                     String.class,
                     new String[]{"arg"},
-                    new Class[]{String.class}
+                    new Class[]{String.class},
+                    DummyController.class
             );
         } catch (NoSuchMethodException e) {
             fail(e.getMessage());
@@ -295,7 +300,8 @@ public class TestGenericControllerAspect {
                     "createUser",
                     User.class,
                     new String[]{"user", "source"},
-                    new Class[]{User.class, String.class}
+                    new Class[]{User.class, String.class},
+                    DummyController.class
             );
         } catch (NoSuchMethodException e) {
             fail(e.getMessage());
@@ -389,7 +395,8 @@ public class TestGenericControllerAspect {
                     "saveNote",
                     Boolean.class,
                     new String[]{"text"},
-                    new Class[]{String.class}
+                    new Class[]{String.class},
+                    DummyController.class
             );
         } catch (NoSuchMethodException e) {
             fail(e.getMessage());
@@ -479,7 +486,8 @@ public class TestGenericControllerAspect {
                     "createUser",
                     User.class,
                     new String[]{"user", "source"},
-                    new Class[]{User.class, String.class}
+                    new Class[]{User.class, String.class},
+                    DummyController.class
             );
         } catch (NoSuchMethodException e) {
             fail(e.getMessage());
@@ -569,7 +577,8 @@ public class TestGenericControllerAspect {
                     "createUser",
                     User.class,
                     new String[]{"user", "source"},
-                    new Class[]{User.class, String.class}
+                    new Class[]{User.class, String.class},
+                    DummyController.class
             );
         } catch (NoSuchMethodException e) {
             fail(e.getMessage());
@@ -658,7 +667,8 @@ public class TestGenericControllerAspect {
                     "saveMemo",
                     Void.class,
                     new String[]{"text"},
-                    new Class[]{String.class}
+                    new Class[]{String.class},
+                    DummyController.class
             );
         } catch (NoSuchMethodException e) {
             fail(e.getMessage());
@@ -812,7 +822,8 @@ public class TestGenericControllerAspect {
                     "createUser",
                     String.class,
                     new String[]{"user", "source"},
-                    new Class[]{User.class, String.class}
+                    new Class[]{User.class, String.class},
+                    DummyController.class
             );
         } catch (NoSuchMethodException e) {
             fail(e.getMessage());
@@ -896,7 +907,8 @@ public class TestGenericControllerAspect {
                     "createUser",
                     String.class,
                     new String[]{"user", "source"},
-                    new Class[]{User.class, String.class}
+                    new Class[]{User.class, String.class},
+                    DummyController.class
             );
         } catch (NoSuchMethodException e) {
             fail(e.getMessage());
@@ -980,7 +992,8 @@ public class TestGenericControllerAspect {
                     "createUser",
                     String.class,
                     new String[]{"user", "source"},
-                    new Class[]{User.class, String.class}
+                    new Class[]{User.class, String.class},
+                    DummyController.class
             );
         } catch (NoSuchMethodException e) {
             fail(e.getMessage());
@@ -1062,7 +1075,8 @@ public class TestGenericControllerAspect {
                 "uploadFile",
                 Void.class,
                 new String[]{"file"},
-                new Class[]{ByteArrayResource.class}
+                new Class[]{ByteArrayResource.class},
+                DummyController.class
         );
 
         ByteArrayResource mockedFile = mock(ByteArrayResource.class);
@@ -1133,7 +1147,8 @@ public class TestGenericControllerAspect {
                 "getFileByteArrayResource",
                 ByteArrayResource.class,
                 new String[]{},
-                new Class[]{}
+                new Class[]{},
+                DummyController.class
         );
 
         ByteArrayResource mockedFile = mock(ByteArrayResource.class);
@@ -1203,7 +1218,8 @@ public class TestGenericControllerAspect {
                 "uploadFile",
                 Void.class,
                 new String[]{"file"},
-                new Class[]{MultipartFile.class}
+                new Class[]{MultipartFile.class},
+                DummyController.class
         );
 
         MultipartFile mockedFile = mock(MultipartFile.class);
@@ -1274,7 +1290,8 @@ public class TestGenericControllerAspect {
                 "getFileMultipartFile",
                 MultipartFile.class,
                 new String[]{},
-                new Class[]{}
+                new Class[]{},
+                DummyController.class
         );
 
         MultipartFile mockedFile = mock(MultipartFile.class);
@@ -1343,7 +1360,8 @@ public class TestGenericControllerAspect {
                 "savePassword",
                 Void.class,
                 new String[]{"password"},
-                new Class[]{String.class}
+                new Class[]{String.class},
+                DummyController.class
         );
 
 
@@ -1409,7 +1427,8 @@ public class TestGenericControllerAspect {
                 "savePassword",
                 Void.class,
                 new String[]{"password"},
-                new Class[]{String.class}
+                new Class[]{String.class},
+                DummyController.class
         );
 
 
@@ -1476,7 +1495,8 @@ public class TestGenericControllerAspect {
                 "saveSecretStuff",
                 Void.class,
                 new String[]{"secret1", "secret2", "noSecret"},
-                new Class[]{String.class, String.class, String.class}
+                new Class[]{String.class, String.class, String.class},
+                DummyController.class
         );
 
 
@@ -1543,7 +1563,8 @@ public class TestGenericControllerAspect {
                 "savePassword",
                 Void.class,
                 new String[]{"password"},
-                new Class[]{String.class}
+                new Class[]{String.class},
+                DummyController.class
         );
 
 
@@ -1642,7 +1663,8 @@ public class TestGenericControllerAspect {
                 "getNote",
                 String.class,
                 new String[]{"noteId"},
-                new Class[]{int.class}
+                new Class[]{int.class},
+                DummyController.class
         );
         mockProceedingJoinPoint(
                 proceedingJoinPoint,
@@ -1708,7 +1730,8 @@ public class TestGenericControllerAspect {
                 "getNote",
                 String.class,
                 new String[]{"substring"},
-                new Class[]{String.class}
+                new Class[]{String.class},
+                DummyController.class
         );
         mockProceedingJoinPoint(
                 proceedingJoinPoint,
@@ -1762,6 +1785,87 @@ public class TestGenericControllerAspect {
         assertEquals(expectedLogMessages, actualLogMessages);
 
         String expectedReturnedValue = "Hello, World!";
+        assertEquals(expectedReturnedValue, actualReturnedValue);
+        resetMock(mockedObjects);
+    }
+
+    @Test
+    public void when_NoClassRequestMapping_but_MuthodSpecifiesJsonOutput_then_ResponseIsSerialized() {
+        // mock behavior setup
+        ProceedingJoinPoint proceedingJoinPoint = mock(ProceedingJoinPoint.class, RETURNS_DEEP_STUBS);
+        MethodSignature methodSignature = null;
+        try {
+            methodSignature = mockMethodSignature(
+                    "getUser",
+                    User.class,
+                    new String[]{"userId"},
+                    new Class[]{int.class},
+                    DummyControllerWithoutClassMapping.class
+            );
+        } catch (NoSuchMethodException e) {
+            fail(e.getMessage());
+        }
+        try {
+            mockProceedingJoinPoint(
+                    proceedingJoinPoint,
+                    new User(1, "foobar@example.com", "password"),
+                    methodSignature,
+                    new DummyControllerWithoutClassMapping(),
+                    new Object[]{1}
+            );
+        } catch (Throwable throwable) {
+            fail(throwable.getMessage());
+        }
+
+        List<Object> mockedObjects = new ArrayList<>();
+        mockedObjects.add(methodSignature);
+        mockedObjects.add(proceedingJoinPoint);
+
+        RequestUtil mockedRequestUtil = MockUtils.mockRequestUtil();
+        GenericControllerAspect aspect = new GenericControllerAspect(logger, new JsonUtil(), mockedRequestUtil);
+        mockedObjects.add(mockedRequestUtil);
+
+        // calling logic to be tested
+        Object actualReturnedValue = null;
+        try {
+            actualReturnedValue = aspect.log(proceedingJoinPoint);
+        } catch (Throwable throwable) {
+            fail(throwable.getMessage());
+        }
+
+        // preparing actual output
+        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+
+        // preparing expected output
+        List<Map<String, String>> expectedLogMessages = new ArrayList<>();
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "getUser() called with arguments: userId: [1] called via " +
+                                "url: [https://www.example.com], username: [Jean-Luc Picard]")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "getUser() took [0 ms] to complete")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "getUser() returned: [{\"id\":1,\"email\":\"foobar@example.com\",\"password\":\"password\"}]")
+        );
+
+        assertEquals(expectedLogMessages, actualLogMessages);
+
+        User expectedReturnedValue = new User(1, "foobar@example.com", "password");
         assertEquals(expectedReturnedValue, actualReturnedValue);
         resetMock(mockedObjects);
     }
