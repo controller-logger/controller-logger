@@ -22,9 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static helpers.MockUtils.mockMethodSignature;
 import static helpers.MockUtils.mockProceedingJoinPoint;
@@ -1960,6 +1958,58 @@ public class TestGenericControllerAspect {
         );
 
         assertEquals(expectedLogMessages, actualLogMessages);
+        resetMock(mockedObjects);
+    }
+
+    @Test
+    public void when_NewArgNameIsAddedToParamBlacklist_then_ItIsScrubbedAsWell() throws Throwable {
+        // mock behavior setup
+        ProceedingJoinPoint proceedingJoinPoint = mock(ProceedingJoinPoint.class, RETURNS_DEEP_STUBS);
+        List<Object> mockedObjects = MockUtils.mockWorkflow(proceedingJoinPoint);
+
+        RequestUtil mockedRequestUtil = MockUtils.mockRequestUtil();
+        mockedObjects.add(mockedRequestUtil);
+
+        GenericControllerAspect aspect = new GenericControllerAspect(logger, new JsonUtil(), mockedRequestUtil);
+        aspect.setCustomParamBlacklist(new HashSet<>(Collections.singletonList("userId")));
+
+        // calling logic to be tested
+        Object actualReturnedValue = aspect.log(proceedingJoinPoint);
+
+        // preparing actual output
+        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+
+        // preparing expected output
+        List<Map<String, String>> expectedLogMessages = new ArrayList<>();
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "getUser() called with arguments: userId: [xxxxx] called via " +
+                                "url: [https://www.example.com], username: [Jean-Luc Picard]")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "getUser() took [0 ms] to complete")
+        );
+
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "getUser() returned: [{\"id\":1,\"email\":\"foobar@example.com\",\"password\":\"password\"}]")
+        );
+
+        assertEquals(expectedLogMessages, actualLogMessages);
+
+        User expectedReturnedValue = new User(1, "foobar@example.com", "password");
+        assertEquals(expectedReturnedValue, actualReturnedValue);
         resetMock(mockedObjects);
     }
 
