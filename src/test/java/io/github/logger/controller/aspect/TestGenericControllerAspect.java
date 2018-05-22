@@ -1651,6 +1651,15 @@ public class TestGenericControllerAspect {
     }
 
     @Test
+    // purely in the interest of code coverage
+    public void testPointcuts() {
+        GenericControllerAspect aspect = new GenericControllerAspect(logger, new JsonUtil(), new RequestUtil());
+        aspect.methodOrClassLoggingEnabledPointcut();
+        aspect.methodLoggingNotDisabledPointcut();
+        aspect.allPublicControllerMethodsPointcut();
+    }
+
+    @Test
     public void when_MethodProducesNonJsonResponseButClassSpecifiesJsonResponse_then_ResponseIsSerialized() throws Throwable {
         // mock behavior setup
         ProceedingJoinPoint proceedingJoinPoint = mock(ProceedingJoinPoint.class, RETURNS_DEEP_STUBS);
