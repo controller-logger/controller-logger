@@ -1934,6 +1934,35 @@ public class TestGenericControllerAspect {
         resetMock(mockedObjects);
     }
 
+    @Test
+    public void when_ExceptionOccursInActualControllerLogic_then_thatExceptionIsLogged() throws Throwable {
+        // mock behavior setup
+        ProceedingJoinPoint proceedingJoinPoint = mock(ProceedingJoinPoint.class, RETURNS_DEEP_STUBS);
+        List<Object> mockedObjects = MockUtils.mockWorkflow(proceedingJoinPoint);
+
+        RequestUtil mockedRequestUtil = MockUtils.mockRequestUtil();
+        mockedObjects.add(mockedRequestUtil);
+
+        GenericControllerAspect aspect = new GenericControllerAspect(logger, new JsonUtil(), mockedRequestUtil);
+        aspect.onException(proceedingJoinPoint, new RuntimeException("Intentionally thrown exception"));
+
+        // preparing actual output
+        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+
+        // preparing expected output
+        List<Map<String, String>> expectedLogMessages = new ArrayList<>();
+        expectedLogMessages.add(
+                ImmutableMap.of(
+                        "level",
+                        "INFO",
+                        "message",
+                        "getUser() threw exception: [java.lang.RuntimeException: Intentionally thrown exception]")
+        );
+
+        assertEquals(expectedLogMessages, actualLogMessages);
+        resetMock(mockedObjects);
+    }
+
     private void resetMock(List<Object> mockedObjects) {
         mockedObjects.forEach(Mockito::reset);
     }
