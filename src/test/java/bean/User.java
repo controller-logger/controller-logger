@@ -18,4 +18,7 @@ public class User {
 
     @Nonnull
     private String password;
+
+    public User() {
+    }
 }

@@ -31,7 +31,6 @@ import static org.mockito.Mockito.*;
 import static org.powermock.api.mockito.PowerMockito.doThrow;
 import static org.powermock.api.support.membermodification.MemberMatcher.method;
 
-@RunWith(PowerMockRunner.class)
 public class TestGenericControllerAspect {
 
     private TestLogger logger = TestLoggerFactory.getTestLogger(GenericControllerAspect.class);

@@ -31,12 +31,12 @@ public class RequestContext {
 
         RequestContext that = (RequestContext) o;
 
-        return context != null ? context.equals(that.context) : that.context == null;
+        return context.equals(that.context);
     }
 
     @Override
     public int hashCode() {
-        return context != null ? context.hashCode() : 0;
+        return context.hashCode();
     }
 
     @Override
