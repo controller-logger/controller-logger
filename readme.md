@@ -8,7 +8,6 @@
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fharshilsharma63%2Fcontroller-logger.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fharshilsharma63%2Fcontroller-logger?ref=badge_shield)
 
 ### Upcoming release features
-1. Test coverage
 1. Performance improvements
 1. Dependency updates
 
@@ -163,4 +162,4 @@ Further customizations can be done by extending `GenericControllerAspect` class,
 - [x] Avoid logging sensitive information such as passwords, cookie data, session information.
 - [ ] Test with Spring 5
 - [ ] Test with Java 9
-- [ ] Add unit tests
+- [x] Add unit tests
