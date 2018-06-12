@@ -39,6 +39,7 @@ body {
   font-family: $title-font !important;
   font-size: 4.5em;
   color: white;
+  max-width: 500px;
 }
 
 .jumbotron {
@@ -192,6 +193,31 @@ footer {
   .fa-github:hover {
     animation: animateColors 1s linear infinite;
   }
+}
+
+.projectLogo {
+  height: 80px;
+  margin-top: 5px;
+  display: block;
+  max-width: 100px;
+  float: left;
+  margin-right: 0;
+}
+
+.titleRow {
+  flex: 0 0 auto;
+  width: 115px;
+  margin: auto;
+  min-width: 560px;
+}
+
+.projectLogo svg {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.projectLogo * {
+  stroke: #e152a9;
 }
 
 @keyframes animateColors {
