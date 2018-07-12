@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @RunWith(SpringRunner.class)
 @SpringBootTest(
         webEnvironment = SpringBootTest.WebEnvironment.MOCK,
-        classes = {BeanConfig.class, ApiSecurityConfig.class, UserController.class, GenericControllerAspect.class, ControllerLoggerConsumerApplication.class})
+        classes = {ApiSecurityConfig.class, UserController.class, BeanConfig.class, ControllerLoggerConsumerApplication.class})
 @AutoConfigureMockMvc
 public class IntegrationTest {
 

@@ -1646,7 +1646,8 @@ public class TestGenericControllerAspect {
 
     @Test
     // purely in the interest of code coverage
-    public void testDefaultConstructor() {new GenericControllerAspect();
+    public void testDefaultConstructor() {
+        new GenericControllerAspect();
     }
 
     @Test

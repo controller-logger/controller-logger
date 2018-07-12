@@ -51,7 +51,7 @@ public class GenericControllerAspect extends LoggerAspect implements ControllerA
 
     public GenericControllerAspect() {
         this(
-                org.slf4j.LoggerFactory.getLogger(GenericControllerAspect.class),
+                org.slf4j.LoggerFactory.getLogger(String.class),
                 new JsonUtil(),
                 new RequestUtil()
         );
