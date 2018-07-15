@@ -36,7 +36,7 @@ public class IntegrationTest extends BaseIntegrationTest {
     }
 
     @Test
-    public void givenEmployees_whenGetEmployees_thenStatus200() throws Exception {
+    public void baseTest() throws Exception {
         MvcResult result = mvc.perform(
                 get("/getUser")
                         .header("Authorization", Utils.generateBasicAuthToken("username", "password"))
