@@ -43,11 +43,9 @@ public class IntegrationTest extends BaseIntegrationTest {
                         .header("Accept", "application/json")
         ).andReturn();
 
-        User user = new JsonUtil().fromJson(result.getResponse().getContentAsString(), User.class);
-        logger.getAllLoggingEvents().forEach(x -> System.out.println(x.getMessage()));
+        User actualUser = new JsonUtil().fromJson(result.getResponse().getContentAsString(), User.class);
 
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
-
         expectedLogMessages.add(
                 ImmutableMap.of(
                         "level", "INFO",
@@ -70,6 +68,9 @@ public class IntegrationTest extends BaseIntegrationTest {
         List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         validateLogs(expectedLogMessages, actualLogMessages);
+
+        User expectedUser = new User(1, "foobar@example.com", "secretpassword");
+        assertEquals(expectedUser, actualUser);
     }
 
     private void validateLogs(List<Map<String, String>> expectedLogMessages, List<Map<String, String>> actualLogMessages) {
