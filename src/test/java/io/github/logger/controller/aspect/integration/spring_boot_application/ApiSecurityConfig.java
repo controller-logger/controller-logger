@@ -1,4 +1,4 @@
-package integration;
+package io.github.logger.controller.aspect.integration.spring_boot_application;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

@@ -54,7 +54,7 @@ public class TestGenericControllerAspect {
         Object actualReturnedValue = aspect.log(proceedingJoinPoint);
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -106,7 +106,7 @@ public class TestGenericControllerAspect {
         Object actualReturnedValue = aspect.log(proceedingJoinPoint);
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -159,7 +159,7 @@ public class TestGenericControllerAspect {
         Object actualReturnedValue = aspect.log(proceedingJoinPoint);
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -243,7 +243,7 @@ public class TestGenericControllerAspect {
         }
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -335,7 +335,7 @@ public class TestGenericControllerAspect {
         }
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -429,7 +429,7 @@ public class TestGenericControllerAspect {
         }
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -518,7 +518,7 @@ public class TestGenericControllerAspect {
         }
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -609,7 +609,7 @@ public class TestGenericControllerAspect {
         }
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -701,7 +701,7 @@ public class TestGenericControllerAspect {
         }
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -757,7 +757,7 @@ public class TestGenericControllerAspect {
         Object actualReturnedValue = aspect.log(proceedingJoinPoint);
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -853,7 +853,7 @@ public class TestGenericControllerAspect {
         }
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -938,7 +938,7 @@ public class TestGenericControllerAspect {
         }
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -1023,7 +1023,7 @@ public class TestGenericControllerAspect {
         }
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -1098,7 +1098,7 @@ public class TestGenericControllerAspect {
         Object actualReturnedValue = aspect.log(proceedingJoinPoint);
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -1170,7 +1170,7 @@ public class TestGenericControllerAspect {
         Object actualReturnedValue = aspect.log(proceedingJoinPoint);
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -1241,7 +1241,7 @@ public class TestGenericControllerAspect {
         Object actualReturnedValue = aspect.log(proceedingJoinPoint);
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -1313,7 +1313,7 @@ public class TestGenericControllerAspect {
         Object actualReturnedValue = aspect.log(proceedingJoinPoint);
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -1379,7 +1379,7 @@ public class TestGenericControllerAspect {
         Object actualReturnedValue = aspect.log(proceedingJoinPoint);
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -1447,7 +1447,7 @@ public class TestGenericControllerAspect {
         Object actualReturnedValue = aspect.log(proceedingJoinPoint);
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -1515,7 +1515,7 @@ public class TestGenericControllerAspect {
         Object actualReturnedValue = aspect.log(proceedingJoinPoint);
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -1583,7 +1583,7 @@ public class TestGenericControllerAspect {
         Object actualReturnedValue = aspect.log(proceedingJoinPoint);
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -1690,7 +1690,7 @@ public class TestGenericControllerAspect {
         Object actualReturnedValue = aspect.log(proceedingJoinPoint);
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -1757,7 +1757,7 @@ public class TestGenericControllerAspect {
         Object actualReturnedValue = aspect.log(proceedingJoinPoint);
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -1838,7 +1838,7 @@ public class TestGenericControllerAspect {
         }
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -1905,7 +1905,7 @@ public class TestGenericControllerAspect {
         Object actualReturnedValue = aspect.log(proceedingJoinPoint);
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -1954,7 +1954,7 @@ public class TestGenericControllerAspect {
         aspect.onException(proceedingJoinPoint, new RuntimeException("Intentionally thrown exception"));
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();
@@ -1986,7 +1986,7 @@ public class TestGenericControllerAspect {
         Object actualReturnedValue = aspect.log(proceedingJoinPoint);
 
         // preparing actual output
-        List<ImmutableMap<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
+        List<Map<String, String>> actualLogMessages = Utils.getFormattedLogEvents(logger);
 
         // preparing expected output
         List<Map<String, String>> expectedLogMessages = new ArrayList<>();

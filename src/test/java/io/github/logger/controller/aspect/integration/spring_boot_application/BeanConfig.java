@@ -1,6 +1,7 @@
-package integration;
+package io.github.logger.controller.aspect.integration.spring_boot_application;
 
 import io.github.logger.controller.aspect.GenericControllerAspect;
+import io.github.logger.controller.aspect.integration.IntegrationTest;
 import io.github.logger.controller.utils.JsonUtil;
 import io.github.logger.controller.utils.RequestUtil;
 import org.springframework.context.annotation.Bean;

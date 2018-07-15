@@ -1,4 +1,4 @@
-package integration;
+package io.github.logger.controller.aspect.integration.spring_boot_application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
