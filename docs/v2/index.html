@@ -61,7 +61,43 @@ URI     : https://colorlib.com
             <h1>Automatic API Logging For Spring</h1>
             <p class="tagline">A Java library to ease the life of web developers by providing automatic logging of input, output and some context data for controllers.</p>
         </div>
-        <div class="img-holder mt-3"><img src="images/iphonex.png" alt="phone" class="img-fluid"></div>
+        <div style="/*! border: 1px solid black; *//*! margin-top: 4rem !important; */width: 72%;margin: 0 auto;border-bottom: none;border-radius: 8px 9px 0 0;/*! padding-top: 1rem; *//*! padding-left: 1rem; *//*! padding-right: 1rem; */background-color: #2c2c2c;/*! color: white; */margin-top: 3rem !important;" class="img-holder mt-3">
+            <div class="titlebar" style="height: 23px;background-color: silver;padding: 4px 16px;">
+                <div class="actionButton close"></div>
+                <div class="actionButton maximize"></div>
+                <div class="actionButton minimize"></div>
+            </div>
+            <div class="container-fluid showstopper">
+                <code style="background-color: unset;text-align: left;">
+                    <p class="line">
+                        <span class="timestamp">2018-02-26 16:52:35.419</span> <span class="log-level">INFO:</span>
+                        <span data-toggle="tooltip" class="annotation" data-placement="top" title="" data-original-title="Controller function name">getUser()</span>
+                        called via url
+                        <span data-toggle="tooltip" class="annotation" data-placement="top" title="" data-original-title="URL through which API was called">[http://localhost:8080/get-random-user]</span>,
+                        <span data-toggle="tooltip" class="annotation" data-placement="top" title="" data-original-title="Auth user who called the API">username [username]</span>
+                    </p>
+                    <p class="line">
+                        <span class="timestamp">2018-02-26 16:52:35.624</span> <span class="log-level">INFO:</span>
+                        <span data-toggle="tooltip" class="annotation" data-placement="top" title="" data-original-title="Controller function name">getUser()</span>
+                        took
+                        <span data-toggle="tooltip" class="annotation" data-placement="top" title="" data-original-title="Total execution time">[201 ms]</span>
+                        to complete
+                    </p>
+                    <p class="line">
+                        <span class="timestamp">2018-02-26 16:52:35.624</span> <span class="log-level">INFO:</span>
+                        <span data-toggle="tooltip" class="annotation" data-placement="top" title="" data-original-title="Controller function name">getUser()</span>
+                        returned:
+                        <span data-toggle="tooltip" class="annotation" data-placement="bottom" title="" data-original-title="Response returned by API">
+                                 [User(id=SP-937-215,
+                                 email=jeanlucpicard@starfleet.com,
+                                 password=xxxxx,
+                                 firstName=Jean-Luc,
+                                 lastName=Picard)]
+                        </span>
+                    </p>
+                </code>
+            </div>
+        </div>
     </header>
 
     <div class="client-logos my-5">

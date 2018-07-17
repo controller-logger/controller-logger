@@ -654,3 +654,25 @@ header {
 .navbar {
     padding: 0 1rem;
 }
+
+.actionButton.close {
+
+    background-color: rgb(255, 70, 59);
+
+}
+.actionButton {
+    height: 14px;
+    width: 14px;
+    float: left;
+    margin-right: 8px;
+    border-radius: 50%;
+    opacity: 1;
+}
+
+.actionButton.maximize {
+    background-color: rgb(255, 154, 0);
+}
+
+.actionButton.minimize {
+    background-color: rgb(54, 169, 12);
+}
