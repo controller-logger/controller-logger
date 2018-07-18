@@ -676,3 +676,11 @@ header {
 .actionButton.minimize {
     background-color: rgb(54, 169, 12);
 }
+
+.log-level {
+    color: #cf2cbe;
+}
+
+.timestamp {
+    color: #a45ee7;
+}
