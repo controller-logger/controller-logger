@@ -684,3 +684,15 @@ header {
 .timestamp {
     color: #a45ee7;
 }
+
+.showstopper {
+    padding-top: 0.2rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.card.features {
+    height: 100%;
+}
