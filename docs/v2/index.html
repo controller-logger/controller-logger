@@ -10,7 +10,8 @@ URI     : https://colorlib.com
  -->
 
 <head>
-    <title>MobApp - App Landing Page Template</title>
+    <title>Controller Logger</title>
+    <link rel="shortcut icon" type="image/svg" href="images/logo.svg"/>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -29,6 +30,8 @@ URI     : https://colorlib.com
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <!-- Main css -->
     <link href="css/style.css" rel="stylesheet">
+
+    <link href="css/code-skin.css" rel="stylesheet">
 </head>
 
 <body data-spy="scroll" data-target="#navbar" data-offset="30">
@@ -122,7 +125,7 @@ URI     : https://colorlib.com
         </div>
     </header>
 
-    <div class="client-logos my-5 hidden">
+    <div class="client-logos my-5">
         <div class="container text-center">
             <img src="images/client-logos.png" alt="client logos" class="img-fluid">
         </div>
@@ -216,78 +219,119 @@ URI     : https://colorlib.com
 
             <ul class="nav nav-tabs nav-justified" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#communication">Communication</a>
+                    <a class="nav-link active" data-toggle="tab" href="#communication">Quick Setup</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#schedule">Scheduling</a>
+                    <a class="nav-link" data-toggle="tab" href="#schedule">Security</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#messages">Messages</a>
+                    <a class="nav-link" data-toggle="tab" href="#messages">Control</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#livechat">Live Chat</a>
+                    <a class="nav-link" data-toggle="tab" href="#livechat">Rock Solid</a>
                 </li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane fade show active" id="communication">
+                <div class="tab-pane fade active show" id="communication">
                     <div class="d-flex flex-column flex-lg-row">
-                        <img src="images/graphic.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
                         <div>
 
-                            <h2>Communicate with ease</h2>
-                            <p class="lead">Uniquely underwhelm premium outsourcing with proactive leadership skills. </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. Ut placerat dui eu nulla
-                                congue tincidunt ac a nibh. Mauris accumsan pulvinar lorem placerat volutpat. Praesent quis facilisis elit. Sed condimentum neque quis ex porttitor,
-                            </p>
-                            <p> malesuada faucibus augue aliquet. Sed elit est, eleifend sed dapibus a, semper a eros. Vestibulum blandit vulputate pharetra. Phasellus lobortis leo a nisl euismod, eu faucibus justo sollicitudin. Mauris consectetur, tortor
-                                sed tempor malesuada, sem nunc porta augue, in dictum arcu tortor id turpis. Proin aliquet vulputate aliquam.
-                            </p>
+                            <h2>It takes just 6 lines to start rocking!</h2>
+                            <p class="lead">What could be more simpler?</p>
+                            <div class="code">
+                                <pre class="prettyprint">// add project dependency
+compile 'io.github.harshilsharma63:controller-logger:1.2.3'
+</pre>
+                            </div>
+                            <div class="code">
+                                <pre class="prettyprint">// create a bean for AOP weaver to pick
+@Bean
+public GenericControllerAspect genericControllerAspect() {
+    return new GenericControllerAspect();
+}</pre>
+                            </div>
+                            <div class="code">
+                                <pre class="prettyprint">// add this annotation to your controller classs
+@Logging
+</pre>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="schedule">
                     <div class="d-flex flex-column flex-lg-row">
                         <div>
-                            <h2>Scheduling when you want</h2>
-                            <p class="lead">Uniquely underwhelm premium outsourcing with proactive leadership skills. </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. Ut placerat dui eu nulla
-                                congue tincidunt ac a nibh. Mauris accumsan pulvinar lorem placerat volutpat. Praesent quis facilisis elit. Sed condimentum neque quis ex porttitor,
-                            </p>
-                            <p> malesuada faucibus augue aliquet. Sed elit est, eleifend sed dapibus a, semper a eros. Vestibulum blandit vulputate pharetra. Phasellus lobortis leo a nisl euismod, eu faucibus justo sollicitudin. Mauris consectetur, tortor
-                                sed tempor malesuada, sem nunc porta augue, in dictum arcu tortor id turpis. Proin aliquet vulputate aliquam.
-                            </p>
+                            <h2>Prevent logging sensitive information</h2>
+                            <p class="lead">We make no compromises with your security</p>
+                            <p>With a data scrubbing feature (enabled by default) built in, you don't need to worry about sensitive information getting logged. It scrubs information such as passwords, auth tokens, API keys and you can extend it as well to match your custom requirements.</p>
+                            <p class="line">
+                                <code>
+                            &gt; <span class="timestamp">2018-02-26 16:52:35.419</span> <span class="log-level">INFO:</span>
+                            <span data-toggle="tooltip" class="annotation" data-placement="top" title="" data-original-title="Controller function name">getResource() called with arguments apiKey: [xxxxx]</span>
+                            called via url
+                            <span data-toggle="tooltip" class="annotation" data-placement="top" title="" data-original-title="URL through which API was called">[http://localhost:8080/get-resource]</span>,
+                            <span data-toggle="tooltip" class="annotation" data-placement="top" title="" data-original-title="Auth user who called the API">username [username]</span>
+                        </code></p><code>
+                        </code>
+                            <p></p>
                         </div>
-                        <img src="images/graphic.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
                     </div>
                 </div>
                 <div class="tab-pane fade" id="messages">
                     <div class="d-flex flex-column flex-lg-row">
-                        <img src="images/graphic.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
                         <div>
-                            <h2>Realtime Messaging service</h2>
-                            <p class="lead">Uniquely underwhelm premium outsourcing with proactive leadership skills. </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. Ut placerat dui eu nulla
-                                congue tincidunt ac a nibh. Mauris accumsan pulvinar lorem placerat volutpat. Praesent quis facilisis elit. Sed condimentum neque quis ex porttitor,
+                            <h2>Fine-Grain Control</h2>
+                            <p class="lead">Use provided annotations to fine-grain your logging setup</p>
+                            <p>Using the <code>@Logging</code> and <code>@NoLogging</code> annotations, target exactly the classes and methods you want logging to work for or to skipped.</p>
+                            <p></p>
+                            <p>
+                                <pre class="prettyprint">
+@RestController
+@Logging
+public class UserController {
+    // everything here will be logged
+    // due to @Logging annotation on class
+    ...
+
+    @NoLogging
+    @RequestMapping("/is-active")
+    @RequestBody
+    public bool isActive(@RequestParam String userId) {
+        // expect this
+        // this won't be logged due to @NoLogging on this method
+    }
+}
+                                </pre>
                             </p>
-                            <p> malesuada faucibus augue aliquet. Sed elit est, eleifend sed dapibus a, semper a eros. Vestibulum blandit vulputate pharetra. Phasellus lobortis leo a nisl euismod, eu faucibus justo sollicitudin. Mauris consectetur, tortor
-                                sed tempor malesuada, sem nunc porta augue, in dictum arcu tortor id turpis. Proin aliquet vulputate aliquam.
-                            </p>
+
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="livechat">
                     <div class="d-flex flex-column flex-lg-row">
                         <div>
-                            <h2>Live chat when you needed</h2>
-                            <p class="lead">Uniquely underwhelm premium outsourcing with proactive leadership skills. </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. Ut placerat dui eu nulla
-                                congue tincidunt ac a nibh. Mauris accumsan pulvinar lorem placerat volutpat. Praesent quis facilisis elit. Sed condimentum neque quis ex porttitor,
-                            </p>
-                            <p> malesuada faucibus augue aliquet. Sed elit est, eleifend sed dapibus a, semper a eros. Vestibulum blandit vulputate pharetra. Phasellus lobortis leo a nisl euismod, eu faucibus justo sollicitudin. Mauris consectetur, tortor
-                                sed tempor malesuada, sem nunc porta augue, in dictum arcu tortor id turpis. Proin aliquet vulputate aliquam.
-                            </p>
+                            <h2>Has no effect on your code</h2>
+
+                            <p class="lead">Your business logic stays unaffected</p><p>Your business logic stays unaffected by any error that may occur (just saying!) in the logging logic. Your code gets executed everytime, as if you never had this library!</p>
+
+                            <pre class="prettyprint">
+// the code is on similar lines...
+try {
+    // all the logging logic...
+} catch (Exception e) {
+    // catches anything that goes wrong. Doesn't really happen though :D
+}
+
+result = proceedingJoinPoint.proceed(); // your business logic is execited here
+
+try {
+    // post execution logging logic ...
+} catch (Exception e) {
+    // catch everything
+}
+                            </pre>
+
                         </div>
-                        <img src="images/graphic.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
                     </div>
                 </div>
             </div>
@@ -417,7 +461,7 @@ URI     : https://colorlib.com
 
 
 
-    <div class="section" id="pricing">
+    <div class="section hidden" id="pricing">
         <div class="container">
             <div class="section-title">
                 <small>PRICING</small>
@@ -483,7 +527,7 @@ URI     : https://colorlib.com
     <!-- // end .section -->
 
 
-    <div class="section pt-0">
+    <div class="section pt-0 hidden">
         <div class="container">
             <div class="section-title">
                 <small>FAQ</small>
@@ -517,15 +561,15 @@ URI     : https://colorlib.com
         <div class="container">
             <div class="call-to-action">
 
-                <div class="box-icon"><span class="ti-mobile gradient-fill ti-3x"></span></div>
-                <h2>Download Anywhere</h2>
-                <p class="tagline">Available for all major mobile and desktop platforms. Rapidiously visualize optimal ROI rather than enterprise-wide methods of empowerment. </p>
+                <div class="box-icon"><span class="ti-download gradient-fill ti-3x"></span></div>
+                <h2>Download Now!</h2>
+                <p class="tagline">Available on Maven Central, or can be downloaded manually from GitHub</p>
                 <div class="my-4">
 
-                    <a href="#" class="btn btn-light"><img src="images/appleicon.png" alt="icon"> App Store</a>
-                    <a href="#" class="btn btn-light"><img src="images/playicon.png" alt="icon"> Google play</a>
+                    <a href="https://github.com/harshilsharma63/controller-logger" target="_blank" class="btn btn-light"><img class="btn-app-icon" src="images/github.png" alt="icon"> GitHub</a>
+                    <a href="https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22controller-logger%22" target="_blank" class="btn btn-light"><img class="btn-app-icon" src="images/sonatype.png" alt="icon"> Maven Central</a>
                 </div>
-                <p class="text-primary"><small><i>*Works on iOS 10.0.5+, Android Kitkat and above. </i></small></p>
+                <p class="text-primary"><small><i>*Works on Java 8 and Spring Boot 1.5 </i></small></p>
             </div>
         </div>
 
@@ -536,18 +580,12 @@ URI     : https://colorlib.com
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 text-center text-lg-left">
-                    <p class="mb-2"> <span class="ti-location-pin mr-2"></span> 1485 Pacific St, Brooklyn, NY 11216 USA</p>
+                    <p class="mb-2"> <span class="ti-location-pin mr-2"></span> Gurgaon, India</p>
                     <div class=" d-block d-sm-inline-block">
                         <p class="mb-2">
-                            <span class="ti-email mr-2"></span> <a class="mr-4" href="mailto:support@mobileapp.com">support@mobileapp.com</a>
+                            <span class="ti-email mr-2"></span> <a class="mr-4" href="mailto:harshilsharma63@gmail.com">harshilsharma63@gmail.com</a>
                         </p>
                     </div>
-                    <div class="d-block d-sm-inline-block">
-                        <p class="mb-0">
-                            <span class="ti-headphone-alt mr-2"></span> <a href="tel:51836362800">518-3636-2800</a>
-                        </p>
-                    </div>
-
                 </div>
                 <div class="col-lg-6">
                     <div class="social-icons">
@@ -580,7 +618,10 @@ URI     : https://colorlib.com
     <script src="js/owl.carousel.min.js"></script>
     <!-- Custom JS -->
     <script src="js/script.js"></script>
+    <!-- Moment JS -->
+    <script src="js/moment.min.js"></script>
 
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=java"></script>
 </body>
 
 </html>

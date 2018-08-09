@@ -7,14 +7,14 @@ Version : 1.0
 Author  : Surjith S M
 URI     : https://surjithctly.in/
 
-Copyright © All rights Reserved 
+Copyright © All rights Reserved
 
 */
 
 
 /*------------------------
 [TABLE OF CONTENTS]
-    
+
 1. GLOBAL STYLES
 2. NAVBAR
 3. HERO
@@ -695,4 +695,14 @@ header {
 
 .card.features {
     height: 100%;
+}
+
+.prettyprint.prettyprinted {
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+.btn-app-icon {
+    height: 21px;
 }
