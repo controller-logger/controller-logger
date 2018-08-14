@@ -5,7 +5,7 @@ Version : 1.0
 Author  : Surjith S M
 URI     : https://surjithctly.in/
 
-Copyright © All rights Reserved 
+Copyright © All rights Reserved
 
 */
 
@@ -34,7 +34,7 @@ $(function() {
     $('.navbar-nav > li:not(.dropdown) > a').on('click', function() {
         $('.navbar-collapse').collapse('hide');
     });
-    /* 
+    /*
      * NAVBAR TOGGLE BG
      *-----------------*/
     var siteNav = $('#navbar');
@@ -108,5 +108,57 @@ $(function() {
             }
         });
     }
-
 }); /* End Fn */
+
+$(document).ready(function() {
+    $('#letUsKnow').click(function(e) {
+        e.preventDefault();
+        var feedbackBox = $('#feedback');
+
+        feedbackBox.find('.popup-content').html(
+            '<iframe class="feedbackForm" src="https://docs.google.com/forms/d/e/1FAIpQLSdh086Uw4dLGar0jKKvGZmQoERUzfhh0jbEnaNkhViohPaUUg/viewform?embedded=true" width="700" height="520" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>'
+        );
+        feedbackBox.show();
+    });
+
+    $('.overlay .ti-close').click(function(e) {
+        $(this).closest('.overlay.overlay-fullscreen').hide();
+    });
+});
+
+/*
+ * Replace all SVG images with inline SVG
+ */
+jQuery('svg-inline').each(function(){
+    var $img = jQuery(this);
+    var imgID = $img.attr('id');
+    var imgClass = $img.attr('class');
+    var imgURL = $img.attr('src');
+
+    jQuery.get(imgURL, function(data) {
+        // Get the SVG tag, ignore the rest
+        var $svg = jQuery(data).find('svg');
+
+        // Add replaced image's ID to the new SVG
+        if(typeof imgID !== 'undefined') {
+            $svg = $svg.attr('id', imgID);
+        }
+        // Add replaced image's classes to the new SVG
+        if(typeof imgClass !== 'undefined') {
+            $svg = $svg.attr('class', imgClass+' replaced-svg');
+        }
+
+        // Remove any invalid XML tags as per http://validator.w3.org
+        $svg = $svg.removeAttr('xmlns:a');
+
+        // Check if the viewport is set, if the viewport is not set the SVG wont't scale.
+        if(!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
+            $svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'))
+        }
+
+        // Replace image with new SVG
+        $img.replaceWith($svg);
+
+    }, 'xml');
+
+});

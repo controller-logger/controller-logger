@@ -690,7 +690,7 @@ header {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .card.features {
@@ -705,4 +705,71 @@ header {
 
 .btn-app-icon {
     height: 21px;
+}
+
+.overlay.overlay-fullscreen {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999;
+    top: 0;
+    background-color: #000000e6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.popup-content {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.overlay .ti-close {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    color: white;
+    cursor: pointer;
+}
+
+#letUsKnow {
+    color: #e38cb7 !important;
+    cursor: pointer;
+}
+
+.feedbackForm {
+    width: 95%;
+    margin: 0 auto;
+    display: block;
+    max-width: 700px;
+    height: 95%;
+    max-height: 520px;
+}
+
+@media (max-width:1000px) {
+    .feedbackForm {
+        max-height: 80%;
+    }
+}
+
+.header-icon {
+    width: 22px;
+    margin-top: -4px;
+}
+
+.footer-icon > svg {
+
+    width: 26px;
+    margin-top: 11px;
+
+}
+
+.footer-icon > svg > * {
+
+    fill: #d6619c !important;
+
 }

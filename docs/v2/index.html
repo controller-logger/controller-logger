@@ -49,7 +49,9 @@ URI     : https://colorlib.com
                                 <li class="nav-item"> <a class="nav-link active" href="#home">HOME <span class="sr-only">(current)</span></a> </li>
                                 <li class="nav-item"> <a class="nav-link" href="#features">FEATURES</a> </li>
                                 <li class="nav-item"> <a class="nav-link" href="#contact">CONTACT</a> </li>
-                                <li class="nav-item"><a href="#" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">Download</a></li>
+                                <li class="nav-item"><a href="https://harshilsharma63.github.io/controller-logger/" target="_blank" class="nav-link"><img class="header-icon" src="images/github.svg"></a></li>
+                                <li class="nav-item"><a href="https://gitter.im/controller-logger/Lobby?source=orgpage" target="_blank" class="nav-link"><img class="header-icon" src="images/gitter.svg"></a></li>
+                                <li class="nav-item"><a href="#download" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">Download</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -127,7 +129,7 @@ URI     : https://colorlib.com
 
     <div class="client-logos my-5">
         <div class="container text-center">
-            <img src="images/client-logos.png" alt="client logos" class="img-fluid">
+            Using this library? <a id="letUsKnow">Let us know!</a>
         </div>
     </div>
 
@@ -190,7 +192,7 @@ URI     : https://colorlib.com
 
     </div>
     <!-- // end .section -->
-    <div class="section">
+    <div class="section hidden">
 
         <div class="container">
             <div class="row">
@@ -363,7 +365,7 @@ try {
     <!-- // end .section -->
 
 
-    <div class="section light-bg">
+    <div class="section light-bg hidden">
 
         <div class="container">
             <div class="row">
@@ -404,7 +406,7 @@ try {
     <!-- // end .section -->
 
 
-    <div class="section">
+    <div class="section hidden">
         <div class="container">
             <div class="section-title">
                 <small>TESTIMONIALS</small>
@@ -438,7 +440,7 @@ try {
     <!-- // end .section -->
 
 
-    <div class="section light-bg" id="gallery">
+    <div class="section light-bg hidden" id="gallery">
         <div class="container">
             <div class="section-title">
                 <small>GALLERY</small>
@@ -557,7 +559,7 @@ try {
 
 
 
-    <div class="section bg-gradient">
+    <div class="section bg-gradient" id="download">
         <div class="container">
             <div class="call-to-action">
 
@@ -589,16 +591,21 @@ try {
                 </div>
                 <div class="col-lg-6">
                     <div class="social-icons">
-                        <a href="#"><span class="ti-facebook"></span></a>
-                        <a href="#"><span class="ti-twitter-alt"></span></a>
-                        <a href="#"><span class="ti-instagram"></span></a>
+                        <a class="footer-icon" href="#"><svg-inline  src="images/github.svg"></svg-inline></a>
+                        <a class="footer-icon" href="#"><svg-inline src="images/gitter.svg"></svg-inline></a>
                     </div>
                 </div>
             </div>
-
         </div>
 
     </div>
+
+    <div class="overlay overlay-fullscreen" style="display: none" id="feedback">
+        <div class="ti-close"></div>
+        <div class="popup-content">
+        </div>
+    </div>
+
     <!-- // end .section -->
     <footer class="my-5 text-center">
         <!-- Copyright removal is not prohibited! -->
