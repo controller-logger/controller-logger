@@ -110,6 +110,28 @@ $(function() {
     }
 }); /* End Fn */
 
+/**
+ * inViewport jQuery plugin by Roko C.B.
+ * http://stackoverflow.com/a/26831113/383904
+ * Returns a callback function with an argument holding
+ * the current amount of px an element is visible in viewport
+ * (The min returned value is 0 (element outside of viewport)
+ */
+(function($, win) {
+    $.fn.inViewport = function(cb) {
+        return this.each(function(i,el) {
+            function visPx(){
+                var elH = $(el).outerHeight(),
+                    H = $(win).height(),
+                    r = el.getBoundingClientRect(), t=r.top, b=r.bottom;
+                return cb.call(el, Math.max(0, t>0? Math.min(elH, H-t) : Math.min(b, H)));
+            }
+            visPx();
+            $(win).on("resize scroll", visPx);
+        });
+    };
+}(jQuery, window));
+
 $(document).ready(function() {
     $('#letUsKnow').click(function(e) {
         e.preventDefault();
@@ -124,6 +146,16 @@ $(document).ready(function() {
     $('.overlay .ti-close').click(function(e) {
         $(this).closest('.overlay.overlay-fullscreen').hide();
     });
+
+    var animate = ['.lol'];
+    for (var i = 0; i < animate.length; ++i) {
+        $(animate[i]).inViewport(function(px) {
+            console.log(px);
+            if (px > 350) {
+                $(this).addClass('lol-animation');
+            }
+        })
+    }
 });
 
 /*
@@ -162,3 +194,4 @@ jQuery('svg-inline').each(function(){
     }, 'xml');
 
 });
+

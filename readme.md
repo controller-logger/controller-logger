@@ -67,14 +67,14 @@ Example usage of this library can be found here - https://github.com/harshilshar
 
   * Gradle
         
-        compile group: 'io.github.harshilsharma63', name: 'controller-logger', version: '1.1.0'
+        compile group: 'io.github.harshilsharma63', name: 'controller-logger', version: '1.2.0'
     
   * Maven
  
         <dependency>
             <groupId>io.github.harshilsharma63</groupId>
             <artifactId>controller-logger</artifactId>
-            <version>1.1.0</version>
+            <version>1.2.0</version>
         </dependency>
 
 2. Add aspect bean in one of the `@Configuration` classes

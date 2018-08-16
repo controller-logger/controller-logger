@@ -762,14 +762,27 @@ header {
 }
 
 .footer-icon > svg {
-
     width: 26px;
     margin-top: 11px;
-
 }
 
 .footer-icon > svg > * {
-
     fill: #d6619c !important;
+}
 
+.perspective-phone {
+    top
+}
+
+.lol {
+    opacity: 0;
+}
+
+@keyframes brightness {
+    0% {filter: brightness(200%); opacity: 1;}
+    100% {filter: brightness(100%); opacity: 1;}
+}
+
+.lol-animation {
+    animation: brightness 1s cubic-bezier(.49,1.2,.84,1.02) forwards;
 }

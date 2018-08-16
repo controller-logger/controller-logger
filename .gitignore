@@ -41,3 +41,7 @@ gradle-app.setting
 docs/.sass-cache
 
 docs/node_modules
+
+.classpath
+.project
+.settings
