@@ -3847,5 +3847,14 @@ footer .fa-github:hover {
     color: #ff4242;
   }
 }
+header {
+  width: 100%;
+  height: 60px;
+  background: #e152a9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 150%;
+}
 
 /*# sourceMappingURL=styles/style.css.map */

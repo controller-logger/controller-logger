@@ -245,3 +245,13 @@ footer {
   100% {
     color: hsl(360, 100%, 63%);  }
 }
+
+header {
+  width: 100%;
+  height: 60px;
+  background: #e152a9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 150%;
+}
