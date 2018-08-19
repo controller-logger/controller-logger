@@ -147,12 +147,14 @@ $(document).ready(function() {
         $(this).closest('.overlay.overlay-fullscreen').hide();
     });
 
-    var animate = ['.lol'];
+    var animate = ['#discover-collage'];
     for (var i = 0; i < animate.length; ++i) {
         $(animate[i]).inViewport(function(px) {
             console.log(px);
             if (px > 350) {
                 $(this).addClass('lol-animation');
+            } else {
+                $(this).removeClass('lol-animation');
             }
         })
     }

@@ -11,7 +11,6 @@ Copyright © All rights Reserved
 
 */
 
-
 /*------------------------
 [TABLE OF CONTENTS]
 
@@ -26,7 +25,6 @@ Copyright © All rights Reserved
 9. FOOTER
 
 ------------------------*/
-
 
 /* GLOBAL
 ----------------------*/
@@ -110,10 +108,10 @@ p.lead {
 
 .btn-primary {
     border-radius: 3px;
-    background-image: -moz-linear-gradient( 122deg, #e54595 0%, #fd378e 100%);
-    background-image: -webkit-linear-gradient( 122deg, #e54595 0%, #fd378e 100%);
-    background-image: -ms-linear-gradient( 122deg, #e54595 0%, #fd378e 100%);
-    background-image: linear-gradient( 122deg, #e54595 0%, #fd378e 100%);
+    background-image: -moz-linear-gradient(122deg, #e54595 0%, #fd378e 100%);
+    background-image: -webkit-linear-gradient(122deg, #e54595 0%, #fd378e 100%);
+    background-image: -ms-linear-gradient(122deg, #e54595 0%, #fd378e 100%);
+    background-image: linear-gradient(122deg, #e54595 0%, #fd378e 100%);
     box-shadow: 0px 9px 32px 0px rgba(0, 0, 0, 0.2);
     font-weight: 500;
     padding: 0.6rem 2rem;
@@ -125,8 +123,8 @@ p.lead {
 .btn-primary:active,
 .btn-primary:not([disabled]):not(.disabled).active,
 .btn-primary:not([disabled]):not(.disabled):active,
-.show>.btn-primary.dropdown-toggle {
-    background-image: linear-gradient( 122deg, #fd378e 0%, #e54595 100%);
+.show > .btn-primary.dropdown-toggle {
+    background-image: linear-gradient(122deg, #fd378e 0%, #e54595 100%);
     box-shadow: 0px 9px 32px 0px rgba(0, 0, 0, 0.3);
     color: #FFF;
 }
@@ -143,7 +141,7 @@ p.lead {
     line-height: 1.8;
 }
 
-.btn-group-lg>.btn,
+.btn-group-lg > .btn,
 .btn-lg {
     padding: 0.8rem 1rem;
     font-size: 15px;
@@ -166,15 +164,15 @@ p.lead {
     color: #998a9b;
 }
 
-@media (max-width:767px) {
+@media (max-width: 767px) {
     h1 {
         font-size: 40px;
     }
+
     h2 {
         font-size: 30px;
     }
 }
-
 
 /* NAVBAR
 ----------------------*/
@@ -209,7 +207,8 @@ p.lead {
         padding-left: 1rem;
         font-size: 14px;
     }
-    .navbar-nav>.nav-item>.nav-link.active:after {
+
+    .navbar-nav > .nav-item > .nav-link.active:after {
         content: "";
         border-bottom: 2px solid #cd99d4;
         left: 1rem;
@@ -220,15 +219,15 @@ p.lead {
     }
 }
 
-@media (max-width:991px) {
+@media (max-width: 991px) {
     .navbar-nav.is-scrolling {
         padding-bottom: 1rem;
     }
+
     .navbar-nav .nav-item {
         text-align: center;
     }
 }
-
 
 /* HERO
 ----------------------*/
@@ -240,10 +239,10 @@ header {
 }
 
 .bg-gradient {
-    background-image: -moz-linear-gradient( 135deg, rgba(60, 8, 118, 0.8) 0%, rgba(250, 0, 118, 0.8) 100%);
-    background-image: -webkit-linear-gradient( 135deg, rgba(60, 8, 118, 0.8) 0%, rgba(250, 0, 118, 0.8) 100%);
-    background-image: -ms-linear-gradient( 135deg, rgba(60, 8, 118, 0.8) 0%, rgba(250, 0, 118, 0.8) 100%);
-    background-image: linear-gradient( 135deg, rgba(60, 8, 118, 0.8) 0%, rgba(250, 0, 118, 0.8) 100%);
+    background-image: -moz-linear-gradient(135deg, rgba(60, 8, 118, 0.8) 0%, rgba(250, 0, 118, 0.8) 100%);
+    background-image: -webkit-linear-gradient(135deg, rgba(60, 8, 118, 0.8) 0%, rgba(250, 0, 118, 0.8) 100%);
+    background-image: -ms-linear-gradient(135deg, rgba(60, 8, 118, 0.8) 0%, rgba(250, 0, 118, 0.8) 100%);
+    background-image: linear-gradient(135deg, rgba(60, 8, 118, 0.8) 0%, rgba(250, 0, 118, 0.8) 100%);
 }
 
 .tagline {
@@ -260,21 +259,21 @@ header {
     overflow: hidden;
 }
 
-@media (max-width:1200px) {
+@media (max-width: 1200px) {
     .img-holder {
         padding-bottom: 50%;
     }
 }
 
-@media (max-width:767px) {
+@media (max-width: 767px) {
     .tagline {
         font-size: 17px;
     }
+
     .img-holder {
         padding-bottom: 100%;
     }
 }
-
 
 /* FEATURES
 ----------------------*/
@@ -296,10 +295,11 @@ header {
     transition: all 0.3s ease;
 }
 
-@media (max-width:991px) {
+@media (max-width: 991px) {
     .card.features {
         margin-bottom: 2rem;
     }
+
     [class^="col-"]:last-child .card.features {
         margin-bottom: 0;
     }
@@ -354,7 +354,7 @@ header {
     transition: all 0.3s ease;
 }
 
-@media (max-width:992px) {
+@media (max-width: 992px) {
     .circle-icon {
         width: 70px;
         height: 70px;
@@ -364,10 +364,10 @@ header {
 }
 
 .ui-steps li:hover .circle-icon {
-    background-image: -moz-linear-gradient( 122deg, #e6388e 0%, #fb378e 100%);
-    background-image: -webkit-linear-gradient( 122deg, #e6388e 0%, #fb378e 100%);
-    background-image: -ms-linear-gradient( 122deg, #e6388e 0%, #fb378e 100%);
-    background-image: linear-gradient( 122deg, #e6388e 0%, #fb378e 100%);
+    background-image: -moz-linear-gradient(122deg, #e6388e 0%, #fb378e 100%);
+    background-image: -webkit-linear-gradient(122deg, #e6388e 0%, #fb378e 100%);
+    background-image: -ms-linear-gradient(122deg, #e6388e 0%, #fb378e 100%);
+    background-image: linear-gradient(122deg, #e6388e 0%, #fb378e 100%);
     box-shadow: 0px 9px 32px 0px rgba(0, 0, 0, 0.09);
     color: #FFF;
 }
@@ -380,17 +380,11 @@ header {
     border-bottom: 1px solid #f8e3f0;
 }
 
-.perspective-phone {
-    position: relative;
-    z-index: -1;
+@media (min-width: 992px) {
+    /*.perspective-phone {*/
+    /*margin-top: -150px;*/
+    /*}*/
 }
-
-@media (min-width:992px) {
-    .perspective-phone {
-        margin-top: -150px;
-    }
-}
-
 
 /*  TABS
 ----------------------*/
@@ -403,7 +397,7 @@ header {
     padding: 3rem;
 }
 
-@media (max-width:992px) {
+@media (max-width: 992px) {
     .tab-content {
         padding: 1.5rem;
     }
@@ -437,7 +431,6 @@ header {
     border-color: #ce75b4 #faf6fb #FFF;
     color: #633991;
 }
-
 
 /*  TESTIMONIALS
 ----------------------*/
@@ -480,7 +473,7 @@ header {
     right: 0;
 }
 
-.owl-theme .owl-nav.disabled+.owl-dots {
+.owl-theme .owl-nav.disabled + .owl-dots {
     margin-top: 60px;
 }
 
@@ -501,7 +494,6 @@ header {
     box-shadow: 0px 9px 32px 0px rgba(0, 0, 0, 0.07);
 }
 
-
 /*  IMAGE GALLERY
 ----------------------*/
 
@@ -515,15 +507,15 @@ header {
     transform: scale(1);
 }
 
-
 /*  PRICING
 ----------------------*/
 
-@media (max-width:992px) {
+@media (max-width: 992px) {
     .card-deck {
         -ms-flex-direction: column;
         flex-direction: column;
     }
+
     .card-deck .card {
         margin-bottom: 15px;
     }
@@ -572,7 +564,6 @@ header {
     padding: 1.75rem;
 }
 
-
 /*  CALL TO ACTION
 ----------------------*/
 
@@ -607,7 +598,6 @@ header {
     vertical-align: text-bottom;
 }
 
-
 /*  FOOTER
 ----------------------*/
 
@@ -634,13 +624,12 @@ header {
     color: #e38cb7;
 }
 
-@media (max-width:991px) {
+@media (max-width: 991px) {
     .social-icons {
         text-align: center;
         margin-top: 2rem;
     }
 }
-
 
 /*  CUSTOM STYLES
 ----------------------*/
@@ -649,7 +638,6 @@ header {
     height: 47px;
     margin-right: 3%;
 }
-
 
 .navbar {
     padding: 0 1rem;
@@ -660,6 +648,7 @@ header {
     background-color: rgb(255, 70, 59);
 
 }
+
 .actionButton {
     height: 14px;
     width: 14px;
@@ -750,7 +739,7 @@ header {
     max-height: 520px;
 }
 
-@media (max-width:1000px) {
+@media (max-width: 1000px) {
     .feedbackForm {
         max-height: 80%;
     }
@@ -770,21 +759,23 @@ header {
     fill: #d6619c !important;
 }
 
-.perspective-phone {
-    top
-}
-
 .lol {
     opacity: 0;
 }
 
 @keyframes brightness {
-    0% {filter: brightness(200%); opacity: 1;}
-    100% {filter: brightness(100%); opacity: 1;}
+    0% {
+        filter: brightness(200%);
+        opacity: 1;
+    }
+    100% {
+        filter: brightness(100%);
+        opacity: 1;
+    }
 }
 
 .lol-animation {
-    animation: brightness 1s cubic-bezier(.49,1.2,.84,1.02) forwards;
+    animation: brightness 2s cubic-bezier(.43, 1.28, .68, .99) forwards;
 }
 
 .discover-row {
@@ -796,11 +787,26 @@ header {
     flex: 1;
 }
 
-.discover-content {
-    padding-right: 10%;
+.discover-content-wrapper {
+    padding-right: 6rem;
 }
 
-.discover-collage {
-    width: 100%;
+#discover-collage {
+    width: 84%;
     height: 100%;
+    opacity: 0;
+}
+
+.discover-content-wrapper {
+
+    margin: 10rem 0;
+
+}
+
+.discover-container {
+    max-width: 1920px;
+}
+
+.perspective-phone {
+    text-align: center;
 }
