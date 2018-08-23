@@ -232,11 +232,11 @@ URI     : https://colorlib.com
             </div>
 
             <ul class="nav nav-tabs nav-justified" role="tablist">
-                <li class="nav-item">
+                <li class="nav-item hidden">
                     <a class="nav-link active" data-toggle="tab" href="#communication">Quick Setup</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#schedule">Security</a>
+                    <a class="nav-link active" data-toggle="tab" href="#schedule">Security</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#messages">Control</a>
@@ -246,7 +246,7 @@ URI     : https://colorlib.com
                 </li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane fade active show" id="communication">
+                <div class="tab-pane fade active show hidden" id="communication">
                     <div class="d-flex flex-column flex-lg-row">
                         <div>
 
@@ -272,7 +272,7 @@ public GenericControllerAspect genericControllerAspect() {
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="schedule">
+                <div class="tab-pane fade active show" id="schedule">
                     <div class="d-flex flex-column flex-lg-row">
                         <div>
                             <h2>Prevent logging sensitive information</h2>
@@ -360,7 +360,7 @@ try {
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="images/dualphone.png" alt="dual phone" class="img-fluid">
+                    <svg-inline src="images/starship.svg" class="img-fluid" class="starship">
                 </div>
                 <div class="col-md-6 d-flex align-items-center">
                     <div>
@@ -377,7 +377,7 @@ try {
     <!-- // end .section -->
 
 
-    <div class="section light-bg hidden">
+    <div class="section light-bg">
 
         <div class="container">
             <div class="row">
