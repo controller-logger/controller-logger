@@ -366,7 +366,8 @@ try {
                     <div>
                         <div class="box-icon"><span class="ti-rocket gradient-fill ti-3x"></span></div>
                         <h2>Launch your App</h2>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati vel exercitationem eveniet vero maxime ratione </p>
+                        <p class="mb-4">What are you thinking? Give it a try!</p>
+                        <p class="mb-4">Check out the example project over  <a href="https://github.com/harshilsharma63/controller-logger-example">here</a> or quickly add to your own project.</p>
                         <a href="#" class="btn btn-primary">Read more</a></div>
                 </div>
             </div>
@@ -380,34 +381,47 @@ try {
     <div class="section light-bg">
 
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-md-8 d-flex align-items-center">
                     <ul class="list-unstyled ui-steps">
                         <li class="media">
-                            <div class="circle-icon mr-4">1</div>
+                            <div class="circle-wrapper"><div class="circle-icon mr-4">1</div></div>
                             <div class="media-body">
-                                <h5>Create an Account</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem </p>
-                            </div>
-                        </li>
-                        <li class="media my-4">
-                            <div class="circle-icon mr-4">2</div>
-                            <div class="media-body">
-                                <h5>Share with friends</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem eveniet</p>
+                                <h5>Add project dependency</h5>
+                                <p><pre class="prettyprint">compile 'io.github.harshilsharma63:controller-logger:1.2.3'</pre></p>
                             </div>
                         </li>
                         <li class="media">
-                            <div class="circle-icon mr-4">3</div>
+                            <div class="circle-wrapper"><div class="circle-icon mr-4">2</div></div>
                             <div class="media-body">
-                                <h5>Enjoy your life</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem </p>
+                                <h5>Create a bean for AOP weaver to pick</h5>
+                                <p><pre class="prettyprint">
+@Bean
+public GenericControllerAspect genericControllerAspect() {
+    return new GenericControllerAspect();
+}</pre></p>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="circle-wrapper"><div class="circle-icon mr-4">3</div></div>
+                            <div class="media-body">
+                                <h5>Annotate your controller class</h5>
+                                <p><pre class="prettyprint">
+@Logging
+@RestController
+public class UserController {
+    ...
+}
+</pre></p>
                             </div>
                         </li>
                     </ul>
                 </div>
-                <div class="col-md-4">
-                    <img src="images/iphonex.png" alt="iphone" class="img-fluid">
+                <div class="col-md-4 d-flex">
+                    <svg-inline src="images/logo-themed.svg" class="std-logo img-fluid"></svg-inline>
+                </div>
+                <div class="row mt-4">
+                    <p>Checkout the <a target="_black" href="https://github.com/harshilsharma63/controller-logger-example">example project</a> demonstrating capabilities of this library</p>
                 </div>
 
             </div>

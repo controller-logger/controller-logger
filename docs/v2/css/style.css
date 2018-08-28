@@ -344,7 +344,6 @@ header {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    margin-bottom: 1.5rem;
     background-color: #FFF;
     color: #f5378e;
     font-size: 48px;
@@ -690,6 +689,7 @@ header {
     background-color: #f2f2f2;
     border-radius: 5px;
     padding: 10px 20px;
+    border: 1px solid #bababa !important;
 }
 
 .btn-app-icon {
@@ -763,17 +763,6 @@ header {
     opacity: 0;
 }
 
-@keyframes brightness {
-    0% {
-        filter: brightness(200%);
-        opacity: 1;
-    }
-    100% {
-        filter: brightness(100%);
-        opacity: 1;
-    }
-}
-
 .lol-animation {
     animation: brightness 2s cubic-bezier(.43, 1.28, .68, .99) forwards;
 }
@@ -815,51 +804,12 @@ header {
     height: 100%;
 }
 
-@keyframes shake-x {
-    25% {
-        transform: translateX(-2px);
-    }
-
-    75% {
-        transform: translateX(2px);
-    }
-}
-
-@keyframes shake-y {
-    25% {
-        transform: translateY(-2px);
-    }
-
-    75% {
-        transform: translateY(2px);
-    }
-}
-
-@keyframes shake-xy {
-    0% {transform: translate(1.19px, 1.19px)}
-    10% {transform: translate(-2.8px, -0.07px)}
-    20% {transform: translate(-1.2px, 2.8px)}
-    30% {transform: translate(-3.19px, -0.92px)}
-    40% {transform: translate(3.35px, -1.06px)}
-    50% {transform: translate(-1.32px, 0.99px)}
-    60% {transform: translate(1.52px, 2.77px)}
-    70% {transform: translate(3.1px, 2.01px)}
-    80% {transform: translate(-3.55px, -1.53px)}
-    90% {transform: translate(-2.69px, 1.27px)}
-    100% {transform: translate(1.84px, 1.84px)}
-
-}
-
 #pink-bars, #blue-bars {
-
     animation: shake-xy 2s infinite linear;
-
 }
 
 #blue-bars {
-
     animation-delay: 0.9s;
-
 }
 
 #pink-bars {
@@ -867,21 +817,107 @@ header {
 }
 
 #ship {
-
-    animation: shake-y infinite 1.2s linear;
-
+    animation: shake-y infinite 3s linear;
 }
 
 #bubbles {
-
     animation: shake-xy infinite 10s linear;
-    animation-delay: 0s;
     animation-delay: 0.6s;
-
 }
 
-#stars {
+.circle-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-    /*animation: shake-x 1s infinite linear;*/
+.media {
+    align-items: stretch;
+}
 
+@keyframes shake-y {
+    25% {
+        transform: translateY(-10px);
+    }
+
+    75% {
+        transform: translateY(10px);
+    }
+}
+
+.std-logo {
+    opacity: 0;
+}
+
+.std-logo.lol-animation {
+    animation: puffIn 0.5s linear forwards;
+}
+
+@keyframes shake-xy {
+    0% {
+        transform: translate(1.19px, 1.19px)
+    }
+    10% {
+        transform: translate(-2.8px, -0.07px)
+    }
+    20% {
+        transform: translate(-1.2px, 2.8px)
+    }
+    30% {
+        transform: translate(-3.19px, -0.92px)
+    }
+    40% {
+        transform: translate(3.35px, -1.06px)
+    }
+    50% {
+        transform: translate(-1.32px, 0.99px)
+    }
+    60% {
+        transform: translate(1.52px, 2.77px)
+    }
+    70% {
+        transform: translate(3.1px, 2.01px)
+    }
+    80% {
+        transform: translate(-3.55px, -1.53px)
+    }
+    90% {
+        transform: translate(-2.69px, 1.27px)
+    }
+    100% {
+        transform: translate(1.84px, 1.84px)
+    }
+}
+
+@keyframes brightness {
+    0% {
+        filter: brightness(200%);
+        opacity: 1;
+    }
+    100% {
+        filter: brightness(100%);
+        opacity: 1;
+    }
+}
+
+@keyframes puffIn {
+    0% {
+        opacity: 0;
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-transform: scale(1.1, 1.1);
+        transform: scale(1.1, 1.1);
+        -webkit-filter: blur(2px);
+        filter: blur(2px);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+    }
 }
