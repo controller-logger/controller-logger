@@ -6,6 +6,7 @@
 
 
 
+[![Discord](https://user-images.githubusercontent.com/7288322/34429152-141689f8-ecb9-11e7-8003-b5a10a5fcb29.png?style=popout)](https://discord.gg/putPJpQ)
 [![CircleCI](https://circleci.com/gh/harshilsharma63/controller-logger.svg?style=svg)](https://circleci.com/gh/harshilsharma63/controller-logger)
 ![](https://sonarcloud.io/api/project_badges/measure?project=io.github.harshilsharma63%3Acontroller-logger&metric=alert_status)
 [![codecov](https://codecov.io/gh/harshilsharma63/controller-logger/branch/master/graph/badge.svg)](https://codecov.io/gh/harshilsharma63/controller-logger)
