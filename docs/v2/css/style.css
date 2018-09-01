@@ -725,6 +725,10 @@ header {
     max-height: 520px;
 }
 
+#contact {
+    border-top: 1px solid #afafaf;
+}
+
 @media (max-width: 1000px) {
     .feedbackForm {
         max-height: 80%;
@@ -843,6 +847,19 @@ header {
 
 .ui-steps .media-body {
     margin-left: 3rem;
+}
+
+.download-link {
+    flex-grow: 1;
+    max-width: 150px;
+}
+
+#contact p, a, footer p, a {
+    color: #ffb8f6;
+}
+
+#contact a:hover, footer a:hover {
+    color: #fff;
 }
 
 @keyframes shake-xy {
