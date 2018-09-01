@@ -1,16 +1,19 @@
+<div align="center">
+
 ![Controller Logger](docs/banner.png?raw=true "Banner")
 
+</div>
 
-    createUser() called with arguments: id: [4], name: [Foo] called via url [http://localhost:8080/createUser], username [admin]
-
-
-
+<div align="center">
 
 [![Discord](https://user-images.githubusercontent.com/7288322/34429152-141689f8-ecb9-11e7-8003-b5a10a5fcb29.png?style=popout)](https://discord.gg/putPJpQ)
 [![CircleCI](https://circleci.com/gh/harshilsharma63/controller-logger.svg?style=svg)](https://circleci.com/gh/harshilsharma63/controller-logger)
 ![](https://sonarcloud.io/api/project_badges/measure?project=io.github.harshilsharma63%3Acontroller-logger&metric=alert_status)
 [![codecov](https://codecov.io/gh/harshilsharma63/controller-logger/branch/master/graph/badge.svg)](https://codecov.io/gh/harshilsharma63/controller-logger)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fharshilsharma63%2Fcontroller-logger.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fharshilsharma63%2Fcontroller-logger?ref=badge_shield)
+
+[![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/harshilsharma63)
+</div>
 
 ### Upcoming release features
 1. Performance improvements
