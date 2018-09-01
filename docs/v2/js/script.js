@@ -150,7 +150,6 @@ $(document).ready(function() {
     var animate = ['#discover-collage', '.std-logo'];
     for (var i = 0; i < animate.length; ++i) {
         $(animate[i]).inViewport(function(px) {
-            console.log(px);
             if (px > 350) {
                 $(this).addClass('lol-animation');
             } else {
@@ -158,6 +157,8 @@ $(document).ready(function() {
             }
         })
     }
+
+    $('.cp-year').text(new Date().getFullYear());
 });
 
 /*

@@ -839,6 +839,7 @@ header {
 
 .std-logo {
     opacity: 0;
+    height: 100%;
 }
 
 .std-logo.lol-animation {
