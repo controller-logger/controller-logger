@@ -65,7 +65,7 @@ URI     : https://colorlib.com
             <h1>Automatic API Logging For Spring</h1>
             <p class="tagline">A Java library to ease the life of web developers by providing automatic logging of input, output, and some context data for controllers</p>
         </div>
-        <div style="/*! border: 1px solid black; *//*! margin-top: 4rem !important; */width: 72%;margin: 0 auto;border-bottom: none;border-radius: 8px 9px 0 0;/*! padding-top: 1rem; *//*! padding-left: 1rem; *//*! padding-right: 1rem; */background-color: #232323;/*! color: white; */margin-top: 3rem !important;" class="img-holder mt-3">
+        <div class="img-holder mt-3 terminal">
             <div class="titlebar" style="height: 23px;background-color: silver;padding: 4px 16px;">
                 <div class="actionButton close"></div>
                 <div class="actionButton maximize"></div>
@@ -132,7 +132,7 @@ URI     : https://colorlib.com
         </div>
     </div>
 
-    <div class="section light-bg" id="features">
+    <div class="section section-cards light-bg" id="features">
 
 
         <div class="container">
@@ -190,8 +190,7 @@ URI     : https://colorlib.com
 
     </div>
     <!-- // end .section -->
-    <div class="section" style="">
-
+    <div class="section section-productivity" style="">
         <div style="position: relative;" class="container-fluid discover-container">
             <div class="row discover-row">
                 <div class="perspective-phone">
@@ -221,9 +220,7 @@ URI     : https://colorlib.com
 
     </div>
     <!-- // end .section -->
-
-
-    <div class="section light-bg">
+    <div class="section section-features light-bg">
         <div class="container">
             <div class="section-title">
                 <small>FEATURES</small>
@@ -324,16 +321,15 @@ try {
         </div>
     </div>
     <!-- // end .section -->
-
-    <div class="section">
+    <div class="section section-launch">
 
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <svg-inline src="images/starship.svg" class="img-fluid" class="starship">
+                <div class="col-md-6 text-center">
+                    <svg-inline src="images/starship.svg" class="img-fluid" id="starship">
                 </div>
                 <div class="col-md-6 d-flex align-items-center">
-                    <div>
+                    <div class="launch-content">
                         <div class="box-icon"><span class="ti-rocket gradient-fill ti-3x"></span></div>
                         <h2>Launch your App</h2>
                         <p class="mb-4">What are you thinking? Give it a try!</p>
@@ -348,23 +344,21 @@ try {
     <!-- // end .section -->
 
 
-    <div class="section light-bg">
+    <div class="section section-instructions light-bg">
 
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 d-flex align-items-center">
                     <ul class="list-unstyled ui-steps">
                         <li class="media">
-                            <div class="circle-wrapper"><div class="circle-icon mr-4">1</div></div>
                             <div class="media-body">
-                                <h5>Add project dependency</h5>
+                                <h5><span class="serial-number">1</span> Add project dependency</h5>
                                 <p><pre class="prettyprint">compile 'io.github.harshilsharma63:controller-logger:1.2.3'</pre></p>
                             </div>
                         </li>
                         <li class="media">
-                            <div class="circle-wrapper"><div class="circle-icon mr-4">2</div></div>
                             <div class="media-body">
-                                <h5>Create a bean for AOP weaver to pick</h5>
+                                <h5><span class="serial-number">2</span> Create a bean for AOP weaver to pick</h5>
                                 <p><pre class="prettyprint">
 @Bean
 public GenericControllerAspect genericControllerAspect() {
@@ -373,9 +367,8 @@ public GenericControllerAspect genericControllerAspect() {
                             </div>
                         </li>
                         <li class="media">
-                            <div class="circle-wrapper"><div class="circle-icon mr-4">3</div></div>
                             <div class="media-body">
-                                <h5>Annotate your controller class</h5>
+                                <h5><span class="serial-number">3</span> Annotate your controller class</h5>
                                 <p><pre class="prettyprint">
 @Logging
 @RestController
@@ -390,19 +383,19 @@ public class UserController {
                 <div class="col-md-4 d-flex">
                     <svg-inline src="images/logo-themed.svg" class="std-logo img-fluid"></svg-inline>
                 </div>
-                <div class="row mt-4">
+            </div>
+            <div class="row mt-4 justify-content-center">
+                <div class="col d-flex justify-content-center text-center">
                     <p>Check out the <a target="_black" href="https://github.com/harshilsharma63/controller-logger-example">example project</a> demonstrating the capabilities of this library</p>
                 </div>
-
             </div>
-
         </div>
 
     </div>
     <!-- // end .section -->
 
 
-    <div class="section">
+    <div class="section section-testimonials">
         <div class="container">
             <div class="section-title">
                 <small>TESTIMONIALS</small>
@@ -556,7 +549,7 @@ public class UserController {
 
 
     <div class="footer-bg bg-gradient">
-    <div class="section" id="download">
+    <div class="section section-download" id="download">
         <div class="container">
             <div class="call-to-action">
 
@@ -575,13 +568,12 @@ public class UserController {
     <!-- // end .section -->
 
     <div class="py-5 container" id="contact">
-        <div class="container">
             <div class="row">
                 <div class="col-lg-4 text-center text-lg-left">
                     <p class="mb-2"> <span class="ti-location-pin mr-2"></span> Gurgaon, India</p>
                     <div class=" d-block d-sm-inline-block">
                         <p class="mb-2">
-                            <span class="ti-email mr-2"></span> <a class="mr-4" href="mailto:harshilsharma63@gmail.com">harshilsharma63@gmail.com</a>
+                            <span class="ti-email mr-2"></span> <a href="mailto:harshilsharma63@gmail.com">harshilsharma63@gmail.com</a>
                         </p>
                     </div>
                 </div>
@@ -595,8 +587,6 @@ public class UserController {
                     </div>
                 </div>
             </div>
-        </div>
-
     </div>
 
     <div class="overlay overlay-fullscreen" style="display: none" id="feedback">

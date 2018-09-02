@@ -121,10 +121,13 @@ $(function() {
     $.fn.inViewport = function(cb) {
         return this.each(function(i,el) {
             function visPx(){
-                var elH = $(el).outerHeight(),
-                    H = $(win).height(),
-                    r = el.getBoundingClientRect(), t=r.top, b=r.bottom;
-                return cb.call(el, Math.max(0, t>0? Math.min(elH, H-t) : Math.min(b, H)));
+                var elementTop = $(el).offset().top;
+                var elementBottom = elementTop + $(el).outerHeight();
+
+                var viewportTop = $(win).scrollTop();
+                var viewportBottom = viewportTop + $(win).height();
+
+                cb.call(el, Math.max(0, Math.min(elementBottom - viewportTop, viewportBottom - elementTop)));
             }
             visPx();
             $(win).on("resize scroll", visPx);
@@ -150,6 +153,7 @@ $(document).ready(function() {
     var animate = ['#discover-collage', '.std-logo'];
     for (var i = 0; i < animate.length; ++i) {
         $(animate[i]).inViewport(function(px) {
+            console.log(px);
             if (px > 350) {
                 $(this).addClass('lol-animation');
             } else {

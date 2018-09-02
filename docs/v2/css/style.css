@@ -180,6 +180,7 @@ p.lead {
 .nav-menu {
     padding: 1rem 0;
     transition: all 0.3s ease;
+    max-width: 100vw;
 }
 
 .nav-menu.is-scrolling,
@@ -754,6 +755,7 @@ header {
 }
 
 .lol-animation {
+    -webkit-animation: brightness 2s cubic-bezier(.43, 1.28, .68, .99) forwards;
     animation: brightness 2s cubic-bezier(.43, 1.28, .68, .99) forwards;
 }
 
@@ -863,6 +865,22 @@ header {
     color: #fff;
 }
 
+.terminal {
+    /*! border: 1px solid black; *//*! margin-top: 4rem !important; */
+    width: 72%;
+    margin: 0 auto;
+    border-bottom: none;
+    border-radius: 8px 9px 0 0; /*! padding-top: 1rem; *//*! padding-left: 1rem; *//*! padding-right: 1rem; */
+    background-color: #232323; /*! color: white; */
+    margin-top: 3rem !important;
+}
+
+span.serial-number {
+    color: #f5378e;
+    font-size: 38px;
+    padding-right: 1rem;
+}
+
 @keyframes shake-xy {
     0% {
         transform: translate(1.19px, 1.19px)
@@ -929,5 +947,53 @@ header {
         transform: scale(1, 1);
         -webkit-filter: blur(0px);
         filter: blur(0px);
+    }
+}
+
+@media (max-width: 992px) {
+    .ui-steps .media-body {
+        margin-left: 0;
+    }
+
+    .section-instructions pre {
+        width: 94.5vw;
+    }
+
+    .terminal {
+        width: 95%;
+    }
+
+    .section-productivity .discover-content-wrapper {
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+    }
+
+    .section-features .launch-content {
+        padding: 0 35px;
+        margin-top: 5rem;
+    }
+
+    .discover-container .row {
+        flex-direction: column;
+    }
+
+    #discover-collage, #starship {
+        width: 70%;
+    }
+
+    .launch-content {
+        margin-top: 4rem;
+    }
+
+    .section-productivity .discover-content-wrapper, .section-launch .launch-content {
+        padding: 1.5rem;
+    }
+
+    .section-instructions .std-logo {
+        display: none;
+    }
+
+    #contact {
+        width: 85%;
     }
 }
