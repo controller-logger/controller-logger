@@ -1,0 +1,15 @@
+{
+  "name": "controller-logger-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "echo \"Linting HTML\" && ./node_modules/.bin/htmlhint index.html;"
+  },
+  "author": "Harshil Sharma",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "htmlhint": "^0.9.13"
+  }
+}
