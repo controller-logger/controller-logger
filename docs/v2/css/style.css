@@ -234,6 +234,7 @@ p.lead {
 ----------------------*/
 
 header {
+    height: 100vh;
     padding: 100px 0 0;
     text-align: center;
     color: #FFF;
@@ -873,6 +874,8 @@ header {
     border-radius: 8px 9px 0 0; /*! padding-top: 1rem; *//*! padding-left: 1rem; *//*! padding-right: 1rem; */
     background-color: #232323; /*! color: white; */
     margin-top: 3rem !important;
+    align-self: flex-end;
+    margin-top: auto !important;
 }
 
 span.serial-number {

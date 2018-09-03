@@ -60,7 +60,7 @@ URI     : https://colorlib.com
         </div>
     </div>
 
-    <header class="bg-gradient" id="home">
+    <header class="bg-gradient d-flex flex-column" id="home">
         <div class="container mt-5">
             <h1>Automatic API Logging For Spring</h1>
             <p class="tagline">A Java library to ease the life of web developers by providing automatic logging of input, output, and some context data for controllers</p>
@@ -73,6 +73,54 @@ URI     : https://colorlib.com
             </div>
             <div class="container-fluid showstopper">
                 <code style="background-color: unset;text-align: left;">
+                    <p class="line">
+                        &gt; <span class="timestamp">2018-02-26 16:52:35.419</span> <span class="log-level">INFO:</span>
+                        <span data-toggle="tooltip" class="annotation" data-placement="top" title="" data-original-title="Controller function name">getUser()</span>
+                        called via url
+                        <span data-toggle="tooltip" class="annotation" data-placement="top" title="" data-original-title="URL through which API was called">[http://localhost:8080/get-random-user]</span>,
+                        <span data-toggle="tooltip" class="annotation" data-placement="top" title="" data-original-title="Auth user who called the API">username [username]</span>
+                    </p>
+                    <p class="line">
+                        &gt; <span class="timestamp">2018-02-26 16:52:35.624</span> <span class="log-level">INFO:</span>
+                        <span data-toggle="tooltip" class="annotation" data-placement="top" title="" data-original-title="Controller function name">getUser()</span>
+                        took
+                        <span data-toggle="tooltip" class="annotation" data-placement="top" title="" data-original-title="Total execution time">[1.8 ms]</span>
+                        to complete
+                    </p>
+                    <p class="line">
+                        &gt; <span class="timestamp">2018-02-26 16:52:35.624</span> <span class="log-level">INFO:</span>
+                        <span data-toggle="tooltip" class="annotation" data-placement="top" title="" data-original-title="Controller function name">getUser()</span>
+                        returned:
+                        <span data-toggle="tooltip" class="annotation" data-placement="bottom" title="" data-original-title="Response returned by API">
+                                 [User(id=SP-937-215,
+                                 email=jeanlucpicard@starfleet.com,
+                                 password=xxxxx,
+                                 firstName=Jean-Luc,
+                                 lastName=Picard)]
+                        </span>
+                    </p>
+                    <p class="line">
+                        &gt; <span class="timestamp">2018-02-26 16:52:35.419</span> <span class="log-level">INFO:</span>
+                        <span data-toggle="tooltip" class="annotation" data-placement="top" title="" data-original-title="Controller function name">getMemo()</span>
+                        called via url
+                        <span data-toggle="tooltip" class="annotation" data-placement="top" title="" data-original-title="URL through which API was called">[http://localhost:8080/get-memo]</span>,
+                        <span data-toggle="tooltip" class="annotation" data-placement="top" title="" data-original-title="Auth user who called the API">username [username]</span>
+                    </p>
+                    <p class="line">
+                        &gt; <span class="timestamp">2018-02-26 16:52:35.624</span> <span class="log-level">INFO:</span>
+                        <span data-toggle="tooltip" class="annotation" data-placement="top" title="" data-original-title="Controller function name">getMemo()</span>
+                        took
+                        <span data-toggle="tooltip" class="annotation" data-placement="top" title="" data-original-title="Total execution time">[0.2 ms]</span>
+                        to complete
+                    </p>
+                    <p class="line">
+                        &gt; <span class="timestamp">2018-02-26 16:52:35.624</span> <span class="log-level">INFO:</span>
+                        <span data-toggle="tooltip" class="annotation" data-placement="top" title="" data-original-title="Controller function name">getMemo()</span>
+                        returned:
+                        <span data-toggle="tooltip" class="annotation" data-placement="bottom" title="" data-original-title="Response returned by API">
+                                 [Memo(id=m_xyz_123, text=Hello, World! From a Memo!)]
+                        </span>
+                    </p>
                     <p class="line">
                         &gt; <span class="timestamp">2018-02-26 16:52:35.419</span> <span class="log-level">INFO:</span>
                         <span data-toggle="tooltip" class="annotation" data-placement="top" title="" data-original-title="Controller function name">getUser()</span>

@@ -110,32 +110,32 @@ $(function() {
     }
 }); /* End Fn */
 
-/**
- * inViewport jQuery plugin by Roko C.B.
- * http://stackoverflow.com/a/26831113/383904
- * Returns a callback function with an argument holding
- * the current amount of px an element is visible in viewport
- * (The min returned value is 0 (element outside of viewport)
- */
-(function($, win) {
-    $.fn.inViewport = function(cb) {
-        return this.each(function(i,el) {
-            function visPx(){
-                var elementTop = $(el).offset().top;
-                var elementBottom = elementTop + $(el).outerHeight();
-
-                var viewportTop = $(win).scrollTop();
-                var viewportBottom = viewportTop + $(win).height();
-
-                cb.call(el, Math.max(0, Math.min(elementBottom - viewportTop, viewportBottom - elementTop)));
-            }
-            visPx();
-            $(win).on("resize scroll", visPx);
-        });
-    };
-}(jQuery, window));
-
 $(document).ready(function() {
+    /**
+     * inViewport jQuery plugin by Roko C.B.
+     * http://stackoverflow.com/a/26831113/383904
+     * Returns a callback function with an argument holding
+     * the current amount of px an element is visible in viewport
+     * (The min returned value is 0 (element outside of viewport)
+     */
+    (function($, win) {
+        $.fn.inViewport = function(cb) {
+            return this.each(function(i,el) {
+                function visPx(){
+                    var elementTop = $(el).offset().top;
+                    var elementBottom = elementTop + $(el).outerHeight();
+
+                    var viewportTop = $(win).scrollTop();
+                    var viewportBottom = viewportTop + $(win).height();
+
+                    cb.call(el, Math.max(0, Math.min(elementBottom - viewportTop, viewportBottom - elementTop)));
+                }
+                visPx();
+                $(win).on("resize scroll", visPx);
+            });
+        };
+    }(jQuery, window));
+
     $('#letUsKnow').click(function(e) {
         e.preventDefault();
         var feedbackBox = $('#feedback');
@@ -150,7 +150,7 @@ $(document).ready(function() {
         $(this).closest('.overlay.overlay-fullscreen').hide();
     });
 
-    var animate = ['#discover-collage', '.std-logo'];
+    var animate = ['#discover-collage'];
     for (var i = 0; i < animate.length; ++i) {
         $(animate[i]).inViewport(function(px) {
             console.log(px);
