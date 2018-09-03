@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "echo \"Linting HTML\" && ./node_modules/.bin/htmlhint index.html;"
+    "lint": "echo \"Linting HTML\" && ./node_modules/.bin/htmlhint index.html; echo \"Linting JavaScript\" && ./node_modules/.bin/eslint js/script.js"
   },
   "author": "Harshil Sharma",
   "license": "Apache-2.0",
   "devDependencies": {
+    "eslint": "^5.5.0",
     "htmlhint": "^0.9.13"
   }
 }
