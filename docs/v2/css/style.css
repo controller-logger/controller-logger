@@ -881,6 +881,11 @@ span.serial-number {
     padding-right: 1rem;
 }
 
+.attribuation {
+    text-decoration: underline;
+    text-decoration-color: #ffb8f699;
+}
+
 @keyframes shake-xy {
     0% {
         transform: translate(1.19px, 1.19px)
