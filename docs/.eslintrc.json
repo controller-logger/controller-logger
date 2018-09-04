@@ -1,12 +1,11 @@
 {
     "env": {
         "browser": true,
-        "es6": true,
-        "jquery": true
+        "es6": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
-        "sourceType": "module"
+        "ecmaVersion": 2015
     },
     "rules": {
         "indent": [
@@ -19,18 +18,11 @@
         ],
         "quotes": [
             "error",
-            "double"
+            "single"
         ],
         "semi": [
             "error",
             "always"
         ]
-    },
-    "plugins": [
-      "html"
-    ],
-    "settings": {
-      "html/indent": "tab",
-      "html/report-bad-indent": "error"
     }
 }
