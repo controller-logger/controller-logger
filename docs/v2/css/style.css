@@ -255,12 +255,6 @@ header {
     margin: 0 auto;
 }
 
-.img-holder {
-    height: 0;
-    padding-bottom: 33%;
-    overflow: hidden;
-}
-
 @media (max-width: 1200px) {
     .img-holder {
         padding-bottom: 50%;
@@ -876,6 +870,9 @@ header {
     margin-top: 3rem !important;
     align-self: flex-end;
     margin-top: auto !important;
+    max-width: 1200px;
+    height: 60%;
+    overflow: hidden;
 }
 
 span.serial-number {

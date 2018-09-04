@@ -155,7 +155,7 @@ $(document).ready(function() {
 		$(this).closest('.overlay.overlay-fullscreen').hide();
 	});
 
-	var animate = ['#discover-collage'];
+	var animate = ['#discover-collage' ,'.std-logo'];
 	for (var i = 0; i < animate.length; ++i) {
 		$(animate[i]).inViewport(function(px) {
 			if (px > 350) {
