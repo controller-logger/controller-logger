@@ -1,6 +1,6 @@
 <div align="center">
 
-![Controller Logger](docs/banner.png?raw=true "Banner")
+![Controller Logger](docs/images/banner.png?raw=true "Banner")
 
 </div>
 
